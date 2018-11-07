@@ -16,7 +16,7 @@ export class PageLoginComponent implements OnInit {
 
   setToken() {
     localStorage.setItem('token', '12345');
-    this.router.navigate(['/system/profile']);
+    this.router.navigate(['/profile']);
   }
 
 }
