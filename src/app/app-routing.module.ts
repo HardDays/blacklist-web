@@ -108,8 +108,6 @@ const routes: Routes = [
           { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard]},
           { path: 'human-list', component: HumanListComponent,  canActivate: [AuthGuard]},
           { path: 'vacances', component: VacancesComponent,  canActivate: [AuthGuard]}
-      
-      
         ]
         // resolve: {
         //   deals: DashboardResolver,
@@ -124,7 +122,7 @@ const routes: Routes = [
 
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
-  // { path:'',component:SystemComponent, 
+  // { path:'',component:SystemComponent,
   //     { path: 'profile/:id', component: ProfileComponent, canActivate: [SystemAccessGuard]},
   //     { path: 'events', component: EventsComponent, canActivate: [SystemAccessGuard] },
   //     { path: 'eventCreate/:id', component: EventCreateComponent, canActivate: [SystemAccessGuard] },
@@ -135,7 +133,7 @@ const routes: Routes = [
   //     { path: 'tickets', component: TicketsComponent, canActivate: [SystemAccessGuard] },
   //     // { path: 'shows_detail/:id', component: ShowsDetailComponent, canActivate: [SystemAccessGuard] },
   //     { path: 'shows_detail/:id', loadChildren: './showsDetail/showsDetail.module#ShowsDetailModule', canActivate: [SystemAccessGuard] },
-     
+
   //     { path: 'tickets/:id', component: MyTicketOpenedComponent, canActivate: [SystemAccessGuard] },
   //     { path: 'messages', component: MessagesComponent, canActivate: [SystemAccessGuard] },
   //     { path: 'settings', component: SettingsComponent, canActivate: [SystemAccessGuard] },
