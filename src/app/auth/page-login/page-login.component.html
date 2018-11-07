@@ -1,0 +1,21 @@
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+  <h2>Login</h2>
+  <form>
+    <div class="form-group">
+      <label for="code">Login:</label>
+      <input type="email" class="form-control" id="code" placeholder="Enter code" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <button type="button" class="btn btn-success">Submit</button>
+    <button [routerLink]="['/auth','register']" type="button" class="btn btn-info">Register</button>
+
+    <button (click)="setToken()" type="button" class="btn btn-info">Войти без пароля FOR DEV</button>
+  </form>
+  </div>
+  </div>
+</div>
