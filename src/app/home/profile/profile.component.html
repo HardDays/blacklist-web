@@ -1,0 +1,178 @@
+<!-- это для человека -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <form action="/action_page.php">
+          <div class="row">
+              <h1>Profile
+              </h1>
+              <div class="avatar-upload">
+                  <div class="avatar-edit">
+                      <input class="file" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                      <label for="imageUpload"></label>
+                  </div>
+                  <div class="avatar-preview">
+                      <div id="imagePreview" style="background-image: url(https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png);">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="f1">Фамилия:</label>
+            <input type="text" class="form-control" id="f1">
+          </div>
+          <div class="form-group">
+            <label for="f2">Имя:</label>
+            <input type="text" class="form-control" id="f2">
+          </div>
+          <div class="form-group">
+            <label for="f3">Отчество:</label>
+            <input type="text" class="form-control" id="f3">
+          </div>
+          <div class="form-group">
+            <label for="f4">Дата Рождения:</label>
+            <input type="text" class="form-control" id="f4">
+          </div>
+         
+          <div class="form-group">
+            <label>Пол:</label>
+            <div class="radio">
+              <label><input type="radio" name="optradio" checked>Мужской</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio">Женский</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f505">Должность:</label>
+            <input type="text" class="form-control" id="f505">
+          </div>
+          <div class="form-group">
+            <label for="f5">Образование:</label>
+            <input type="text" class="form-control" id="f5">
+          </div>
+          <div class="form-group">
+              <label for="f55065">Год выпуска:</label>
+              <input type="text" class="form-control" id="f55065">
+            </div>
+          <div class="form-group">
+            <label for="f6">Контактные данные:</label>
+            <input type="text" class="form-control" id="f6">
+          </div>
+          <div class="form-group">
+            <label for="f7">Навыки:</label>
+            <textarea class="form-control" rows="5" id="f7"></textarea>
+          </div>
+          <label for="f7">Cписок прошлых мест работы:</label>
+          <hr>
+          <!-- это итерируем -->
+          <div class="one-place">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f10">Название:</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="f10">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f11">Год начала работы и окончания:</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="f11">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f12">Должность:</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="f12">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f13">Описание заведения:</label>
+                </div>
+                <div class="col-md-5">
+                    <textarea class="form-control" rows="3" id="f13"></textarea>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+                <button type="button" style="margin: 0 auto 30px auto; max-width: 100px;" class="btn btn-block btn-primary btn-lg">+ Add</button>
+            </div>
+
+          </div>
+          
+          <div class="form-group">
+            <label for="f8">Общий стаж работы:</label>
+            <input type="text" class="form-control" id="f8">
+          </div>
+          <button type="submit" style="margin: 0 auto 30px auto; max-width: 100px;" class="btn btn-success btn-lg btn-block">Submit</button>
+        </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- это для компании -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <form action="/action_page.php">
+              <div class="row">
+                  <h1>Profile
+                  </h1>
+                  <div class="avatar-upload">
+                      <div class="avatar-edit">
+                          <input class="file" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                          <label for="imageUpload"></label>
+                      </div>
+                      <div class="avatar-preview">
+                          <div id="imagePreview" style="background-image: url(https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png);">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="f1">Название:</label>
+                <input type="text" class="form-control" id="f1">
+              </div>
+              <div class="form-group">
+                <label for="f2">Описание:</label>
+                <textarea class="form-control" rows="5" id="f2"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="f3">Контактные данные:</label>
+                <textarea class="form-control" rows="3" id="f3"></textarea>
+                
+              </div>
+              <div class="form-group">
+                <label for="f4">Адрес:</label>
+                <textarea class="form-control" rows="2" id="f4"></textarea>
+                
+              </div>
+              <button type="submit" style="margin: 0 auto 30px auto; max-width: 100px;" class="btn btn-success btn-lg btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

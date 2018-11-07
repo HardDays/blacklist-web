@@ -11,6 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainService } from '../_services/main.service';
 import { HomeComponent } from './home.component';
 import { BlackListComponent } from './black-list/black-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HumanListComponent } from './human-list/human-list.component';
+import { VacancesComponent } from './vacances/vacances.component';
+import { VacanceComponent } from './vacance/vacance.component';
 
 @NgModule({
   imports: [
@@ -21,7 +26,12 @@ import { BlackListComponent } from './black-list/black-list.component';
   ],
   declarations: [
     HomeComponent,
-    BlackListComponent
+    BlackListComponent,
+    NavbarComponent,
+    ProfileComponent,
+    HumanListComponent,
+    VacancesComponent,
+    VacanceComponent
   ],
   providers: [
     MainService
