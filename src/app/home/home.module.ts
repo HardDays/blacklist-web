@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HumanListComponent } from './human-list/human-list.component';
 import { VacancesComponent } from './vacances/vacances.component';
 import { VacanceComponent } from './vacance/vacance.component';
+import { HumanComponent } from './human/human.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { VacanceComponent } from './vacance/vacance.component';
     ProfileComponent,
     HumanListComponent,
     VacancesComponent,
-    VacanceComponent
+    VacanceComponent,
+    HumanComponent
   ],
   providers: [
     MainService
