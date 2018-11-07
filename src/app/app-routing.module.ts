@@ -99,16 +99,16 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'system/profile', pathMatch: 'full'},
+      { path: '', redirectTo: 'profile', pathMatch: 'full'},
       {
-        path: 'system/profile',
+        path: 'profile',
         component: ProfileComponent,
-        children:
-        [
-          { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard]},
-          { path: 'human-list', component: HumanListComponent,  canActivate: [AuthGuard]},
-          { path: 'vacances', component: VacancesComponent,  canActivate: [AuthGuard]}
-        ]
+        // children:
+        // [
+        //   { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard]},
+        //   { path: 'human-list', component: HumanListComponent,  canActivate: [AuthGuard]},
+        //   { path: 'vacances', component: VacancesComponent,  canActivate: [AuthGuard]}
+        // ]
         // resolve: {
         //   deals: DashboardResolver,
         //   newDeals: DealListNewResolver,
@@ -118,6 +118,14 @@ const routes: Routes = [
         //   cryptoPayments: CryptoPaymentResolver,
         //   bankPayments: BankPaymentResolver
         // }
+      },
+      {
+        path: 'human-list',
+        component: HumanListComponent
+      },
+      {
+        path: 'vacances',
+        component: VacancesComponent
       },
 
 
@@ -168,7 +176,7 @@ const routes: Routes = [
       //     },
       //   ]
       // },
-      { path: '**', redirectTo: '/system' }
+      { path: '**', redirectTo: 'profile' }
     ]
   }
 ];
