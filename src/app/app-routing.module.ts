@@ -99,10 +99,10 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'system', pathMatch: 'full'},
+      { path: '', redirectTo: 'system/profile', pathMatch: 'full'},
       {
-        path: 'system',
-        component: HomeComponent,
+        path: 'system/profile',
+        component: ProfileComponent,
         children:
         [
           { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard]},
