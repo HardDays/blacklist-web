@@ -17,6 +17,9 @@ import { HumanListComponent } from './human-list/human-list.component';
 import { VacancesComponent } from './vacances/vacances.component';
 import { VacanceComponent } from './vacance/vacance.component';
 import { HumanComponent } from './human/human.component';
+import { MyVacancesComponent } from './my-vacances/my-vacances.component';
+import { MyVacanceComponent } from './my-vacance/my-vacance.component';
+import { MyMsgComponent } from './my-msg/my-msg.component';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { HumanComponent } from './human/human.component';
     HumanListComponent,
     VacancesComponent,
     VacanceComponent,
-    HumanComponent
+    HumanComponent,
+    MyVacancesComponent,
+    MyVacanceComponent,
+    MyMsgComponent
   ],
   providers: [
     MainService
