@@ -35,10 +35,10 @@ export class MainService {
             .subscribe(
                 (res: boolean) => {
                     if (res) {
-                        this.GetMyUser();
+                        // this.GetMyUser();
                     } else {
-                        this.UserChange.next();
-                        this.router.navigate(['/system', 'tickets']);
+                        // this.UserChange.next();
+                        // this.router.navigate(['/system', 'tickets']);
                     }
                 }
             );

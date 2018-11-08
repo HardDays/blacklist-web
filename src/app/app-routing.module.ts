@@ -1,3 +1,4 @@
+import { HumanComponent } from './home/human/human.component';
 import { BlackListComponent } from './home/black-list/black-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -126,6 +127,10 @@ const routes: Routes = [
       {
         path: 'vacances',
         component: VacancesComponent
+      },
+      {
+        path: 'human/:id',
+        component: HumanComponent
       },
 
 

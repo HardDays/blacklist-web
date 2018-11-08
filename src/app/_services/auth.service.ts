@@ -59,12 +59,17 @@ export class AuthMainService {
             () => this.http.PostData('/auth/logout.json', '{}')
         ).subscribe(() => {
             this.ClearSession();
+            this.router.navigate(['/auth']);
         });
     }
 
 
-    BaseInitAfterLogin(data: TokenModel) {
+    BaseInitAfterLogin(data) {
+      console.log(`data = `, data);
         localStorage.setItem('token', data.token);
+        if (data.id) {
+          localStorage.setItem('userId', data.id);
+        }
         this.http.BaseInitByToken(data.token);
     }
 
@@ -82,6 +87,7 @@ export class AuthMainService {
         this.http.headers.delete('Authorization');
         this.onAuthChange$.next(false);
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
     }
 
 
@@ -92,12 +98,23 @@ export class AuthMainService {
         );
     }
 
-    CreateUser(user: UserModel) {
+    CreateUserEmail(email: string) {
         return this.http.CommonRequest(
-            () => this.http.PostData('/users.json', JSON.stringify(user))
+            () => this.http.PostData('/users.json', JSON.stringify({email}))
         );
     }
 
+    CreateUserVerifyEmail(email: string, code: string) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/users/verify_code.json', JSON.stringify({email, code}))
+        );
+    }
+
+    PatchUserToAddPassword(id: number, password: string, password_confirmation: string) {
+      return this.http.CommonRequest(
+            () => this.http.PatchData('/users/' + id + '.json', JSON.stringify({password, password_confirmation}))
+        );
+    }
 
     UpdateUser(user: UserModel) {
         // console.log(user);
