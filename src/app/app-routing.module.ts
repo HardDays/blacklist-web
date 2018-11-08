@@ -13,6 +13,11 @@ import { AuthGuard } from './_guards/auth.guard';
 import { ProfileComponent } from './home/profile/profile.component';
 import { HumanListComponent } from './home/human-list/human-list.component';
 import { VacancesComponent } from './home/vacances/vacances.component';
+import { HumanComponent } from './home/human/human.component';
+import { VacanceComponent } from './home/vacance/vacance.component';
+import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
+import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
+import { MyMsgComponent } from './home/my-msg/my-msg.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
@@ -126,6 +131,26 @@ const routes: Routes = [
       {
         path: 'vacances',
         component: VacancesComponent
+      },
+      {
+        path: 'human/:id',
+        component: HumanComponent
+      },
+      {
+        path: 'vacance/:id',
+        component: VacanceComponent
+      },
+      {
+        path: 'my-vacances',
+        component: MyVacancesComponent
+      },
+      {
+        path: 'my-vacances/:id',
+        component: MyVacanceComponent
+      },
+      {
+        path: 'my-msg',
+        component: MyMsgComponent
       },
 
 
