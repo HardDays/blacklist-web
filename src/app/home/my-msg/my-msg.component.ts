@@ -34,10 +34,12 @@ export class MyMsgComponent implements OnInit {
           for (const item of res) {
             if (item.company_id === this.MyId) {
               this.myVacancies.push(item);
+             
+              
             }
           }
           this.getResponses();
-          console.log(this.myVacancies);
+          //console.log(this.myVacancies);
         }
       );
   }
@@ -48,6 +50,7 @@ export class MyMsgComponent implements OnInit {
         .subscribe(
           (res) => {
             this.Responses.push(res);
+            console.log(this.Responses);
           }
         );
     }
