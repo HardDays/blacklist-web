@@ -1,3 +1,5 @@
+import { ImagesService } from './../_services/image.service';
+import { AccountsService } from './../_services/accounts.service';
 // modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +22,9 @@ import { HumanComponent } from './human/human.component';
 import { MyVacancesComponent } from './my-vacances/my-vacances.component';
 import { MyVacanceComponent } from './my-vacance/my-vacance.component';
 import { MyMsgComponent } from './my-msg/my-msg.component';
+import { PersonComponent } from './profile/person/person.component';
+import { CompanyComponent } from './profile/company/company.component';
+import { AvatarImageComponent } from './profile/avatar-image/avatar-image.component';
 
 @NgModule({
   imports: [
@@ -39,10 +44,15 @@ import { MyMsgComponent } from './my-msg/my-msg.component';
     HumanComponent,
     MyVacancesComponent,
     MyVacanceComponent,
-    MyMsgComponent
+    MyMsgComponent,
+    PersonComponent,
+    CompanyComponent,
+    AvatarImageComponent
   ],
   providers: [
-    MainService
+    MainService,
+    AccountsService,
+    ImagesService
   ]
 })
 export class HomeModule { }

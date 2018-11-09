@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Vacancie } from 'src/app/_models/auth.interface';
+import { MainService } from 'src/app/_services/main.service';
 
 @Component({
   selector: 'app-my-msg',
@@ -7,9 +9,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyMsgComponent implements OnInit {
 
-  constructor() { }
+  MyId = 0;
+  myVacancies: Vacancie[] = [];
+  Responses: any[] = [];
+  constructor(protected service: MainService) { }
 
   ngOnInit() {
+    if (this.service.authService.me) {
+      this.MyId = this.service.authService.me.id;
+      this.GetMyVacancies();
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+        this.MyId = this.service.authService.me.id;
+        this.GetMyVacancies();
+      }
+    );
+  }
+
+  GetMyVacancies() {
+    this.service.accService.GetVacancies()
+      .subscribe(
+        (res: Vacancie[]) => {
+          for (const item of res) {
+            if (item.company_id === this.MyId) {
+              this.myVacancies.push(item);
+            }
+          }
+          this.getResponses();
+          console.log(this.myVacancies);
+        }
+      );
+  }
+
+  getResponses() {
+    for (const item of this.myVacancies) {
+      this.service.accService.GetResponseVacancies(item.id)
+        .subscribe(
+          (res) => {
+            this.Responses.push(res);
+          }
+        );
+    }
+    console.log(`Responses = `, this.Responses);
   }
 
 }

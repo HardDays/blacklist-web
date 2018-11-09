@@ -13,10 +13,10 @@
       <li routerLinkActive="active">
         <a routerLink="/vacances">Вакансии</a>
       </li>
-      <li routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/my-vacances">Мои вакансии</a>
       </li>
-      <li routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/my-msg">Отклики на вакансии</a>
       </li>
     </ul>

@@ -1,38 +1,24 @@
 <div class="container">
 
     <div class="row">
-      
 
-        <div class="col-md-3">
+
+        <div *ngFor="let item of Employees; let i = index" class="col-md-3">
             <br>
             <div class="followed-user-entry">
                 <div class="followed-user-bottom">
-                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
-                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <img  class="followed-user-img" [src]="item.image" (error)="item.image = EmptyImage" />
+                    <a [routerLink]="['/human',item.id]"  class="followed-user-name">{{item.last_name}} {{item.first_name}} {{item.second_name}}</a>
                     <p class="followed-user-screenname">
-                        Супер программист
+                        {{item.position}}
                     </p>
-                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
-                    
+                    <p *ngIf="item.experience" class="followed-user-description">Стаж: <strong>{{item.experience}}лет.</strong></p>
+
                 </div>
             </div>
             <br>
         </div>
-        <div class="col-md-3">
-            <br>
-            <div class="followed-user-entry">
-                <div class="followed-user-bottom">
-                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
-                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
-                    <p class="followed-user-screenname">
-                        Супер программист
-                    </p>
-                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
-                </div>
-            </div>
-            <br>
-        </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <br>
             <div class="followed-user-entry">
                 <div class="followed-user-bottom">
@@ -74,6 +60,20 @@
             </div>
             <br>
         </div>
+        <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
+                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Супер программист
+                    </p>
+                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
+                </div>
+            </div>
+            <br>
+        </div> -->
     </div>
 
 

@@ -17,19 +17,23 @@ import {Subject} from 'rxjs/Subject';
 // import { WorkingTimeModel } from '../models/workingTime.model';
 // import { ContactModel } from '../models/contact.model';
 // import { EventDateModel } from '../models/eventDate.model';
-import { TokenModel, UserModel, LoginModel } from '../_models/auth.interface';
+import { TokenModel, UserModel, LoginModel, Employee, Company } from '../_models/auth.interface';
 
 @Injectable()
 export class AuthMainService {
 
     public onAuthChange$: Subject<boolean>;
     public me: UserModel;
+    public onMeChange$: Subject<boolean>;
     public onLoadingChange$: Subject<boolean>;
-    public stupidAccessShow = true;
 
     constructor(private http: HttpService, private router: Router) {
         this.onAuthChange$ = new Subject();
         this.onAuthChange$.next(false);
+
+        this.onMeChange$ = new Subject();
+        this.onMeChange$.next(false);
+
         this.onLoadingChange$ = new Subject();
         this.onLoadingChange$.next(false);
     }
@@ -64,14 +68,19 @@ export class AuthMainService {
     }
 
 
-    BaseInitAfterLogin(data) {
-      console.log(`data = `, data);
-        localStorage.setItem('token', data.token);
-        if (data.id) {
-          localStorage.setItem('userId', data.id);
+    BaseInitAfterLogin(data: TokenModel) {
+
+      localStorage.setItem('token', data.token);
+      this.http.BaseInitByToken(data.token);
+
+      this.GetMe().subscribe(
+        (res) => {
+          this.me = res;
+          this.onMeChange$.next(true);
         }
-        this.http.BaseInitByToken(data.token);
+      );
     }
+
 
     TryToLoginWithToken() {
         const token = localStorage.getItem('token');
@@ -88,13 +97,13 @@ export class AuthMainService {
         this.onAuthChange$.next(false);
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
+        this.me = null;
     }
-
 
 
     GetMe() {
         return this.http.CommonRequest(
-            () => this.http.GetData('/users/me.json', '')
+            () => this.http.GetData('/users/my.json', '')
         );
     }
 
@@ -122,6 +131,5 @@ export class AuthMainService {
             () => this.http.PatchData('/users/me.json', user)
         );
     }
-
 
 }

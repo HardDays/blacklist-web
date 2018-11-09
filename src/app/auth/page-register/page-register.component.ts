@@ -26,6 +26,8 @@ export class PageRegisterComponent implements OnInit {
   Token = '';
   UserId = 0;
 
+  Type = 'employee';
+
   constructor(protected service: MainService, protected router: Router) { }
 
   ngOnInit() {
@@ -56,11 +58,12 @@ export class PageRegisterComponent implements OnInit {
 
   AddPassword() {
     if (this.Password.password.length > 4 && this.Password.password === this.Password.password_confirmation) {
-      this.service.authService.BaseInitAfterLogin({token: this.Token, id: this.UserId});
+      this.service.authService.BaseInitAfterLogin({token: this.Token});
       this.service.authService.PatchUserToAddPassword(this.UserId, this.Password.password, this.Password.password_confirmation)
         .subscribe(
           (res) => {
             console.log(`add password ok`, res);
+            localStorage.setItem('registerType', this.Type);
             this.Login();
           }
         );

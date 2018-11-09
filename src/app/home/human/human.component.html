@@ -5,20 +5,20 @@
             <h1>Иванов Иван Иванович</h1>
             <div class="avatar-upload">
                 <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png);">
+                    <div id="imagePreview" (error)="Employee.image = EmptyImage" [ngStyle]="{'background-image': 'url('+Employee.image+')'}">
                     </div>
                 </div>
             </div>
         </div>
         <div>
-         
+
           <div class="my-table">
             <div class="my-row">
               <div class="bordered">
                 <strong>Дата Рождения:</strong>
               </div>
               <div class="bordered">
-                  <p>-</p>
+                  <p>{{Employee.birthday?Employee.birthday:'-'}}</p>
               </div>
             </div>
             <div class="my-row">
@@ -26,72 +26,73 @@
                 <strong>Пол:</strong>
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{Employee.gender?
+                    Employee.gender==='f'?'Ж':'М':'-'}}</p>
+
               </div>
             </div>
             <div class="my-row">
               <div class="bordered">
-                
+
                 <strong>Должность:</strong>
-            
+
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{Employee.position?Employee.position:'-'}}</p>
+
               </div>
             </div>
             <div class="my-row">
               <div class="bordered">
-                
+
                 <strong>Год выпуска:</strong>
-            
+
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{Employee.education_year?Employee.education_year:'-'}}</p>
+
               </div>
             </div>
             <div class="my-row">
               <div class="bordered">
-                
+
                 <strong>Контактные данные:</strong>
-            
+
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{Employee.contacts?Employee.contacts:'-'}}</p>
+
               </div>
             </div>
             <div class="my-row">
               <div class="bordered">
-                
+
                 <strong>Общий стаж работы:</strong>
-            
+
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{Employee.experience?Employee.experience:'-'}} лет</p>
+
               </div>
             </div>
-            
-            
+
+
           </div>
           <h3>Cписок прошлых мест работы:</h3>
-
-          <h4>ООО "Роза груп"</h4>
+          <ng-container *ngFor="let item of Employee.jobs">
+          <h4>{{item.name}}</h4>
           <div class="my-table">
             <div class="my-row">
               <div class="bordered">
                 <strong>Год начала работы и окончания:</strong>
               </div>
               <div class="bordered">
-                  <p>-</p>
+                  <p>{{item.period?item.period:'-'}}</p>
               </div>
             </div>
             <div class="my-row">
@@ -99,9 +100,9 @@
                 <strong>Должность:</strong>
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
+
+                  <p>{{item.position?item.position:'-'}}</p>
+
               </div>
             </div>
             <div class="my-row">
@@ -109,48 +110,13 @@
                 <strong>Описание заведения:</strong>
               </div>
               <div class="bordered">
-                  
-                  <p>-</p>
-              
-              </div>
-            </div>
-            </div>
 
+                  <p>{{item.description?item.description:'-'}}</p>
 
-            <h4>ООО "Сатурн"</h4>
-          <div class="my-table">
-            <div class="my-row">
-              <div class="bordered">
-                <strong>Год начала работы и окончания:</strong>
-              </div>
-              <div class="bordered">
-                  <p>-</p>
               </div>
             </div>
-            <div class="my-row">
-              <div class="bordered">
-                <strong>Должность:</strong>
-              </div>
-              <div class="bordered">
-                  
-                  <p>-</p>
-              
-              </div>
             </div>
-            <div class="my-row">
-              <div class="bordered">
-                <strong>Описание заведения:</strong>
-              </div>
-              <div class="bordered">
-                  
-                  <p>-</p>
-              
-              </div>
-            </div>
-              
-              
-              
-            </div>
+            </ng-container>
 
         </div>
       </div>

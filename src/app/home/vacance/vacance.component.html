@@ -2,18 +2,18 @@
     <div class="row">
       <div class="col-md-12">
           <div class="row">
-              <h1>Повар</h1>
-            
+              <h1>{{Vacancie.position}}</h1>
+
           </div>
           <div>
-           
+
             <div class="my-table">
               <div class="my-row">
                 <div class="bordered">
                   <strong>Компания:</strong>
                 </div>
                 <div class="bordered">
-                    <p>-</p>
+                    <p>{{Vacancie.company_id?Vacancie.company_id:'-'}}</p>
                 </div>
               </div>
               <div class="my-row">
@@ -21,45 +21,45 @@
                   <strong>Минимальный стаж работы:</strong>
                 </div>
                 <div class="bordered">
-                    
-                    <p>-</p>
-                
+
+                    <p>{{Vacancie.min_experience?Vacancie.min_experience:'-'}}</p>
+
                 </div>
               </div>
               <div class="my-row">
                 <div class="bordered">
-                  
+
                   <strong>З/п:</strong>
-              
+
                 </div>
                 <div class="bordered">
-                    
-                    <p>-</p>
-                
+
+                    <p>{{Vacancie.salary?Vacancie.salary:'-'}}</p>
+
                 </div>
               </div>
               <div class="my-row">
                 <div class="bordered">
-                  
+
                   <strong>Описание:</strong>
-              
+
                 </div>
                 <div class="bordered">
-                    
-                    <p>-</p>
-                
+
+                    <p>{{Vacancie.description?Vacancie.description:'-'}}</p>
+
                 </div>
               </div>
-              
-              
-              
+
+
+
             </div>
             <!--если ты человек-->
-            <button class="btn btn-success btn-lg btn-block" style="margin: 30px auto; max-width: 150px;">Откликнуться</button>
-          
-  
-  
-              
+            <button *ngIf="MyType==='employee'" (click)="VacancyResponse()" class="btn btn-success btn-lg btn-block" style="margin: 30px auto; max-width: 150px;">Откликнуться</button>
+
+
+
+
           </div>
         </div>
       </div>

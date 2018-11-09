@@ -1,0 +1,14 @@
+<div class="row">
+              <h1>Профиль
+              </h1>
+              <div class="avatar-upload">
+                  <div class="avatar-edit">
+                      <input class="file" (change)="uploadImage($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                      <label for="imageUpload"></label>
+                  </div>
+                  <div class="avatar-preview">
+                      <div id="imagePreview" [ngStyle]="{'background-image': 'url('+Image+')'}">
+                      </div>
+                  </div>
+              </div>
+          </div>

@@ -1,0 +1,108 @@
+<form >
+          <app-avatar-image [ImageId]="imageId" (onImageChanged)="setImage($event)"></app-avatar-image>
+
+          <div class="form-group">
+            <label for="f1">Фамилия:</label>
+            <input [(ngModel)]="Employee.last_name" name="last_name" type="text" class="form-control" id="f1">
+          </div>
+          <div class="form-group">
+            <label for="f2">Имя:</label>
+            <input [(ngModel)]="Employee.first_name" name="first_name" type="text" class="form-control" id="f2">
+          </div>
+          <div class="form-group">
+            <label for="f3">Отчество:</label>
+            <input [(ngModel)]="Employee.second_name" name="second_name" type="text" class="form-control" id="f3">
+          </div>
+          <div class="form-group">
+            <label for="f4">Дата Рождения:</label>
+            <input [(ngModel)]="Employee.birthday" name="birthday" type="text" class="form-control" id="f4">
+          </div>
+
+          <div class="form-group">
+            <label>Пол:</label>
+            <div class="radio">
+              <label><input [(ngModel)]="Employee.gender" value="m" name="gender" type="radio">Мужской</label>
+            </div>
+            <div class="radio">
+              <label><input [(ngModel)]="Employee.gender" value="f" name="gender" type="radio">Женский</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f505">Должность:</label>
+            <input [(ngModel)]="Employee.position" name="position" type="text" class="form-control" id="f505">
+          </div>
+          <div class="form-group">
+            <label for="f5">Образование:</label>
+            <input [(ngModel)]="Employee.education" name="education" type="text" class="form-control" id="f5">
+          </div>
+          <div class="form-group">
+              <label for="f55065">Год выпуска:</label>
+              <input [(ngModel)]="Employee.education_year" name="education_year" type="text" class="form-control" id="f55065">
+            </div>
+          <div class="form-group">
+            <label for="f6">Контактные данные:</label>
+            <input [(ngModel)]="Employee.contacts" name="contacts" type="text" class="form-control" id="f6">
+          </div>
+          <div class="form-group">
+            <label for="f7">Навыки:</label>
+            <textarea [(ngModel)]="Employee.skills" name="skills" class="form-control" rows="5" id="f7"></textarea>
+          </div>
+          <label for="f7">Cписок прошлых мест работы:</label>
+          <hr>
+          <!-- это итерируем -->
+          <div *ngFor="let item of Jobs; let i = index" class="one-place">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f10">Название:</label>
+                </div>
+                <div class="col-md-5">
+                    <input [(ngModel)]="item.name" name="name-job-{{i}}" type="text" class="form-control" id="f10">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f11">Год начала работы и окончания:</label>
+                </div>
+                <div class="col-md-5">
+                    <input [(ngModel)]="item.period" name="period-job-{{i}}" type="text" class="form-control" id="f11">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f12">Должность:</label>
+                </div>
+                <div class="col-md-5">
+                    <input [(ngModel)]="item.position" name="position-job-{{i}}" type="text" class="form-control" id="f12">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                    <label for="f13">Описание заведения:</label>
+                </div>
+                <div class="col-md-5">
+                    <textarea [(ngModel)]="item.description" name="description-job-{{i}}" class="form-control" rows="3" id="f13"></textarea>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+                <button (click)="AddJob()" type="button" style="margin: 0 auto 30px auto; max-width: 120px;" class="btn btn-block btn-primary btn-lg">Добавить</button>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="f8">Общий стаж работы (лет):</label>
+            <input [(ngModel)]="Employee.experience" name="experience" type="text" class="form-control" id="f8">
+          </div>
+          <button (click)="addUser()" type="submit" style="margin: 0 auto 30px auto; max-width: 100px;" class="btn btn-success btn-lg btn-block">Ok</button>
+        </form>

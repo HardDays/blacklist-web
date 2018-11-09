@@ -32,10 +32,10 @@
     </div>
 
     <div class="radio">
-      <label><input type="radio" name="optradio" checked>Регистрируюсь как сотрудник</label>
+      <label><input type="radio" [(ngModel)]="Type" value="employee" name="optradio">Регистрируюсь как сотрудник</label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="optradio">Регистрируюсь как компания</label>
+      <label><input type="radio" [(ngModel)]="Type" value="company" name="optradio">Регистрируюсь как компания</label>
     </div>
 
     <button (click)="AddPassword()" type="submit" class="btn btn-success">Submit</button>

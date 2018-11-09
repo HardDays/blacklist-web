@@ -1,3 +1,5 @@
+import { Vacancie } from './../../_models/auth.interface';
+import { MainService } from './../../_services/main.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacancesComponent implements OnInit {
 
-  constructor() { }
+  Vacancies: Vacancie[] = [];
+  constructor(protected service: MainService) { }
 
   ngOnInit() {
+    this.service.accService.GetVacancies()
+      .subscribe(
+        (res) => {
+          this.Vacancies = res;
+        }
+      );
   }
 
 }

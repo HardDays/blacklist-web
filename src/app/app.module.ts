@@ -1,3 +1,4 @@
+import { ImagesService } from './_services/image.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { MainService } from './_services/main.service';
 import { AuthMainService } from './_services/auth.service';
 import {HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { AccountsService } from './_services/accounts.service';
 
 // imports:[HttpClientModule, HttpModule
 
@@ -28,7 +30,10 @@ import { FormsModule } from '@angular/forms';
   providers: [
     HttpService,
     MainService,
-    AuthMainService],
+    AuthMainService,
+    ImagesService,
+    AccountsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
