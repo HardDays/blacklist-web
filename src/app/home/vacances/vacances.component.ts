@@ -21,4 +21,14 @@ export class VacancesComponent implements OnInit {
       );
   }
 
+  search(text: string) {
+    this.service.accService.GetVacancies(text)
+      .subscribe(
+        (res) => {
+          this.Vacancies = [];
+          this.Vacancies = res;
+        }
+      );
+  }
+
 }

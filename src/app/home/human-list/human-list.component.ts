@@ -27,4 +27,18 @@ export class HumanListComponent implements OnInit {
       );
   }
 
+  search(text: string) {
+    this.service.accService.GetEmployees(text)
+      .subscribe(
+        (res) => {
+          this.Employees = [];
+          this.Employees = res;
+          for (const item of this.Employees) {
+             item.image = this.service.imageService.GetImage(item.id);
+          }
+          console.log(`Employees`, this.Employees);
+        }
+      );
+  }
+
 }

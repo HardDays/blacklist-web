@@ -17,6 +17,26 @@ export class AccountsService {
     constructor(private http: HttpService) {
     }
 
+    ParamsToUrlSearchParams(params: any): string {
+        const options = new URLSearchParams();
+        // tslint:disable-next-line:forin
+        for (const key in params) {
+            const prop: any = params[key];
+            if (prop) {
+                if ( prop instanceof Array) {
+                    for (const i in prop) {
+                        if (prop[i]) {
+                            options.append(key + '[]', prop[i]);
+                        }
+                    }
+                } else {
+                    options.set(key, params[key]);
+                }
+            }
+        }
+        return options.toString();
+    }
+
     CreateEmployee(employee: Employee) {
       return this.http.CommonRequest(
             () => this.http.PostData('/employees.json', JSON.stringify(employee))
@@ -60,9 +80,9 @@ export class AccountsService {
     }
 
 
-    GetEmployees() {
+    GetEmployees(text?: string) {
         return this.http.CommonRequest(
-            () => this.http.GetData('/employees.json', '')
+            () => this.http.GetData('/employees.json', this.ParamsToUrlSearchParams({text: text ? text : ''}))
         );
     }
 
@@ -76,9 +96,9 @@ export class AccountsService {
             () => this.http.PatchData('/companies/' + company_id + '/vacancies/' + vacance.id + '.json', JSON.stringify(vacance))
         );
     }
-    GetVacancies() {
+    GetVacancies(text?: string) {
         return this.http.CommonRequest(
-            () => this.http.GetData('/vacancies.json', '')
+            () => this.http.GetData('/vacancies.json', this.ParamsToUrlSearchParams({text: text ? text : ''}))
         );
     }
     GetVacanciesById(id: number) {
