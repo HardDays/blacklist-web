@@ -13,7 +13,7 @@
                   <strong>Компания:</strong>
                 </div>
                 <div class="bordered">
-                    <p>{{Vacancie.company_id?Vacancie.company_id:'-'}}</p>
+                    <p>{{Vacancie.company_name?Vacancie.company_name:'-'}}</p>
                 </div>
               </div>
               <div class="my-row">
@@ -55,6 +55,7 @@
 
             </div>
             <!--если ты человек-->
+            <p *ngIf="reqSended" style="color:green; text-align:center;">Заявка отправлена</p>
             <button *ngIf="MyType==='employee'" (click)="VacancyResponse()" class="btn btn-success btn-lg btn-block" style="margin: 30px auto; max-width: 150px;">Откликнуться</button>
 
 

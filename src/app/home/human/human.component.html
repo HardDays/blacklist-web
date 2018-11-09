@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
         <div class="row">
-            <h1>Иванов Иван Иванович</h1>
+            <h1>{{Employee.last_name +' '+Employee.first_name+' '+Employee.second_name}}</h1>
             <div class="avatar-upload">
                 <div class="avatar-preview">
                     <div id="imagePreview" (error)="Employee.image = EmptyImage" [ngStyle]="{'background-image': 'url('+Employee.image+')'}">

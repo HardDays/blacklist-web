@@ -20,6 +20,7 @@ export class VacanceComponent implements OnInit {
     description: '',
     min_experience: 0
   };
+  reqSended = false;
   MyType = '';
   constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
         this.Id = activateRoute.snapshot.params['id'];
@@ -38,6 +39,7 @@ export class VacanceComponent implements OnInit {
       .subscribe(
         (res) => {
           this.Vacancie = res;
+          console.log(res);
         }
       );
   }
@@ -47,6 +49,7 @@ export class VacanceComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.reqSended = true;
         }
       );
   }
