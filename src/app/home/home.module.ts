@@ -25,6 +25,8 @@ import { MyMsgComponent } from './my-msg/my-msg.component';
 import { PersonComponent } from './profile/person/person.component';
 import { CompanyComponent } from './profile/company/company.component';
 import { AvatarImageComponent } from './profile/avatar-image/avatar-image.component';
+import { CreateBlackComponent } from './create-black/create-black.component';
+import { BlackListItemComponent } from './black-list-item/black-list-item.component';
 
 @NgModule({
   imports: [
@@ -47,7 +49,9 @@ import { AvatarImageComponent } from './profile/avatar-image/avatar-image.compon
     MyMsgComponent,
     PersonComponent,
     CompanyComponent,
-    AvatarImageComponent
+    AvatarImageComponent,
+    CreateBlackComponent,
+    BlackListItemComponent
   ],
   providers: [
     MainService,
