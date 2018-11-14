@@ -92,3 +92,41 @@ h1 {
 h3{
     margin-bottom: 50px;
 }
+
+.comment-list .panel.arrow.left:before {
+    left: 0px;
+    top: 30px;
+    border-right-color: inherit;
+    border-width: 16px;
+}
+.comment-list .panel.arrow.left:after {
+    left: 1px;
+    top: 31px;
+    border-right-color: #FFFFFF;
+    border-width: 15px;
+}
+.flex-like-dislike{
+    display: flex
+}
+.flex-like-dislike .some-hu{
+    background: transparent;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border: none;
+}
+.flex-like-dislike.smallicons .some-hu{
+    width: 20px;
+    height: 20px;
+}
+.flex-like-dislike .some-hu.dislike{
+    transform-origin: center;
+    transform: rotate(180deg);
+}
+.flex-like-dislike.likeed .like path{
+    fill: #5cb85c;
+}
+.flex-like-dislike.dislikeed .dislike path{
+    fill: #d9534f;
+}
