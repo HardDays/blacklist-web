@@ -18,6 +18,8 @@ import { VacanceComponent } from './home/vacance/vacance.component';
 import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
 import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
 import { MyMsgComponent } from './home/my-msg/my-msg.component';
+import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
+import { CreateBlackComponent } from './home/create-black/create-black.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
@@ -156,7 +158,14 @@ const routes: Routes = [
         path: 'black-list',
         component: BlackListComponent
       },
-
+      {
+        path: 'black-list/:id',
+        component: BlackListItemComponent
+      },
+      {
+        path: 'create-list-item',
+        component: CreateBlackComponent
+      },
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
   // { path:'',component:SystemComponent,
