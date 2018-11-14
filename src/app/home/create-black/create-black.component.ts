@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBlackComponent implements OnInit {
 
+  Jobs = [];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  AddJob() {
+
+  }
+
+  Save () {
+
   }
 
 }
