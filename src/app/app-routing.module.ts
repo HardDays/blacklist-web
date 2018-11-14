@@ -1,3 +1,5 @@
+import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
+import { CreateBlackComponent } from './home/create-black/create-black.component';
 import { BlackListComponent } from './home/black-list/black-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -152,6 +154,20 @@ const routes: Routes = [
         path: 'my-msg',
         component: MyMsgComponent
       },
+      {
+        path: 'blacklist',
+        component: BlackListComponent
+      },
+      {
+        path: 'create-list-item',
+        component: CreateBlackComponent
+      },
+       {
+        path: 'black-list/:id',
+        component: BlackListItemComponent
+      },
+
+
 
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
