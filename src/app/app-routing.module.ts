@@ -155,22 +155,6 @@ const routes: Routes = [
         component: MyMsgComponent
       },
       {
-<<<<<<< HEAD
-        path: 'blacklist',
-        component: BlackListComponent
-      },
-      {
-        path: 'create-list-item',
-        component: CreateBlackComponent
-      },
-       {
-        path: 'black-list/:id',
-        component: BlackListItemComponent
-      },
-
-
-
-=======
         path: 'black-list',
         component: BlackListComponent
       },
@@ -182,7 +166,6 @@ const routes: Routes = [
         path: 'create-list-item',
         component: CreateBlackComponent
       },
->>>>>>> e376341df1e8ff5363ae2444e1a76978ed82b7fd
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
   // { path:'',component:SystemComponent,
