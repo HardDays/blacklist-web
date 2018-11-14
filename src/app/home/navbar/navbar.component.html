@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <span class="navbar-brand" >BlackList</span>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink="/profile">Профиль</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/human-list">Люди</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/vacances">Вакансии</a>
+      </li>
+      <li *ngIf="isCompany" routerLinkActive="active">
+        <a routerLink="/my-vacances">Мои вакансии</a>
+      </li>
+      <li *ngIf="isCompany" routerLinkActive="active">
+        <a routerLink="/my-msg">Отклики на вакансии</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/black-list">Черный список</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="cursor-pointer" (click)="Logout()"><a ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>

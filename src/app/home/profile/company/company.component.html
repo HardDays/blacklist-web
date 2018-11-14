@@ -1,0 +1,22 @@
+<form>
+  <app-avatar-image [ImageId]="imageId" (onImageChanged)="setImage($event)"></app-avatar-image>
+  <div class="form-group">
+    <label for="f1">Название:</label>
+    <input [(ngModel)]="Company.name" name="name" type="text" class="form-control" id="f1">
+  </div>
+  <div class="form-group">
+    <label for="f2">Описание:</label>
+    <textarea [(ngModel)]="Company.description" name="description" class="form-control" rows="5" id="f2"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="f3">Контактные данные:</label>
+    <textarea [(ngModel)]="Company.contacts" name="contacts" class="form-control" rows="3" id="f3"></textarea>
+
+  </div>
+  <div class="form-group">
+    <label for="f4">Адрес:</label>
+    <textarea [(ngModel)]="Company.address" name="address" class="form-control" rows="2" id="f4"></textarea>
+
+  </div>
+  <button (click)="addUser()" type="submit" style="margin: 0 auto 30px auto; max-width: 100px;" class="btn btn-success btn-lg btn-block">Ок</button>
+</form>

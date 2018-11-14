@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="row">
+              <h1>{{Vacancie.position}}</h1>
+
+          </div>
+          <div>
+
+            <div class="my-table">
+              <div class="my-row">
+                <div class="bordered">
+                  <strong>Компания:</strong>
+                </div>
+                <div class="bordered">
+                    <p>{{Vacancie.company_name?Vacancie.company_name:'-'}}</p>
+                </div>
+              </div>
+              <div class="my-row">
+                <div class="bordered">
+                  <strong>Минимальный стаж работы:</strong>
+                </div>
+                <div class="bordered">
+
+                    <p>{{Vacancie.min_experience?Vacancie.min_experience:'-'}}</p>
+
+                </div>
+              </div>
+              <div class="my-row">
+                <div class="bordered">
+
+                  <strong>З/п:</strong>
+
+                </div>
+                <div class="bordered">
+
+                    <p>{{Vacancie.salary?Vacancie.salary:'-'}}</p>
+
+                </div>
+              </div>
+              <div class="my-row">
+                <div class="bordered">
+
+                  <strong>Описание:</strong>
+
+                </div>
+                <div class="bordered">
+
+                    <p>{{Vacancie.description?Vacancie.description:'-'}}</p>
+
+                </div>
+              </div>
+
+
+
+            </div>
+            <!--если ты человек-->
+            <p *ngIf="reqSended" style="color:green; text-align:center;">Заявка отправлена</p>
+            <button *ngIf="MyType==='employee'" (click)="VacancyResponse()" class="btn btn-success btn-lg btn-block" style="margin: 30px auto; max-width: 150px;">Откликнуться</button>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>

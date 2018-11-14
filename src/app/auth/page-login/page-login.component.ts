@@ -1,3 +1,5 @@
+import { LoginModel } from './../../_models/auth.interface';
+import { MainService } from './../../_services/main.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageLoginComponent implements OnInit {
 
-  constructor(protected router: Router) { }
+  user: LoginModel = {email: '', password: ''};
+  constructor(protected service: MainService, protected router: Router) { }
 
   ngOnInit() {
       // localStorage.setItem('currentUser', JSON.stringify({'token:': '12345'}));
@@ -16,7 +19,19 @@ export class PageLoginComponent implements OnInit {
 
   setToken() {
     localStorage.setItem('token', '12345');
-    this.router.navigate(['/blacklist']);
+    this.router.navigate(['/profile']);
+  }
+
+  Login() {
+    this.service.authService.UserLogin(this.user)
+      .subscribe(
+        (res) => {
+           console.log(res);
+           this.service.authService.BaseInitAfterLogin(res);
+           this.service.authService.TryToLoginWithToken();
+           this.router.navigate(['']);
+        }
+      );
   }
 
 }

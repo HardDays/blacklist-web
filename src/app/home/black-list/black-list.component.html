@@ -1,3 +1,80 @@
-<p>
-  black-list works!
-</p>
+<div class="container">
+
+    <div class="form-group">
+      <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="col-sm-2 control-label">Поиск</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control" id="inputEmail3" placeholder="Название">
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="flex-left">
+            <a routerLink="/create-list-item" class="add btn btn-block btn-primary btn-lg">Добавить +</a>
+        </div>
+        </div>
+    </div>
+   <br><br><br>
+      <div class="row">
+          
+          <div class="col-md-3">
+              <br>
+              <div class="followed-user-entry">
+                  <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="../../../assets/good.png" />
+                      <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                      <p class="followed-user-screenname">
+                          Сотрудник
+                      </p>
+                      
+                  </div>
+              </div>
+              <br>
+          </div>
+          <div class="col-md-3">
+              <br>
+              <div class="followed-user-entry">
+                  <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="../../../assets/good.png" />
+                      <a [routerLink]="['/black-list',1]"  class="followed-user-name">ООО "Kападастр"</a>
+                      <p class="followed-user-screenname">
+                          компания
+                      </p>
+                     
+                  </div>
+              </div>
+              <br>
+          </div>
+          <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="../../../assets/good.png" />
+                    <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Сотрудник
+                    </p>
+                   
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="../../../assets/good.png" />
+                    <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Сотрудник
+                    </p>
+                   
+                </div>
+            </div>
+            <br>
+        </div>
+      </div>
+  
+  
+      <br>
+  </div>
+  

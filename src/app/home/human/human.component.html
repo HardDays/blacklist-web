@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <h1>{{Employee.last_name +' '+Employee.first_name+' '+Employee.second_name}}</h1>
+            <div class="avatar-upload">
+                <div class="avatar-preview">
+                    <div id="imagePreview" (error)="Employee.image = EmptyImage" [ngStyle]="{'background-image': 'url('+Employee.image+')'}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+          <div class="my-table">
+            <div class="my-row">
+              <div class="bordered">
+                <strong>Дата Рождения:</strong>
+              </div>
+              <div class="bordered">
+                  <p>{{Employee.birthday?Employee.birthday:'-'}}</p>
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+                <strong>Пол:</strong>
+              </div>
+              <div class="bordered">
+
+                  <p>{{Employee.gender?
+                    Employee.gender==='f'?'Ж':'М':'-'}}</p>
+
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+
+                <strong>Должность:</strong>
+
+              </div>
+              <div class="bordered">
+
+                  <p>{{Employee.position?Employee.position:'-'}}</p>
+
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+
+                <strong>Год выпуска:</strong>
+
+              </div>
+              <div class="bordered">
+
+                  <p>{{Employee.education_year?Employee.education_year:'-'}}</p>
+
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+
+                <strong>Контактные данные:</strong>
+
+              </div>
+              <div class="bordered">
+
+                  <p>{{Employee.contacts?Employee.contacts:'-'}}</p>
+
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+
+                <strong>Общий стаж работы:</strong>
+
+              </div>
+              <div class="bordered">
+
+                  <p>{{Employee.experience?Employee.experience:'-'}} лет</p>
+
+              </div>
+            </div>
+
+
+          </div>
+          <h3>Cписок прошлых мест работы:</h3>
+          <ng-container *ngFor="let item of Employee.jobs">
+          <h4>{{item.name}}</h4>
+          <div class="my-table">
+            <div class="my-row">
+              <div class="bordered">
+                <strong>Год начала работы и окончания:</strong>
+              </div>
+              <div class="bordered">
+                  <p>{{item.period?item.period:'-'}}</p>
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+                <strong>Должность:</strong>
+              </div>
+              <div class="bordered">
+
+                  <p>{{item.position?item.position:'-'}}</p>
+
+              </div>
+            </div>
+            <div class="my-row">
+              <div class="bordered">
+                <strong>Описание заведения:</strong>
+              </div>
+              <div class="bordered">
+
+                  <p>{{item.description?item.description:'-'}}</p>
+
+              </div>
+            </div>
+            </div>
+            </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>

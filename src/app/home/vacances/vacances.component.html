@@ -1,0 +1,31 @@
+
+
+<div class="container">
+
+  <div class="form-group">
+    <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="col-sm-2 control-label">Поиск</label>
+    <div class="col-sm-10">
+      <input type="email" (input)="search($event.target.value)" class="form-control" id="inputEmail3" placeholder="Повар">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <h1>Вакансии</h1>
+        <div class="list-group">
+            <a *ngFor="let item of Vacancies; let i = index" [routerLink]="['/vacance',item.id]" class="list-group-item list-group-item-action" style="margin:10px 0">
+              <div class="left-side">
+                <span class="name">{{item.position?item.position:'-'}}</span>
+                <span class="company">{{item.company_name?item.company_name:'-'}}</span>
+              </div>
+              <span class="price">{{item.salary?item.salary:'-'}} р.</span>
+            </a>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+

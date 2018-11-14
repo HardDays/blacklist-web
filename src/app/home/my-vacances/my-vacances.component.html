@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <h1>Мои Вакансии</h1>
+          <div class="list-group">
+              <a *ngFor="let item of Vacancies" [routerLink]="['/my-vacances',item.id]" class="list-group-item list-group-item-action">
+                <div class="left-side">
+                  <span class="name">{{item.position}}</span>
+                  <span class="company">{{item.company_name}}</span>
+                </div>
+                <span class="price">{{item.salary}} р.</span>
+              </a>
+
+          </div>
+          <button [routerLink]="['/my-vacances','new']" class="btn btn-success btn-lg btn-block" style="margin: 30px auto; max-width: 120px;">Добавить</button>
+      </div>
+
+    </div>
+
+  </div>
+
+

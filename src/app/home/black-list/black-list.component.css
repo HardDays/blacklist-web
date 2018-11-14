@@ -1,0 +1,94 @@
+.followed-user-entry {
+    padding: 0px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 4px 4px 4px 4px;
+    border-color: #e1e8ed;
+    border-width: 1px;
+    border-style: solid;
+    max-width: 420px;
+    min-height: 150px;
+}
+
+.followed-user-top {
+    height: 100px;
+    background-color: #f8f8f8;
+    border-radius: 4px 4px 0px 0px;
+    
+    overflow-y: hidden ! important;
+    overflow-x: hidden ! important;
+    background-color: #f8f8f8;
+    background-image: url('http://placekitten.com/g/500/200');
+    /*background-size: cover;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top left;
+    cursor: pointer;
+    
+    border-bottom-color: #e1e8ed;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+.followed-user-bottom {
+    padding-left:12px;
+    background-color: white;
+}
+
+
+.followed-user-img {
+    width: 70px;
+    height: 70px;
+    
+    border-radius: 5px !important;
+    border-color: #fff;
+    border-width: 3px;
+    border-style: solid;
+    
+    margin-top: -35px;
+}
+.followed-user-img-wrapper {
+    
+}
+img {
+    border-radius:30px !important;
+}
+
+.followed-user-name {
+    color: rgb(41, 47, 51);
+    margin-top: 6px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    display: block;
+    font-size: 21px;
+}
+.followed-user-name:hover {
+    text-decoration: underline;
+}
+.followed-user-screenname {
+    color: rgb(102, 117, 127);
+    margin-top: 0px;
+    margin-bottom: 4px;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+.user-screenname-span:hover {
+    text-decoration: underline;
+}
+
+
+.followed-user-description {
+    color: rgb(102, 117, 127);
+    margin-bottom: 10px;
+}
+.add{
+    display: block;
+    margin-left: auto;
+    width: auto;
+    margin: 10px 0;
+    border: none;
+
+}
+.flex-left{
+    display: flex;
+    justify-content: flex-end;
+}

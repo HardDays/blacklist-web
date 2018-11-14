@@ -1,0 +1,86 @@
+<div class="container">
+
+  <div class="form-group">
+    <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="col-sm-2 control-label">Поиск</label>
+    <div class="col-sm-10">
+      <input type="email" (input)="search($event.target.value)" class="form-control" id="inputEmail3" placeholder="Иванов Иван">
+    </div>
+  </div>
+ <br><br><br>
+    <div class="row">
+        <div *ngFor="let item of Employees; let i = index" class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" [src]="item.image" (error)="item.image = EmptyImage" />
+                    <a [routerLink]="['/human',item.id]"  class="followed-user-name">{{item.last_name}} {{item.first_name}} {{item.second_name}}</a>
+                    <p class="followed-user-screenname">
+                        {{item.position}}
+                    </p>
+                    <p *ngIf="item.experience" class="followed-user-description">Стаж: <strong>{{item.experience}}лет.</strong></p>
+
+                </div>
+            </div>
+            <br>
+        </div>
+        <!-- <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
+                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Супер программист
+                    </p>
+                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
+                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Супер программист
+                    </p>
+                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
+                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Супер программист
+                    </p>
+                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-3">
+            <br>
+            <div class="followed-user-entry">
+                <div class="followed-user-bottom">
+                    <img  class="followed-user-img" src="http://placekitten.com/g/300/300" />
+                    <a [routerLink]="['/human',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                    <p class="followed-user-screenname">
+                        Супер программист
+                    </p>
+                    <p class="followed-user-description">Стаж: <strong>18лет.</strong></p>
+                </div>
+            </div>
+            <br>
+        </div> -->
+    </div>
+
+
+    <br>
+</div>

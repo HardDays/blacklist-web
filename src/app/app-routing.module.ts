@@ -10,6 +10,14 @@ import { PageRegisterComponent } from './auth/page-register/page-register.compon
 import { PagePasswordResetComponent } from './auth/page-password-reset/page-password-reset.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ProfileComponent } from './home/profile/profile.component';
+import { HumanListComponent } from './home/human-list/human-list.component';
+import { VacancesComponent } from './home/vacances/vacances.component';
+import { HumanComponent } from './home/human/human.component';
+import { VacanceComponent } from './home/vacance/vacance.component';
+import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
+import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
+import { MyMsgComponent } from './home/my-msg/my-msg.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
@@ -96,10 +104,16 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'blacklist', pathMatch: 'full'},
+      { path: '', redirectTo: 'profile', pathMatch: 'full'},
       {
-        path: 'blacklist',
-        component: BlackListComponent,
+        path: 'profile',
+        component: ProfileComponent,
+        // children:
+        // [
+        //   { path: 'profile', component: ProfileComponent,  canActivate: [AuthGuard]},
+        //   { path: 'human-list', component: HumanListComponent,  canActivate: [AuthGuard]},
+        //   { path: 'vacances', component: VacancesComponent,  canActivate: [AuthGuard]}
+        // ]
         // resolve: {
         //   deals: DashboardResolver,
         //   newDeals: DealListNewResolver,
@@ -110,6 +124,55 @@ const routes: Routes = [
         //   bankPayments: BankPaymentResolver
         // }
       },
+      {
+        path: 'human-list',
+        component: HumanListComponent
+      },
+      {
+        path: 'vacances',
+        component: VacancesComponent
+      },
+      {
+        path: 'human/:id',
+        component: HumanComponent
+      },
+      {
+        path: 'vacance/:id',
+        component: VacanceComponent
+      },
+      {
+        path: 'my-vacances',
+        component: MyVacancesComponent
+      },
+      {
+        path: 'my-vacances/:id',
+        component: MyVacanceComponent
+      },
+      {
+        path: 'my-msg',
+        component: MyMsgComponent
+      },
+
+
+  //     { path: '', redirectTo: 'shows', pathMatch:'full'},
+  // { path:'',component:SystemComponent,
+  //     { path: 'profile/:id', component: ProfileComponent, canActivate: [SystemAccessGuard]},
+  //     { path: 'events', component: EventsComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'eventCreate/:id', component: EventCreateComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'fanCreate/:id', component: FanCreateComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'artistCreate/:id', component: ArtistCreateComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'venueCreate/:id', component: VenueCreateComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'feed', component: FeedComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'tickets', component: TicketsComponent, canActivate: [SystemAccessGuard] },
+  //     // { path: 'shows_detail/:id', component: ShowsDetailComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'shows_detail/:id', loadChildren: './showsDetail/showsDetail.module#ShowsDetailModule', canActivate: [SystemAccessGuard] },
+
+  //     { path: 'tickets/:id', component: MyTicketOpenedComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'messages', component: MessagesComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'settings', component: SettingsComponent, canActivate: [SystemAccessGuard] },
+  //     { path: 'search', component: GlobalSearchComponent }
+  //   ]
+  // }
       // {
       //   path: 'market',
       //   component: PageMarketComponent,
@@ -138,7 +201,7 @@ const routes: Routes = [
       //     },
       //   ]
       // },
-      { path: '**', redirectTo: '/blacklist' }
+      { path: '**', redirectTo: 'profile' }
     ]
   }
 ];

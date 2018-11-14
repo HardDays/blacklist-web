@@ -17,19 +17,23 @@ import {Subject} from 'rxjs/Subject';
 // import { WorkingTimeModel } from '../models/workingTime.model';
 // import { ContactModel } from '../models/contact.model';
 // import { EventDateModel } from '../models/eventDate.model';
-import { TokenModel, UserModel, LoginModel } from '../_models/auth.interface';
+import { TokenModel, UserModel, LoginModel, Employee, Company } from '../_models/auth.interface';
 
 @Injectable()
 export class AuthMainService {
 
     public onAuthChange$: Subject<boolean>;
     public me: UserModel;
+    public onMeChange$: Subject<boolean>;
     public onLoadingChange$: Subject<boolean>;
-    public stupidAccessShow = true;
 
     constructor(private http: HttpService, private router: Router) {
         this.onAuthChange$ = new Subject();
         this.onAuthChange$.next(false);
+
+        this.onMeChange$ = new Subject();
+        this.onMeChange$.next(false);
+
         this.onLoadingChange$ = new Subject();
         this.onLoadingChange$.next(false);
     }
@@ -59,14 +63,24 @@ export class AuthMainService {
             () => this.http.PostData('/auth/logout.json', '{}')
         ).subscribe(() => {
             this.ClearSession();
+            this.router.navigate(['/auth']);
         });
     }
 
 
     BaseInitAfterLogin(data: TokenModel) {
-        localStorage.setItem('token', data.token);
-        this.http.BaseInitByToken(data.token);
+
+      localStorage.setItem('token', data.token);
+      this.http.BaseInitByToken(data.token);
+
+      this.GetMe().subscribe(
+        (res) => {
+          this.me = res;
+          this.onMeChange$.next(true);
+        }
+      );
     }
+
 
     TryToLoginWithToken() {
         const token = localStorage.getItem('token');
@@ -82,22 +96,34 @@ export class AuthMainService {
         this.http.headers.delete('Authorization');
         this.onAuthChange$.next(false);
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        this.me = null;
     }
-
 
 
     GetMe() {
         return this.http.CommonRequest(
-            () => this.http.GetData('/users/me.json', '')
+            () => this.http.GetData('/users/my.json', '')
         );
     }
 
-    CreateUser(user: UserModel) {
+    CreateUserEmail(email: string) {
         return this.http.CommonRequest(
-            () => this.http.PostData('/users.json', JSON.stringify(user))
+            () => this.http.PostData('/users.json', JSON.stringify({email}))
         );
     }
 
+    CreateUserVerifyEmail(email: string, code: string) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/users/verify_code.json', JSON.stringify({email, code}))
+        );
+    }
+
+    PatchUserToAddPassword(id: number, password: string, password_confirmation: string) {
+      return this.http.CommonRequest(
+            () => this.http.PatchData('/users/' + id + '.json', JSON.stringify({password, password_confirmation}))
+        );
+    }
 
     UpdateUser(user: UserModel) {
         // console.log(user);
@@ -105,6 +131,5 @@ export class AuthMainService {
             () => this.http.PatchData('/users/me.json', user)
         );
     }
-
 
 }

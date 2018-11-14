@@ -1,3 +1,4 @@
+import { MainService } from 'src/app/_services/main.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(protected service: MainService) {
+    this.service.authService.TryToLoginWithToken();
+  }
 }

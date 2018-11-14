@@ -1,0 +1,22 @@
+<!-- это для человека -->
+
+<div *ngIf="Type==='employee'" class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+        <app-person [id]="Id" [imageId]="ImageId"></app-person>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- это для компании -->
+<div *ngIf="Type==='company'" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-company [id]="Id" [imageId]="ImageId"></app-company>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.list-group-item{
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    display: block;
+    font-size: 24px;
+
+}
+.company{
+    display: block;
+    font-size: 18px;
+}
+.price{
+    display: block;
+    font-size: 18px;
+}

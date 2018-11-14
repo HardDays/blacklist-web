@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Вакансия</th>
+                <th>Отклик</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of Responses">
+                <tr *ngFor="let resp of item">
+                  <td>{{ resp.vacancy_name}}</td>
+                  <td>
+                 
+                      <a [routerLink]="['/human',resp.employee.id]">{{resp.employee.last_name+' '+resp.employee.first_name+' '+resp.employee.second_name}}</a>
+                   
+                  </td>
+                
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+
+    </div>
+
+  </div>
+
+</div>
