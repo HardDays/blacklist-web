@@ -1,3 +1,5 @@
+import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
+import { CreateBlackComponent } from './home/create-black/create-black.component';
 import { BlackListComponent } from './home/black-list/black-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,8 +20,6 @@ import { VacanceComponent } from './home/vacance/vacance.component';
 import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
 import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
 import { MyMsgComponent } from './home/my-msg/my-msg.component';
-import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
-import { CreateBlackComponent } from './home/create-black/create-black.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
