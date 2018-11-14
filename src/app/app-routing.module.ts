@@ -152,6 +152,10 @@ const routes: Routes = [
         path: 'my-msg',
         component: MyMsgComponent
       },
+      {
+        path: 'black-list',
+        component: BlackListComponent
+      },
 
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
