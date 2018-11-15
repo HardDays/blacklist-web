@@ -9,6 +9,8 @@ export interface UserModel {
   email: string;
   user_type: string;
   image_id: number;
+  is_payed: boolean;
+  is_admin: boolean;
 }
 
 export interface LoginModel {
