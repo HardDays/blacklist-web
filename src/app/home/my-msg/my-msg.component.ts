@@ -12,6 +12,7 @@ export class MyMsgComponent implements OnInit {
   MyId = 0;
   myVacancies: Vacancie[] = [];
   Responses: any[] = [];
+  Page = 1;
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -28,18 +29,15 @@ export class MyMsgComponent implements OnInit {
   }
 
   GetMyVacancies() {
-    this.service.accService.GetVacancies()
+    this.service.accService.GetVacancies(this.Page)
       .subscribe(
         (res: Vacancie[]) => {
           for (const item of res) {
             if (item.company_id === this.MyId) {
               this.myVacancies.push(item);
-             
-              
             }
           }
           this.getResponses();
-          //console.log(this.myVacancies);
         }
       );
   }

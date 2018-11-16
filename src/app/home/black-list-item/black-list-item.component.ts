@@ -1,3 +1,4 @@
+import { Comment } from './../../_models/auth.interface';
 import { Component, OnInit } from '@angular/core';
 import { BlackListItem } from 'src/app/_models/auth.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,14 @@ export class BlackListItemComponent implements OnInit {
     name: '',
     description: '',
     addresses: '',
-    text: ''
+    text: '',
+    item_type: ''
+  };
+
+  Comments: Comment[] = [];
+  NewComment: Comment = {
+    text: '',
+    comment_type: 'like'
   };
 
   constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
@@ -30,6 +38,29 @@ export class BlackListItemComponent implements OnInit {
           console.log(res);
           this.Item = res;
         }
+      );
+      this.getComments();
+  }
+  getComments () {
+     this.service.blacklistService.GetBlacklistCommentById(this.Id)
+       .subscribe(
+         (res) => {
+           this.Comments = res.items;
+           for (const item of this.Comments) {
+             if (item.user.image_id) {
+               item.user.image = this.service.imageService.GetImage(item.user.image_id);
+             }
+           }
+         }
+       );
+  }
+
+  AddComment() {
+    this.service.blacklistService.AddBlacklistCommentById(this.Id, this.NewComment)
+      .subscribe(
+      (res) => {
+        this.getComments();
+      }
       );
   }
 

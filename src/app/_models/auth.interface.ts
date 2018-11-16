@@ -11,6 +11,8 @@ export interface UserModel {
   image_id: number;
   is_payed: boolean;
   is_admin: boolean;
+  image?: string;
+  name?: string;
 }
 
 export interface LoginModel {
@@ -68,4 +70,12 @@ export interface BlackListItem {
   description: string;
   addresses?: string;
   text?: string;
+  item_type?: string;
+}
+export interface Comment {
+  id?: number;
+  comment_type: string;
+  text: string;
+  user?: UserModel;
+  created_at?: string;
 }

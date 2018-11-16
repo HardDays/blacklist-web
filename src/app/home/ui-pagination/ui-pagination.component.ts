@@ -8,7 +8,7 @@ import { range } from 'rxjs';
 })
 export class UiPaginationComponent implements OnInit, OnChanges {
 
-    @Input() allElements = 120;
+  @Input() allElements = 120;
   countElements = 0; // последний элемент пагинации
   @Input() selectedNumber = 3; // текущий выбранный жлемент
   @Input() countShows = 5; // сколько элементов показывать
@@ -29,7 +29,7 @@ export class UiPaginationComponent implements OnInit, OnChanges {
 
   // перестроение пагинатора после загрузки страницы
   ngOnChanges() {
-    this.countElements = Math.floor(this.allElements / 10);
+    this.countElements = Math.ceil(this.allElements / 10);
     this.selectNumber(this.selectedNumber);
   }
 

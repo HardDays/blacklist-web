@@ -9,7 +9,7 @@
 
               <div class="toggle">
                   <div class="radio-group">
-                      <input type="radio" [(ngModel)]="CurrentType" [value]="Types.employeer" id="option-one" name="selector">
+                      <input type="radio" [(ngModel)]="CurrentType" [value]="Types.employee" id="option-one" name="selector">
                       <label class="none-margin" for="option-one">Сотрудника</label>
                       <input type="radio" [(ngModel)]="CurrentType" [value]="Types.company" id="option-two" name="selector">
                       <label class="none-margin" for="option-two">Компанию</label>
@@ -18,22 +18,14 @@
 
               <!-- <app-avatar-image [showProfile]="false" (onImageChanged)="setImage($event)"></app-avatar-image> -->
               <!--форма для сотрудника-->
-            <form *ngIf="CurrentType === Types.employeer">
+            <form *ngIf="CurrentType === Types.employee">
               <div class="form-group">
-                <label for="f1">Фамилия:</label>
-                <input type="text" class="form-control" id="f1">
-              </div>
-              <div class="form-group">
-                <label for="fn1">Имя:</label>
-                <input type="text" class="form-control" id="fn1">
-              </div>
-              <div class="form-group">
-                <label for="fn2">Отчество:</label>
-                <input type="text" class="form-control" id="fn2">
+                <label for="f1">ФИО:</label>
+                <input [(ngModel)]="Item.name" name="Item.name" type="text" class="form-control" id="f1">
               </div>
               <div class="form-group">
                 <label for="fn3">Должность:</label>
-                <input type="text" class="form-control" id="fn3">
+                <input [(ngModel)]="Item.description" name="Item.description" type="text" class="form-control" id="fn3">
               </div>
               <!-- <label>Cписок прошлых мест работы:</label>
               <hr> -->
@@ -93,7 +85,7 @@
 
               <div class="form-group">
                 <label for="f4">Комментарий:</label>
-                <textarea  class="form-control" rows="10" id="f4"></textarea>
+                <textarea [(ngModel)]="Item.text" name="Item.text" class="form-control" rows="10" id="f4"></textarea>
 
               </div>
               <button (click)="Save()" type="submit" style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-success btn-lg btn-block">Отправить</button>
@@ -105,19 +97,19 @@
              <form *ngIf="CurrentType === Types.company">
                 <div class="form-group">
                   <label for="f1">Название:</label>
-                  <input type="text" class="form-control" id="f1">
+                  <input [(ngModel)]="Item.name" name="Item.name" type="text" class="form-control" id="f1">
                 </div>
                 <div class="form-group">
                   <label for="f2">Адрес:</label>
-                  <input type="text" class="form-control" id="f2">
+                  <input [(ngModel)]="Item.addresses" name="Item.addresses" type="text" class="form-control" id="f2">
                 </div>
                 <div class="form-group">
                   <label for="f3">Описание:</label>
-                  <textarea  class="form-control" rows="5" id="f3"></textarea>
+                  <textarea [(ngModel)]="Item.description" name="Item.description" class="form-control" rows="5" id="f3"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="f4">Комментарий:</label>
-                  <textarea  class="form-control" rows="10" id="f4"></textarea>
+                  <textarea [(ngModel)]="Item.text" name="Item.text" class="form-control" rows="10" id="f4"></textarea>
 
                 </div>
                 <button (click)="Save()" type="submit" style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-success btn-lg btn-block">Отправить</button>

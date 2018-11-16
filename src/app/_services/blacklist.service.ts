@@ -1,3 +1,4 @@
+import { Comment } from './../_models/auth.interface';
 import { Vacancie, BlackListItem } from '../_models/auth.interface';
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
@@ -43,15 +44,28 @@ export class BlacklistService {
         );
     }
 
-    GetBlacklistItem(params?) {
+    GetBlacklistItem(page: number, text?: string) {
+        const offset = (page - 1) * 10;
         return this.http.CommonRequest(
-            () => this.http.GetData('/black_list.json', '')
+            () => this.http.GetData('/black_list.json', this.ParamsToUrlSearchParams({limit: 10, offset, text}))
         );
     }
 
     GetBlackListById(id: number) {
         return this.http.CommonRequest(
             () => this.http.GetData('/black_list/' + id + '.json', '')
+        );
+    }
+
+    AddBlacklistCommentById(id: number, comment: Comment) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/black_list/' + id + '/black_list_comments.json', JSON.stringify(comment))
+        );
+    }
+
+    GetBlacklistCommentById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.GetData('/black_list/' + id + '/black_list_comments.json', '')
         );
     }
 

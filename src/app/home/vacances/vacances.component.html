@@ -5,7 +5,7 @@
   <div class="form-group">
     <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="col-sm-2 control-label">Поиск</label>
     <div class="col-sm-10">
-      <input type="email" (input)="search($event.target.value)" class="form-control" id="inputEmail3" placeholder="Повар">
+      <input type="email" (input)="TextSearch = $event.target.value; Page = 1; search()" class="form-control" id="inputEmail3" placeholder="Повар">
     </div>
   </div>
   <div class="row">
@@ -25,6 +25,8 @@
     </div>
 
   </div>
+
+  <app-pagination [allElements]="AllVacanciesCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; search();"></app-pagination>
 
 </div>
 

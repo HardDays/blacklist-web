@@ -11,6 +11,7 @@ export class MyVacancesComponent implements OnInit {
 
   MyId = 0;
   Vacancies: Vacancie[] = [];
+  Page = 1;
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class MyVacancesComponent implements OnInit {
   }
 
   GetMyVacancies() {
-    this.service.accService.GetVacancies()
+    this.service.accService.GetVacancies(this.Page)
       .subscribe(
         (res: Vacancie[]) => {
           for (const item of res) {

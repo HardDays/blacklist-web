@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BlackListItem } from 'src/app/_models/auth.interface';
+import { MainService } from 'src/app/_services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-black',
@@ -8,15 +11,21 @@ import { Component, OnInit } from '@angular/core';
 export class CreateBlackComponent implements OnInit {
 
   Types = {
-    'employeer': 1,
+    'employee': 1,
     'company': 2
   };
 
-  CurrentType = this.Types.employeer;
-  Image = '';
+  CurrentType = this.Types.employee;
 
-  Jobs = [];
-  constructor() { }
+  Item: BlackListItem = {
+    name: '',
+    description: '',
+    addresses: '',
+    text: '',
+    item_type: 'employee'
+  };
+
+  constructor(protected service: MainService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,21 +35,18 @@ export class CreateBlackComponent implements OnInit {
   }
 
   Save () {
-
-  }
-
-  setImage(image: string) {
-    this.Image = image;
-    this.addImage();
-    // console.log(`image = `, image);
-  }
-  addImage() {
-    // this.service.imageService.AddImage(this.Employee.id, this.Image)
-    //   .subscribe(
-    //     (res) => {
-    //       this.service.authService.me.image_id = res.id;
-    //     }
-    //   );
+    if (this.CurrentType === this.Types.employee) {
+      this.Item.item_type = 'employee';
+    } else {
+      this.Item.item_type = 'company';
+    }
+    this.service.blacklistService.CreateBlacklistItem(this.Item)
+      .subscribe(
+        (res) => {
+          console.log(`ok`);
+          this.router.navigate(['/black-list']);
+        }
+      );
   }
 
 }

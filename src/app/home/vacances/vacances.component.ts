@@ -10,23 +10,31 @@ import { Component, OnInit } from '@angular/core';
 export class VacancesComponent implements OnInit {
 
   Vacancies: Vacancie[] = [];
+  AllVacanciesCount = 0;
+  // tslint:disable-next-line:no-inferrable-types
+  Page: number = 1;
+  TextSearch = '';
   constructor(protected service: MainService) { }
 
   ngOnInit() {
-    this.service.accService.GetVacancies()
+    this.service.accService.GetVacancies(this.Page)
       .subscribe(
         (res) => {
           this.Vacancies = res.items;
+          console.log(this.Vacancies.length, res.count, this.Page);
+
+          this.AllVacanciesCount = res.count;
         }
       );
   }
 
-  search(text: string) {
-    this.service.accService.GetVacancies(text)
+  search() {
+    this.service.accService.GetVacancies(this.Page, this.TextSearch)
       .subscribe(
         (res) => {
           this.Vacancies = [];
           this.Vacancies = res.items;
+          this.AllVacanciesCount =  this.Vacancies.length < 10 && this.Page === 1 ? this.Vacancies.length : res.count;
         }
       );
   }

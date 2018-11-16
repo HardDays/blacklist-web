@@ -4,13 +4,13 @@
             <div class="col-md-6">
                 <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="control-label">поиск по имени и фамилии</label>
 
-                <input type="text" (input)="search($event.target.value)" class="form-control" id="inputEmail3" placeholder="Фамилия Имя">
+                <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail3" placeholder="Фамилия Имя">
             </div>
 
             <div class="col-md-6">
                     <label style="text-align: right; padding-top: 5px;" for="inputEmail4" class="control-label">поиск по должности</label>
 
-                    <input type="text" (input)="search($event.target.value)" class="form-control" id="inputEmail4" placeholder="Должность">
+                    <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail4" placeholder="Должность">
                 </div>
 
             </div>
@@ -31,7 +31,7 @@
                     <img  class="followed-user-img" src="../../../assets/good.jpg" />
                       <a [routerLink]="['/black-list',item.id]"  class="followed-user-name">{{item.name}}</a>
                       <p class="followed-user-screenname">
-                          Сотрудник/Компания
+                        {{item.item_type==='company'?'Компания':'Сотрудник'}}
                       </p>
 
                   </div>
@@ -40,5 +40,5 @@
           </div>
       </div>
       <br>
-      <app-pagination></app-pagination>
+      <app-pagination [allElements]="AllCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; search();"></app-pagination>
   </div>

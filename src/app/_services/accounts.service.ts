@@ -80,9 +80,10 @@ export class AccountsService {
     }
 
 
-    GetEmployees(text?: string) {
+    GetEmployees(page: number, text?: string) {
+      const offset = (page - 1) * 10;
         return this.http.CommonRequest(
-            () => this.http.GetData('/employees.json', this.ParamsToUrlSearchParams({text: text ? text : ''}))
+            () => this.http.GetData('/employees.json', this.ParamsToUrlSearchParams({limit: 10, offset, text: text ? text : ''}))
         );
     }
 
@@ -96,9 +97,10 @@ export class AccountsService {
             () => this.http.PatchData('/companies/' + company_id + '/vacancies/' + vacance.id + '.json', JSON.stringify(vacance))
         );
     }
-    GetVacancies(text?: string) {
+    GetVacancies(page: number, text?: string) {
+        const offset = (page - 1) * 10;
         return this.http.CommonRequest(
-            () => this.http.GetData('/vacancies.json', this.ParamsToUrlSearchParams({text: text ? text : ''}))
+            () => this.http.GetData('/vacancies.json', this.ParamsToUrlSearchParams({limit: 10, offset, text: text ? text : ''}))
         );
     }
     GetVacanciesById(id: number) {
@@ -116,6 +118,19 @@ export class AccountsService {
     GetResponseVacancies(vacancy_id: number) {
         return this.http.CommonRequest(
             () => this.http.GetData('/vacancies/' + vacancy_id + '/vacancy_responses.json', '')
+        );
+    }
+
+
+    AddCommentById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/black_list/' + id + '/black_list_comments.json', JSON.stringify({}))
+        );
+    }
+
+    GetCommentById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.GetData('/black_list/' + id + '/black_list_comments.json', '')
         );
     }
 
