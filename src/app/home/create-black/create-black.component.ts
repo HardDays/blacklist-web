@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBlackComponent implements OnInit {
 
+  Types = {
+    'employeer': 1,
+    'company': 2
+  };
+
+  CurrentType = this.Types.employeer;
+  Image = '';
+
   Jobs = [];
   constructor() { }
 
@@ -19,6 +27,20 @@ export class CreateBlackComponent implements OnInit {
 
   Save () {
 
+  }
+
+  setImage(image: string) {
+    this.Image = image;
+    this.addImage();
+    // console.log(`image = `, image);
+  }
+  addImage() {
+    // this.service.imageService.AddImage(this.Employee.id, this.Image)
+    //   .subscribe(
+    //     (res) => {
+    //       this.service.authService.me.image_id = res.id;
+    //     }
+    //   );
   }
 
 }

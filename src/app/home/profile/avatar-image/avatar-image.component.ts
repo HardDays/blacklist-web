@@ -11,6 +11,7 @@ export class AvatarImageComponent implements OnInit, OnChanges {
   constructor(protected service: MainService) { }
 
   @Input() ImageId = 0;
+  @Input() showProfile = true;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onImageChanged = new EventEmitter<string>();
 

@@ -12,14 +12,18 @@ export class NavbarComponent implements OnInit {
 
   isCompany = false;
 
+  isPayed = false;
+
   ngOnInit() {
     if (this.service.authService.me) {
       this.isCompany = this.service.authService.me.user_type === 'company' ? true : false;
+      this.isPayed = this.service.authService.me.is_payed;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
         if (this.service.authService.me) {
           this.isCompany = this.service.authService.me.user_type === 'company' ? true : false;
+          this.isPayed = this.service.authService.me.is_payed;
         }
       }
     );

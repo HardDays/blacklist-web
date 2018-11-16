@@ -1,3 +1,5 @@
+import { PayComponent } from './home/pay/pay.component';
+import { PayGuard } from './_guards/pay.guard';
 import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
 import { CreateBlackComponent } from './home/create-black/create-black.component';
 import { BlackListComponent } from './home/black-list/black-list.component';
@@ -107,6 +109,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'profile', pathMatch: 'full'},
+      { path: 'pay', component: PayComponent},
       {
         path: 'profile',
         component: ProfileComponent,
@@ -128,42 +131,52 @@ const routes: Routes = [
       },
       {
         path: 'human-list',
+        canActivate: [PayGuard],
         component: HumanListComponent
       },
       {
         path: 'vacances',
+        canActivate: [PayGuard],
         component: VacancesComponent
       },
       {
         path: 'human/:id',
+        canActivate: [PayGuard],
         component: HumanComponent
       },
       {
         path: 'vacance/:id',
+        canActivate: [PayGuard],
         component: VacanceComponent
       },
       {
         path: 'my-vacances',
+        canActivate: [PayGuard],
         component: MyVacancesComponent
       },
       {
         path: 'my-vacances/:id',
+        canActivate: [PayGuard],
         component: MyVacanceComponent
       },
       {
         path: 'my-msg',
+        canActivate: [PayGuard],
         component: MyMsgComponent
       },
       {
         path: 'black-list',
+        canActivate: [PayGuard],
         component: BlackListComponent
       },
       {
         path: 'black-list/:id',
+        canActivate: [PayGuard],
         component: BlackListItemComponent
       },
       {
         path: 'create-list-item',
+        canActivate: [PayGuard],
         component: CreateBlackComponent
       },
 

@@ -23,7 +23,14 @@ import { TokenModel, UserModel, LoginModel, Employee, Company } from '../_models
 export class AuthMainService {
 
     public onAuthChange$: Subject<boolean>;
-    public me: UserModel;
+    public me: UserModel = {
+      id: 0,
+      email: '',
+      user_type: '',
+      image_id: 0,
+      is_payed: false,
+      is_admin: false
+    };
     public onMeChange$: Subject<boolean>;
     public onLoadingChange$: Subject<boolean>;
 
@@ -75,7 +82,9 @@ export class AuthMainService {
 
       this.GetMe().subscribe(
         (res) => {
+
           this.me = res;
+           console.log(`ME = `, this.me);
           this.onMeChange$.next(true);
         }
       );

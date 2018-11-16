@@ -9,14 +9,16 @@
 
               <div class="toggle">
                   <div class="radio-group">
-                      <input type="radio" checked id="option-one" name="selector">
+                      <input type="radio" [(ngModel)]="CurrentType" [value]="Types.employeer" id="option-one" name="selector">
                       <label class="none-margin" for="option-one">Сотрудника</label>
-                      <input type="radio" id="option-two" name="selector">
+                      <input type="radio" [(ngModel)]="CurrentType" [value]="Types.company" id="option-two" name="selector">
                       <label class="none-margin" for="option-two">Компанию</label>
                     </div>
               </div>
+
+              <app-avatar-image [showProfile]="false" (onImageChanged)="setImage($event)"></app-avatar-image>
               <!--форма для сотрудника-->
-            <form>
+            <form *ngIf="CurrentType === Types.employeer">
               <div class="form-group">
                 <label for="f1">Фамилия:</label>
                 <input type="text" class="form-control" id="f1">
@@ -33,10 +35,10 @@
                 <label for="fn3">Должность:</label>
                 <input type="text" class="form-control" id="fn3">
               </div>
-              <label>Cписок прошлых мест работы:</label>
-              <hr>
+              <!-- <label>Cписок прошлых мест работы:</label>
+              <hr> -->
           <!-- это итерируем -->
-          <div *ngFor="let item of Jobs; let i = index" class="one-place">
+          <!-- <div *ngFor="let item of Jobs; let i = index" class="one-place">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-2">
@@ -84,7 +86,7 @@
                 <button (click)="AddJob()" type="button" style="margin: 0 auto 30px auto; max-width: 120px;" class="btn btn-block btn-primary btn-lg">Добавить</button>
             </div>
 
-          </div>
+          </div> -->
 
 
 
@@ -100,7 +102,7 @@
 
 
              <!--форма для компании-->
-             <form>
+             <form *ngIf="CurrentType === Types.company">
                 <div class="form-group">
                   <label for="f1">Название:</label>
                   <input type="text" class="form-control" id="f1">

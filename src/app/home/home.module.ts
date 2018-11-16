@@ -27,6 +27,7 @@ import { CompanyComponent } from './profile/company/company.component';
 import { AvatarImageComponent } from './profile/avatar-image/avatar-image.component';
 import { CreateBlackComponent } from './create-black/create-black.component';
 import { BlackListItemComponent } from './black-list-item/black-list-item.component';
+import { PayComponent } from './pay/pay.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { BlackListItemComponent } from './black-list-item/black-list-item.compon
     CompanyComponent,
     AvatarImageComponent,
     CreateBlackComponent,
-    BlackListItemComponent
+    BlackListItemComponent,
+    PayComponent
   ],
   providers: [
     MainService,
