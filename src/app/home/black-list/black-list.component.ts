@@ -12,4 +12,8 @@ export class BlackListComponent implements OnInit {
   ngOnInit() {
   }
 
+  search(event) {
+
+  }
+
 }
