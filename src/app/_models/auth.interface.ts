@@ -61,3 +61,11 @@ export interface Vacancie {
   description: string;
   min_experience: number;
 }
+
+export interface BlackListItem {
+  id?: number;
+  name: string;
+  description: string;
+  addresses?: string;
+  text?: string;
+}

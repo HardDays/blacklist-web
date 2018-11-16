@@ -1,3 +1,4 @@
+import { BlacklistService } from './_services/blacklist.service';
 import { ImagesService } from './_services/image.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +33,8 @@ import { AccountsService } from './_services/accounts.service';
     MainService,
     AuthMainService,
     ImagesService,
-    AccountsService
+    AccountsService,
+    BlacklistService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { BlacklistService } from './blacklist.service';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { Router, NavigationStart, NavigationEnd, NavigationError, ActivatedRoute } from '@angular/router';
@@ -25,7 +26,8 @@ export class MainService {
         private router: Router,
         public authService: AuthMainService,
         public imageService: ImagesService,
-        public accService: AccountsService
+        public accService: AccountsService,
+        public blacklistService: BlacklistService
     ) {
 
         this.authService.onAuthChange$

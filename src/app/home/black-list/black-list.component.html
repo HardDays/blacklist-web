@@ -24,64 +24,21 @@
    <br><br><br>
       <div class="row">
 
-          <div class="col-md-3">
+          <div *ngFor="let item of BlackList; let i = index" class="col-md-3">
               <br>
               <div class="followed-user-entry">
                   <div class="followed-user-bottom">
                     <img  class="followed-user-img" src="../../../assets/good.jpg" />
-                      <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
+                      <a [routerLink]="['/black-list',item.id]"  class="followed-user-name">{{item.name}}</a>
                       <p class="followed-user-screenname">
-                          Сотрудник
+                          Сотрудник/Компания
                       </p>
 
                   </div>
               </div>
               <br>
           </div>
-          <div class="col-md-3">
-              <br>
-              <div class="followed-user-entry">
-                  <div class="followed-user-bottom">
-                    <img  class="followed-user-img" src="../../../assets/good.jpg" />
-                      <a [routerLink]="['/black-list',1]"  class="followed-user-name">ООО "Kападастр"</a>
-                      <p class="followed-user-screenname">
-                          компания
-                      </p>
-
-                  </div>
-              </div>
-              <br>
-          </div>
-          <div class="col-md-3">
-            <br>
-            <div class="followed-user-entry">
-                <div class="followed-user-bottom">
-                    <img  class="followed-user-img" src="../../../assets/good.jpg" />
-                    <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
-                    <p class="followed-user-screenname">
-                        Сотрудник
-                    </p>
-
-                </div>
-            </div>
-            <br>
-        </div>
-        <div class="col-md-3">
-            <br>
-            <div class="followed-user-entry">
-                <div class="followed-user-bottom">
-                    <img  class="followed-user-img" src="../../../assets/good.jpg" />
-                    <a [routerLink]="['/black-list',1]"  class="followed-user-name">Иванов Иван Иванович</a>
-                    <p class="followed-user-screenname">
-                        Сотрудник
-                    </p>
-
-                </div>
-            </div>
-            <br>
-        </div>
       </div>
-
-
       <br>
+      <app-pagination></app-pagination>
   </div>

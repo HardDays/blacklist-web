@@ -1,0 +1,22 @@
+<div *ngIf="countElements>1" class="pagination">
+  <a *ngFor="let item of rangeLeft"
+      [ngClass]="{'active':item===selectedNumber}"
+      (click)="selectNumber(item)"
+  >
+    {{item}}
+  </a>
+  <a disabled *ngIf="rangeLeft.length>0">...</a>
+  <a *ngFor="let item of rangeCenter"
+      [ngClass]="{'active':item===selectedNumber}"
+      (click)="selectNumber(item)"
+  >
+    {{item}}
+  </a>
+  <a disabled *ngIf="rangeRight.length>0">...</a>
+  <a *ngFor="let item of rangeRight"
+      [ngClass]="{'active':item===selectedNumber}"
+      (click)="selectNumber(item)"
+  >
+    {{item}}
+  </a>
+</div>

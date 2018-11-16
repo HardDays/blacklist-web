@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlackListItem } from 'src/app/_models/auth.interface';
+import { MainService } from 'src/app/_services/main.service';
 
 @Component({
   selector: 'app-black-list',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlackListComponent implements OnInit {
 
-  constructor() { }
+  BlackList: BlackListItem[] = [];
+  AllCounts = 0;
+  constructor(protected service: MainService) { }
 
   ngOnInit() {
+    this.service.blacklistService.GetBlacklistItem()
+      .subscribe(
+        (res) => {
+          this.BlackList = res.items;
+          this.AllCounts = res.counts;
+          // console.log(this.BlackList);
+        }
+      );
   }
 
   search(event) {

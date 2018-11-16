@@ -16,7 +16,7 @@ export class VacancesComponent implements OnInit {
     this.service.accService.GetVacancies()
       .subscribe(
         (res) => {
-          this.Vacancies = res;
+          this.Vacancies = res.items;
         }
       );
   }
@@ -26,7 +26,7 @@ export class VacancesComponent implements OnInit {
       .subscribe(
         (res) => {
           this.Vacancies = [];
-          this.Vacancies = res;
+          this.Vacancies = res.items;
         }
       );
   }

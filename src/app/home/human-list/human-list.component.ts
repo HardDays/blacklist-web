@@ -18,7 +18,7 @@ export class HumanListComponent implements OnInit {
     this.service.accService.GetEmployees()
       .subscribe(
         (res) => {
-          this.Employees = res;
+          this.Employees = res.items;
           for (const item of this.Employees) {
              item.image = this.service.imageService.GetImage(item.id);
           }
@@ -32,7 +32,7 @@ export class HumanListComponent implements OnInit {
       .subscribe(
         (res) => {
           this.Employees = [];
-          this.Employees = res;
+          this.Employees = res.items;
           for (const item of this.Employees) {
              item.image = this.service.imageService.GetImage(item.id);
           }

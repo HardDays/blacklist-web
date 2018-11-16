@@ -28,6 +28,8 @@ import { AvatarImageComponent } from './profile/avatar-image/avatar-image.compon
 import { CreateBlackComponent } from './create-black/create-black.component';
 import { BlackListItemComponent } from './black-list-item/black-list-item.component';
 import { PayComponent } from './pay/pay.component';
+import { BlacklistService } from '../_services/blacklist.service';
+import { UiPaginationComponent } from './ui-pagination/ui-pagination.component';
 
 @NgModule({
   imports: [
@@ -53,12 +55,14 @@ import { PayComponent } from './pay/pay.component';
     AvatarImageComponent,
     CreateBlackComponent,
     BlackListItemComponent,
-    PayComponent
+    PayComponent,
+    UiPaginationComponent
   ],
   providers: [
     MainService,
     AccountsService,
-    ImagesService
+    ImagesService,
+    BlacklistService
   ]
 })
 export class HomeModule { }
