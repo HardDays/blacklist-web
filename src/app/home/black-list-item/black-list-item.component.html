@@ -5,6 +5,10 @@
         <div class="row">
             <h1>{{Item.name}}</h1>
             <h2>Сотрудник</h2>
+            <div class="flex-b-admin">
+              <button type="button" class="btn btn-success">Опубликовать</button>
+              <button type="button" class="btn btn-danger">Удалить</button>
+            </div>
         </div>
         <div>
 
@@ -70,6 +74,10 @@
         <div class="row">
             <h1>{{Item.name?Item.name:'-'}}</h1>
             <h2>Предприятие</h2>
+            <div class="flex-b-admin">
+              <button type="button" class="btn btn-success">Опубликовать</button>
+              <button type="button" class="btn btn-danger">Удалить</button>
+            </div>
         </div>
         <div>
 
@@ -149,6 +157,8 @@
 
               </div>
             </div>
+            <button type="button" class="btn btn-danger">Удалить комментарий</button>
+
           </div>
         </article>
 
