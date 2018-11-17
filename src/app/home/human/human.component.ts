@@ -1,4 +1,4 @@
-import { Employee } from './../../_models/auth.interface';
+import { Employee, Comment } from './../../_models/auth.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { MainService } from 'src/app/_services/main.service';
@@ -20,6 +20,12 @@ export class HumanComponent implements OnInit {
     image: this.EmptyImage
   };
 
+  Comments: Comment[] = [];
+  NewComment: Comment = {
+    text: '',
+    comment_type: 'like'
+  };
+
    constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
         this.Id = activateRoute.snapshot.params['id'];
    }
@@ -32,7 +38,31 @@ export class HumanComponent implements OnInit {
           this.Employee.birthday = this.Employee.birthday ? this.Employee.birthday.split('T')[0] : '';
           this.Employee.image = this.service.imageService.GetImage(this.Employee.id);
           console.log(this.Employee);
+          this.getComments();
         }
+      );
+  }
+
+  getComments () {
+     this.service.accService.GetComments(this.Id)
+       .subscribe(
+         (res) => {
+           this.Comments = res.items;
+           for (const item of this.Comments) {
+             if (item.user.image_id) {
+               item.user.image = this.service.imageService.GetImage(item.user.image_id);
+             }
+           }
+         }
+       );
+  }
+
+  AddComment() {
+    this.service.accService.AddComment(this.Id, this.NewComment)
+      .subscribe(
+      (res) => {
+        this.getComments();
+      }
       );
   }
 

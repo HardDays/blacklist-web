@@ -1,4 +1,4 @@
-import { Vacancie } from './../_models/auth.interface';
+import { Vacancie, Comment } from './../_models/auth.interface';
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import { HttpService } from './http.service';
@@ -122,15 +122,15 @@ export class AccountsService {
     }
 
 
-    AddCommentById(id: number) {
+    AddComment(id: number, comment: Comment) {
         return this.http.CommonRequest(
-            () => this.http.PostData('/black_list/' + id + '/black_list_comments.json', JSON.stringify({}))
+            () => this.http.PostData('/employees/' + id + '/employee_comments.json', JSON.stringify(comment))
         );
     }
 
-    GetCommentById(id: number) {
+    GetComments(id: number) {
         return this.http.CommonRequest(
-            () => this.http.GetData('/black_list/' + id + '/black_list_comments.json', '')
+            () => this.http.GetData('/employees/' + id + '/employee_comments.json', '')
         );
     }
 
