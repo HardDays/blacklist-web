@@ -26,12 +26,23 @@ export class BlackListItemComponent implements OnInit {
     comment_type: 'like'
   };
 
+  IsAdmin = false;
+
   constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
         this.Id = activateRoute.snapshot.params['id'];
         console.log(this.Id);
    }
 
   ngOnInit() {
+    if (this.service.authService.me) {
+      this.IsAdmin = this.service.authService.me.is_admin;
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+       this.IsAdmin = this.service.authService.me.is_admin;
+      }
+    );
+
     this.service.blacklistService.GetBlackListById(this.Id)
       .subscribe(
         res => {
@@ -41,6 +52,7 @@ export class BlackListItemComponent implements OnInit {
       );
       this.getComments();
   }
+
   getComments () {
      this.service.blacklistService.GetBlacklistCommentById(this.Id)
        .subscribe(
@@ -61,6 +73,33 @@ export class BlackListItemComponent implements OnInit {
       (res) => {
         this.getComments();
       }
+      );
+  }
+
+    DeleteComment(id: number) {
+    this.service.adminService.DeleteBanComment(id)
+      .subscribe(
+        res => {
+          this.getComments();
+        }
+      );
+  }
+
+  approve() {
+    this.service.adminService.ApproveBan(this.Item.id)
+      .subscribe(
+        (res) => {
+          this.Item.status = 'approved';
+        }
+      );
+  }
+
+  delete() {
+    this.service.adminService.DeleteBan(this.Item.id)
+      .subscribe(
+        (res) => {
+          console.log(`ok`);
+        }
       );
   }
 

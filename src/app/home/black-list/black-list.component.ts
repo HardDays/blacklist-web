@@ -15,31 +15,50 @@ export class BlackListComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   Page: number = 1;
   TextSearch = '';
+
+  IsAdmin = false;
+
   constructor(protected service: MainService) { }
 
   ngOnInit() {
-    this.service.blacklistService.GetBlacklistItem(this.Page)
-      .subscribe(
-        (res) => {
-          this.BlackList = res.items;
-          this.AllCount = res.counts;
-          // console.log(this.BlackList);
-        }
-      );
+
+    if (this.service.authService.me) {
+      this.IsAdmin = this.service.authService.me.is_admin;
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+       this.IsAdmin = this.service.authService.me.is_admin;
+       this.getBlacklist();
+      }
+    );
+
+    this.getBlacklist();
   }
 
   search() {
-    console.log(`search`);
+    this.getBlacklist();
+  }
 
-    this.service.blacklistService.GetBlacklistItem(this.Page, this.TextSearch)
-      .subscribe(
+  getBlacklist () {
+    if (this.IsAdmin) {
+      this.service.adminService.GetBanList()
+        .subscribe(
         (res) => {
-           console.log(`ok`);
           this.BlackList = res.items;
           this.AllCount =  this.BlackList.length < 10 && this.Page === 1 ? this.BlackList.length : res.count;
           // console.log(this.BlackList);
         }
       );
+    } else {
+      this.service.blacklistService.GetBlacklistItem(this.Page, this.TextSearch)
+      .subscribe(
+        (res) => {
+          this.BlackList = res.items;
+          this.AllCount =  this.BlackList.length < 10 && this.Page === 1 ? this.BlackList.length : res.count;
+          // console.log(this.BlackList);
+        }
+      );
+    }
   }
 
 }

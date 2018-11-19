@@ -71,6 +71,7 @@ export interface BlackListItem {
   addresses?: string;
   text?: string;
   item_type?: string;
+  status?: string;
 }
 export interface Comment {
   id?: number;

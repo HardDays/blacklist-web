@@ -5,9 +5,9 @@
         <div class="row">
             <h1>{{Item.name}}</h1>
             <h2>Сотрудник</h2>
-            <div class="flex-b-admin">
-              <button type="button" class="btn btn-success">Опубликовать</button>
-              <button type="button" class="btn btn-danger">Удалить</button>
+            <div  *ngIf="IsAdmin" class="flex-b-admin">
+              <button *ngIf="Item.status != 'approved'" (click)="approve()" type="button" class="btn btn-success">Опубликовать</button>
+              <button (click)="delete()" type="button" class="btn btn-danger">Удалить</button>
             </div>
         </div>
         <div>
@@ -75,8 +75,8 @@
             <h1>{{Item.name?Item.name:'-'}}</h1>
             <h2>Предприятие</h2>
             <div class="flex-b-admin">
-              <button type="button" class="btn btn-success">Опубликовать</button>
-              <button type="button" class="btn btn-danger">Удалить</button>
+              <button *ngIf="Item.status != 'approved'" (click)="approve()" type="button" class="btn btn-success">Опубликовать</button>
+              <button (click)="delete()" type="button" class="btn btn-danger">Удалить</button>
             </div>
         </div>
         <div>
@@ -157,7 +157,7 @@
 
               </div>
             </div>
-            <button type="button" class="btn btn-danger">Удалить комментарий</button>
+            <button (click)="DeleteComment(item.id)" type="button" class="btn btn-danger">Удалить комментарий</button>
 
           </div>
         </article>

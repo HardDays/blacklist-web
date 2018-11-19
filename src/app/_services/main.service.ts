@@ -1,3 +1,4 @@
+import { AdminService } from './admin.service';
 import { BlacklistService } from './blacklist.service';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
@@ -27,7 +28,8 @@ export class MainService {
         public authService: AuthMainService,
         public imageService: ImagesService,
         public accService: AccountsService,
-        public blacklistService: BlacklistService
+        public blacklistService: BlacklistService,
+        public adminService: AdminService
     ) {
 
         this.authService.onAuthChange$

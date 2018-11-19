@@ -26,11 +26,22 @@ export class HumanComponent implements OnInit {
     comment_type: 'like'
   };
 
+  IsAdmin = false;
+
    constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
         this.Id = activateRoute.snapshot.params['id'];
    }
 
   ngOnInit() {
+    if (this.service.authService.me) {
+      this.IsAdmin = this.service.authService.me.is_admin;
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+       this.IsAdmin = this.service.authService.me.is_admin;
+      }
+    );
+
     this.service.accService.GetEmployeeById(this.Id)
       .subscribe(
         (res) => {
@@ -42,6 +53,7 @@ export class HumanComponent implements OnInit {
         }
       );
   }
+
 
   getComments () {
      this.service.accService.GetComments(this.Id)
@@ -63,6 +75,33 @@ export class HumanComponent implements OnInit {
       (res) => {
         this.getComments();
       }
+      );
+  }
+  DeleteComment(id: number) {
+    this.service.adminService.DeleteEmployeeComment(id)
+      .subscribe(
+        res => {
+          this.getComments();
+        }
+      );
+  }
+
+  approve() {
+    this.service.adminService.ApproveEmployee(this.Employee.id)
+      .subscribe(
+        (res) => {
+          this.Employee.status = 'approved';
+        }
+      );
+  }
+
+  delete() {
+    this.service.adminService.DeleteEmployee(this.Employee.id)
+      .subscribe(
+        (res) => {
+          // this.Employee.status = 'approved';
+          console.log(`ok`);
+        }
       );
   }
 

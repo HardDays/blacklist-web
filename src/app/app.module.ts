@@ -13,6 +13,7 @@ import { AuthMainService } from './_services/auth.service';
 import {HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AccountsService } from './_services/accounts.service';
+import { AdminService } from './_services/admin.service';
 
 // imports:[HttpClientModule, HttpModule
 
@@ -34,7 +35,8 @@ import { AccountsService } from './_services/accounts.service';
     AuthMainService,
     ImagesService,
     AccountsService,
-    BlacklistService
+    BlacklistService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

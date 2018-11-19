@@ -30,6 +30,7 @@ import { BlackListItemComponent } from './black-list-item/black-list-item.compon
 import { PayComponent } from './pay/pay.component';
 import { BlacklistService } from '../_services/blacklist.service';
 import { UiPaginationComponent } from './ui-pagination/ui-pagination.component';
+import { AdminService } from '../_services/admin.service';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { UiPaginationComponent } from './ui-pagination/ui-pagination.component';
     MainService,
     AccountsService,
     ImagesService,
-    BlacklistService
+    BlacklistService,
+    AdminService
   ]
 })
 export class HomeModule { }
