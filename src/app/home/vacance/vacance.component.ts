@@ -22,6 +22,7 @@ export class VacanceComponent implements OnInit {
   };
   reqSended = false;
   MyType = '';
+  IsAdmin = false;
   constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
         this.Id = activateRoute.snapshot.params['id'];
   }
@@ -29,19 +30,36 @@ export class VacanceComponent implements OnInit {
   ngOnInit() {
     if (this.service.authService.me) {
       this.MyType = this.service.authService.me.user_type;
+      this.IsAdmin = this.service.authService.me.is_admin;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
          this.MyType = this.service.authService.me.user_type;
+         this.IsAdmin = this.service.authService.me.is_admin;
+         this.GetVacanciesById();
       }
     );
-    this.service.accService.GetVacanciesById(this.Id)
+    this.GetVacanciesById();
+  }
+
+  GetVacanciesById() {
+    if (this.IsAdmin) {
+      this.service.adminService.GetVacancieById(this.Id)
       .subscribe(
         (res) => {
           this.Vacancie = res;
           console.log(res);
         }
       );
+    } else {
+      this.service.accService.GetVacanciesById(this.Id)
+      .subscribe(
+        (res) => {
+          this.Vacancie = res;
+          console.log(res);
+        }
+      );
+    }
   }
 
   VacancyResponse() {
@@ -50,6 +68,25 @@ export class VacanceComponent implements OnInit {
         (res) => {
           console.log(res);
           this.reqSended = true;
+        }
+      );
+  }
+
+  approve() {
+    this.service.adminService.ApproveVacancie(this.Vacancie.id)
+      .subscribe(
+        (res) => {
+          this.Vacancie.status = 'approved';
+        }
+      );
+  }
+
+  delete() {
+    this.service.adminService.DeleteVacancie(this.Vacancie.id)
+      .subscribe(
+        (res) => {
+          // this.Employee.status = 'approved';
+          console.log(`ok`);
         }
       );
   }

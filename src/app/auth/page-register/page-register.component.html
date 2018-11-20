@@ -5,7 +5,7 @@
   <form *ngIf="CurrentStep===Steps.email">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" [(ngModel)]="Email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="email" [(ngModel)]="Email" class="form-control" id="email" placeholder="Введите email" name="email">
     </div>
     <button (click)="CreateUserByEmail()" type="button" style="margin-right: 15px;" class="btn btn-primary">Отправить код</button>
     <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Login</button>
@@ -15,20 +15,20 @@
   <form *ngIf="CurrentStep===Steps.code">
     <div class="form-group">
       <label for="code">Код:</label>
-      <input type="text" [(ngModel)]="Code" class="form-control" id="code" placeholder="Enter code" name="code">
+      <input type="text" [(ngModel)]="Code" class="form-control" id="code" placeholder="Введите код" name="code">
     </div>
     <button (click)="VerifyCode()" type="submit" style="margin-right: 15px;" class="btn btn-success">Продолжить</button>
-    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Login</button>
+    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Уже есть аккаунт</button>
   </form>
 
   <form *ngIf="CurrentStep===Steps.password">
     <div class="form-group">
       <label for="pwd">Пароль:</label>
-      <input [(ngModel)]="Password.password" type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      <input [(ngModel)]="Password.password" type="password" class="form-control" id="pwd" placeholder="Введите пароль" name="pwd">
     </div>
     <div class="form-group">
       <label for="pwd">Подтвердите пароль:</label>
-      <input  [(ngModel)]="Password.password_confirmation" type="password" class="form-control" id="pwd-confirm" placeholder="Enter password" name="pwd-confirm">
+      <input  [(ngModel)]="Password.password_confirmation" type="password" class="form-control" id="pwd-confirm" placeholder="Введите пароль ещё раз" name="pwd-confirm">
     </div>
 
     <div class="radio">
@@ -38,8 +38,8 @@
       <label><input type="radio" [(ngModel)]="Type" value="company" name="optradio">Регистрируюсь как компания</label>
     </div>
 
-    <button (click)="AddPassword()" type="submit" style="margin-right: 15px;" class="btn btn-success">Войти</button>
-    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Login</button>
+    <button (click)="AddPassword()" type="submit" style="margin-right: 15px;" class="btn btn-success">Зарегистрироваться</button>
+    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Уже есть аккаунт</button>
 
   </form>
 

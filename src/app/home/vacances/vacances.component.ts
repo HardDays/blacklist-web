@@ -14,10 +14,27 @@ export class VacancesComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   Page: number = 1;
   TextSearch = '';
+  IsAdmin = false;
+  
   constructor(protected service: MainService) { }
 
   ngOnInit() {
-    this.service.accService.GetVacancies(this.Page)
+
+    if (this.service.authService.me) {
+      this.IsAdmin = this.service.authService.me.is_admin;
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+       this.IsAdmin = this.service.authService.me.is_admin;
+       this.GetVacancies();
+      }
+    );
+  
+  }
+
+  GetVacancies() {
+    if(this.IsAdmin) {
+      this.service.adminService.GetVacancies(this.Page)
       .subscribe(
         (res) => {
           this.Vacancies = res.items;
@@ -26,10 +43,23 @@ export class VacancesComponent implements OnInit {
           this.AllVacanciesCount = res.count;
         }
       );
+    } else {
+      this.service.accService.GetVacancies(this.Page)
+      .subscribe(
+        (res) => {
+          this.Vacancies = res.items;
+          console.log(this.Vacancies.length, res.count, this.Page);
+
+          this.AllVacanciesCount = res.count;
+        }
+      );
+    }
+
   }
 
   search() {
-    this.service.accService.GetVacancies(this.Page, this.TextSearch)
+    if(this.IsAdmin) {
+      this.service.adminService.GetVacancies(this.Page, this.TextSearch)
       .subscribe(
         (res) => {
           this.Vacancies = [];
@@ -37,6 +67,17 @@ export class VacancesComponent implements OnInit {
           this.AllVacanciesCount =  this.Vacancies.length < 10 && this.Page === 1 ? this.Vacancies.length : res.count;
         }
       );
+    } else {
+      this.service.accService.GetVacancies(this.Page, this.TextSearch)
+      .subscribe(
+        (res) => {
+          this.Vacancies = [];
+          this.Vacancies = res.items;
+          this.AllVacanciesCount =  this.Vacancies.length < 10 && this.Page === 1 ? this.Vacancies.length : res.count;
+        }
+      );
+    }
+    
   }
 
 }

@@ -44,6 +44,11 @@ export class AdminService {
             () => this.http.GetData('/admin_employees.json', '')
         );
     }
+    GetEmployeeById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.GetData('/admin_employees/' + id + '.json', '')
+        );
+    }
     ApproveEmployee(id: number) {
       return this.http.CommonRequest(
             () => this.http.PostData('/admin_employees/' + id + '/approve.json', JSON.stringify({}))
@@ -59,6 +64,11 @@ export class AdminService {
     GetBanList() {
         return this.http.CommonRequest(
             () => this.http.GetData('/admin_black_list.json', '')
+        );
+    }
+    GetBanById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.GetData('/admin_black_list/' + id + '.json', '')
         );
     }
     ApproveBan(id: number) {
@@ -84,5 +94,27 @@ export class AdminService {
         );
     }
 
+
+    GetVacancies(page: number, text?: string) {
+        const offset = (page - 1) * 10;
+        return this.http.CommonRequest(
+            () => this.http.GetData('/admin_vacancies.json', this.ParamsToUrlSearchParams({limit: 10, offset, text: text ? text : ''}))
+        );
+    }
+    GetVacancieById(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.GetData('/admin_vacancies/' + id + '.json', '')
+        );
+    }
+    ApproveVacancie(id: number) {
+      return this.http.CommonRequest(
+            () => this.http.PostData('/admin_vacancies/' + id + '/approve.json', JSON.stringify({}))
+        );
+    }
+    DeleteVacancie(id: number) {
+       return this.http.CommonRequest(
+            () => this.http.PostData('/admin_vacancies/' + id + '/deny.json', JSON.stringify({}))
+        );
+    }
 
 }

@@ -62,6 +62,7 @@ export interface Vacancie {
   salary: string;
   description: string;
   min_experience: number;
+  status?: string;
 }
 
 export interface BlackListItem {

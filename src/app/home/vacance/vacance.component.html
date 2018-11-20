@@ -6,6 +6,10 @@
 
           </div>
           <div>
+            <div *ngIf="IsAdmin" class="flex-b-admin">
+              <button *ngIf="Vacancie.status != 'approved'" (click)="approve()" type="button" class="btn btn-success">Опубликовать</button>
+              <button (click)="delete()" type="button" class="btn btn-danger">Удалить</button>
+            </div>
 
             <div class="my-table">
               <div class="my-row">
