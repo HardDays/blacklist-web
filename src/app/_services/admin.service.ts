@@ -85,4 +85,11 @@ export class AdminService {
     }
 
 
+    GetVacancies(page: number, text?: string) {
+        const offset = (page - 1) * 10;
+        return this.http.CommonRequest(
+            () => this.http.GetData('/admin_vacancies.json', this.ParamsToUrlSearchParams({limit: 10, offset, text: text ? text : ''}))
+        );
+    }
+
 }
