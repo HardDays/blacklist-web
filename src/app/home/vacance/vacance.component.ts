@@ -2,7 +2,7 @@ import { Vacancie } from './../../_models/auth.interface';
 import { MainService } from './../../_services/main.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-vacance',
   templateUrl: './vacance.component.html',
@@ -23,7 +23,7 @@ export class VacanceComponent implements OnInit {
   reqSended = false;
   MyType = '';
   IsAdmin = false;
-  constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
+  constructor(private activateRoute: ActivatedRoute, protected service: MainService,private router: Router) {
         this.Id = activateRoute.snapshot.params['id'];
   }
 
@@ -77,6 +77,7 @@ export class VacanceComponent implements OnInit {
       .subscribe(
         (res) => {
           this.Vacancie.status = 'approved';
+          this.router.navigate(['/', 'vacances']);
         }
       );
   }
@@ -86,6 +87,7 @@ export class VacanceComponent implements OnInit {
       .subscribe(
         (res) => {
           // this.Employee.status = 'approved';
+          this.router.navigate(['/', 'vacances']);
           console.log(`ok`);
         }
       );

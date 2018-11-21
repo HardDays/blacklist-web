@@ -17,7 +17,7 @@ import {Subject} from 'rxjs/Subject';
 // import { WorkingTimeModel } from '../models/workingTime.model';
 // import { ContactModel } from '../models/contact.model';
 // import { EventDateModel } from '../models/eventDate.model';
-import { TokenModel, UserModel, LoginModel, Employee, Company } from '../_models/auth.interface';
+import { TokenModel, UserModel, LoginModel, Employee, Company, resetPass } from '../_models/auth.interface';
 
 @Injectable()
 export class AuthMainService {
@@ -62,6 +62,11 @@ export class AuthMainService {
     UserLogin(user: LoginModel) {
         return this.http.CommonRequest(
             () => this.http.PostData('/auth/login.json', user)
+        );
+    }
+    ResetPass(user: resetPass) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/auth/forgot_password.json', user)
         );
     }
 

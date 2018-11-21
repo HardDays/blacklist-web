@@ -2,6 +2,7 @@ import { Employee, Comment } from './../../_models/auth.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { MainService } from 'src/app/_services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-human',
@@ -28,7 +29,7 @@ export class HumanComponent implements OnInit {
 
   IsAdmin = false;
 
-   constructor(private activateRoute: ActivatedRoute, protected service: MainService) {
+   constructor(private activateRoute: ActivatedRoute, protected service: MainService,private router: Router) {
         this.Id = activateRoute.snapshot.params['id'];
    }
 
@@ -91,6 +92,7 @@ export class HumanComponent implements OnInit {
       .subscribe(
         (res) => {
           this.Employee.status = 'approved';
+          this.router.navigate(['/', 'human-list']);
         }
       );
   }
@@ -100,6 +102,7 @@ export class HumanComponent implements OnInit {
       .subscribe(
         (res) => {
           // this.Employee.status = 'approved';
+          this.router.navigate(['/', 'human-list']);
           console.log(`ok`);
         }
       );

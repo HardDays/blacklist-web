@@ -11,11 +11,14 @@
       <label for="pwd">Password:</label>
       <input type="password" [(ngModel)]="user.password" class="form-control" id="pwd" placeholder="Введите пароль" name="pwd">
     </div>
+    
+    <a class="reset-pass-link" [routerLink]="['/auth','password-reset']">Забыли пароль?</a>
     <button (click)="Login()" type="button" style="margin-right: 15px;" class="btn btn-success">Войти</button>
     <button [routerLink]="['/auth','register']" type="button" class="btn btn-info">Регистрация</button>
 
     <!-- <button (click)="setToken()" type="button" class="btn btn-info">Войти без пароля FOR DEV</button> -->
   </form>
+  
   </div>
   </div>
 </div>
