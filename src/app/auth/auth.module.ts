@@ -15,7 +15,7 @@ import { PageLoginComponent } from './page-login/page-login.component';
 import { PageRegisterComponent } from './page-register/page-register.component';
 import { PagePasswordResetComponent } from './page-password-reset/page-password-reset.component';
 import { HttpService } from '../_services/http.service';
-import { PageForgotPasswordComponent } from './page-forgot-password/page-forgot-password.component';
+
 
 
 
@@ -32,7 +32,7 @@ import { PageForgotPasswordComponent } from './page-forgot-password/page-forgot-
     PageLoginComponent,
     PageRegisterComponent,
     PagePasswordResetComponent,
-    PageForgotPasswordComponent
+   
   ],
   providers: [
     HttpService,
