@@ -29,7 +29,7 @@ export class HumanComponent implements OnInit {
 
   IsAdmin = false;
 
-   constructor(private activateRoute: ActivatedRoute, protected service: MainService,private router: Router) {
+   constructor(private activateRoute: ActivatedRoute, protected service: MainService, private router: Router) {
         this.Id = activateRoute.snapshot.params['id'];
    }
 
@@ -40,19 +40,38 @@ export class HumanComponent implements OnInit {
     this.service.authService.onMeChange$.subscribe(
       res => {
        this.IsAdmin = this.service.authService.me.is_admin;
+       this.getEmployee();
       }
     );
 
-    this.service.accService.GetEmployeeById(this.Id)
-      .subscribe(
-        (res) => {
-          this.Employee = res;
-          this.Employee.birthday = this.Employee.birthday ? this.Employee.birthday.split('T')[0] : '';
-          this.Employee.image = this.service.imageService.GetImage(this.Employee.id);
-          console.log(this.Employee);
-          this.getComments();
-        }
-      );
+    this.getEmployee();
+
+  }
+
+  getEmployee() {
+    if (this.IsAdmin) {
+      this.service.adminService.GetEmployeeById(this.Id)
+        .subscribe(
+          (res) => {
+            this.Employee = res;
+            this.Employee.birthday = this.Employee.birthday ? this.Employee.birthday.split('T')[0] : '';
+            this.Employee.image = this.service.imageService.GetImage(this.Employee.id);
+            console.log(this.Employee);
+            this.getComments();
+          }
+        );
+    } else {
+      this.service.accService.GetEmployeeById(this.Id)
+        .subscribe(
+          (res) => {
+            this.Employee = res;
+            this.Employee.birthday = this.Employee.birthday ? this.Employee.birthday.split('T')[0] : '';
+            this.Employee.image = this.service.imageService.GetImage(this.Employee.id);
+            console.log(this.Employee);
+            this.getComments();
+          }
+        );
+    }
   }
 
 
