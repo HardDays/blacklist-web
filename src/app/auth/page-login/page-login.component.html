@@ -1,21 +1,33 @@
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-  <h2>Вход</h2>
-  <form>
-    <div class="form-group">
-      <label for="code">Email:</label>
-      <input type="email" [(ngModel)]="user.email" class="form-control" id="code" placeholder="Введите email" name="email">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" [(ngModel)]="user.password" class="form-control" id="pwd" placeholder="Введите пароль" name="pwd">
-    </div>
-    <button (click)="Login()" type="button" style="margin-right: 15px;" class="btn btn-success">Войти</button>
-    <button [routerLink]="['/auth','register']" type="button" class="btn btn-info">Регистрация</button>
 
-    <!-- <button (click)="setToken()" type="button" class="btn btn-info">Войти без пароля FOR DEV</button> -->
-  </form>
+<form>
+  <span class="login100-form-title p-b-34 p-t-27">
+    Вход
+  </span>
+
+  <div class="wrap-input100 validate-input">
+    <input class="input100" type="email" [(ngModel)]="user.email" id="code" placeholder="Введите email" name="email" autocomplete="off">
+    <span class="focus-input100" data-placeholder="&#xf207;"></span>
   </div>
+
+  <div class="wrap-input100 validate-input" data-validate="Enter password">
+    <input class="input100"  type="password" [(ngModel)]="user.password" id="pwd" placeholder="Введите пароль" name="pwd" autocomplete="off">
+    <span class="focus-input100" data-placeholder="&#xf191;"></span>
   </div>
-</div>
+
+  <div style="margin-bottom: 10px;" class="container-login100-form-btn">
+    <button (click)="Login()" type="button" class="login100-form-btn">
+      Войти
+    </button>
+  </div>
+  <div class="container-login100-form-btn">
+      <button [routerLink]="['/auth','register']" type="button" class="login100-form-btn">
+        Регистрация
+      </button>
+    </div>
+
+  <div class="text-center p-t-90">
+    
+      <a class="txt1 link-lost-pass" [routerLink]="['/auth','password-reset']">Забыли пароль?</a>
+
+  </div>
+</form>

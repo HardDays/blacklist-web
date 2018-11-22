@@ -49,6 +49,11 @@
 .followed-user-img-wrapper {
     
 }
+.myflex{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 35px;
+}
 img {
     border-radius:30px !important;
 }

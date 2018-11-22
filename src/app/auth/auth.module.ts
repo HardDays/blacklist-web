@@ -19,6 +19,7 @@ import { HttpService } from '../_services/http.service';
 
 
 
+
 @NgModule({
   imports: [
     FormsModule,
@@ -30,7 +31,8 @@ import { HttpService } from '../_services/http.service';
     AuthComponent,
     PageLoginComponent,
     PageRegisterComponent,
-    PagePasswordResetComponent
+    PagePasswordResetComponent,
+   
   ],
   providers: [
     HttpService,

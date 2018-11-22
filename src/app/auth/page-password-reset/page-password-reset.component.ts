@@ -1,3 +1,6 @@
+import { resetPass } from './../../_models/auth.interface';
+import { MainService } from './../../_services/main.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagePasswordResetComponent implements OnInit {
 
-  constructor() { }
+  user: resetPass = {email: ''};
+  ifSended = false;
+  constructor(protected service: MainService, protected router: Router) { }
 
   ngOnInit() {
+      // localStorage.setItem('currentUser', JSON.stringify({'token:': '12345'}));
+  }
+
+ 
+
+  sendNewPass() {
+    this.service.authService.ResetPass(this.user)
+      .subscribe(
+        (res) => {
+           console.log(res);
+          this.ifSended = true;
+        }
+      );
   }
 
 }

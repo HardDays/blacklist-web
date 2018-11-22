@@ -1,0 +1,20 @@
+.reset-pass-link{
+    display: block;
+    color: #000;
+    margin-bottom: 20px;
+}
+.link-lost-pass{
+    font-size: 15px;
+}
+.radio-my{
+    color: #fff;
+    margin-bottom: 5px;
+
+}
+.radio-my input{
+    margin: 0;
+    margin-right: 10px;
+}
+.radio-wrapp{
+    margin-bottom: 20px;
+}

@@ -1,49 +1,63 @@
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-  <h2>регистрация</h2>
+
+  <span class="login100-form-title p-b-34 p-t-27">
+    Регистрация
+  </span>
   <form *ngIf="CurrentStep===Steps.email">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" [(ngModel)]="Email" class="form-control" id="email" placeholder="Введите email" name="email">
+    <div class="wrap-input100 validate-input">
+      <input class="input100" type="email" [(ngModel)]="Email" id="email" placeholder="Введите email" name="email" autocomplete="off">
+      <span class="focus-input100" data-placeholder="&#xf207;"></span>
     </div>
-    <button (click)="CreateUserByEmail()" type="button" style="margin-right: 15px;" class="btn btn-primary">Отправить код</button>
-    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Login</button>
+    <div class="container-login100-form-btn">
+        <button (click)="CreateUserByEmail()" type="button" class="login100-form-btn">
+            Отправить код
+        </button>
+    </div>
+   
+
+
+
   </form>
 
 
   <form *ngIf="CurrentStep===Steps.code">
-    <div class="form-group">
-      <label for="code">Код:</label>
-      <input type="text" [(ngModel)]="Code" class="form-control" id="code" placeholder="Введите код" name="code">
-    </div>
-    <button (click)="VerifyCode()" type="submit" style="margin-right: 15px;" class="btn btn-success">Продолжить</button>
-    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Уже есть аккаунт</button>
+      <div class="wrap-input100 validate-input">
+        <input class="input100" type="text" [(ngModel)]="Code" id="code" placeholder="Введите код" name="code" autocomplete="off">
+        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+      </div>
+      <div class="container-login100-form-btn">
+          <button (click)="VerifyCode()" type="submit" class="login100-form-btn">
+              Продолжить
+          </button>
+      </div>
   </form>
 
   <form *ngIf="CurrentStep===Steps.password">
-    <div class="form-group">
-      <label for="pwd">Пароль:</label>
-      <input [(ngModel)]="Password.password" type="password" class="form-control" id="pwd" placeholder="Введите пароль" name="pwd">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Подтвердите пароль:</label>
-      <input  [(ngModel)]="Password.password_confirmation" type="password" class="form-control" id="pwd-confirm" placeholder="Введите пароль ещё раз" name="pwd-confirm">
-    </div>
-
-    <div class="radio">
-      <label><input type="radio" [(ngModel)]="Type" value="employee" name="optradio">Регистрируюсь как сотрудник</label>
-    </div>
-    <div class="radio">
-      <label><input type="radio" [(ngModel)]="Type" value="company" name="optradio">Регистрируюсь как компания</label>
-    </div>
-
-    <button (click)="AddPassword()" type="submit" style="margin-right: 15px;" class="btn btn-success">Зарегистрироваться</button>
-    <button [routerLink]="['/auth','login']" type="button" class="btn btn-info">Уже есть аккаунт</button>
-
+      <div class="wrap-input100 validate-input">
+          <input class="input100" [(ngModel)]="Password.password" type="password" id="pwd" placeholder="Введите пароль" name="pwd"autocomplete="off">
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+      </div>
+      <div class="wrap-input100 validate-input">
+          <input class="input100" [(ngModel)]="Password.password_confirmation" type="password" id="pwd-confirm" placeholder="Введите пароль ещё раз" name="pwd-confirm" autocomplete="off">
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+      </div>
+      <div class="radio-wrapp">
+        <div class="radio-my">
+          <label><input type="radio" [(ngModel)]="Type" value="employee" name="optradio">Регистрируюсь как сотрудник</label>
+        </div>
+        <div class="radio-my">
+          <label><input type="radio" [(ngModel)]="Type" value="company" name="optradio">Регистрируюсь как компания</label>
+        </div>
+      </div>
+      <div class="container-login100-form-btn">
+          <button (click)="AddPassword()" type="submit" class="login100-form-btn">
+              Зарегистрироваться
+          </button>
+      </div>
   </form>
-
+  <div class="text-center p-t-90">
+  
+      <a class="txt1 link-lost-pass" [routerLink]="['/auth','login']">Вернуться на форму входа</a>
 
   </div>
-  </div>
-</div>
+
+
