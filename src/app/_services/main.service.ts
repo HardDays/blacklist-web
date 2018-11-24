@@ -23,7 +23,7 @@ export class MainService {
 
     constructor
     (
-        private http: HttpService,
+        public http: HttpService,
         private router: Router,
         public authService: AuthMainService,
         public imageService: ImagesService,

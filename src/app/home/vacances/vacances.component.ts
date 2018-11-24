@@ -15,25 +15,27 @@ export class VacancesComponent implements OnInit {
   Page: number = 1;
   TextSearch = '';
   IsAdmin = false;
-  
+  IsPaid = false;
+
   constructor(protected service: MainService) { }
 
   ngOnInit() {
 
     if (this.service.authService.me) {
       this.IsAdmin = this.service.authService.me.is_admin;
+      this.IsPaid = this.service.authService.me.is_payed;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
        this.IsAdmin = this.service.authService.me.is_admin;
+       this.IsPaid = this.service.authService.me.is_payed;
        this.GetVacancies();
       }
     );
-  
   }
 
   GetVacancies() {
-    if(this.IsAdmin) {
+    if (this.IsAdmin) {
       this.service.adminService.GetVacancies(this.Page)
       .subscribe(
         (res) => {
@@ -58,7 +60,7 @@ export class VacancesComponent implements OnInit {
   }
 
   search() {
-    if(this.IsAdmin) {
+    if (this.IsAdmin) {
       this.service.adminService.GetVacancies(this.Page, this.TextSearch)
       .subscribe(
         (res) => {
@@ -77,7 +79,7 @@ export class VacancesComponent implements OnInit {
         }
       );
     }
-    
+
   }
 
 }

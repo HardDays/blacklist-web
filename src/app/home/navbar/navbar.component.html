@@ -10,10 +10,10 @@
       <li *ngIf="!isPayed" routerLinkActive="active">
         <a routerLink="/pay">Оплатить</a>
       </li>
-      <li *ngIf="isPayed" routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/human-list">Люди</a>
       </li>
-      <li *ngIf="isPayed" routerLinkActive="active">
+      <li routerLinkActive="active">
         <a routerLink="/vacances">Вакансии</a>
       </li>
       <li *ngIf="isCompany && isPayed" routerLinkActive="active">

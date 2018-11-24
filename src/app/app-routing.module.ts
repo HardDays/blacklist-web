@@ -131,12 +131,12 @@ const routes: Routes = [
       },
       {
         path: 'human-list',
-        canActivate: [PayGuard],
+        // canActivate: [PayGuard],
         component: HumanListComponent
       },
       {
         path: 'vacances',
-        canActivate: [PayGuard],
+        // canActivate: [PayGuard],
         component: VacancesComponent
       },
       {

@@ -18,6 +18,7 @@ export class HumanListComponent implements OnInit {
   TextSearch = '';
 
   IsAdmin = false;
+  IsPaid = false;
 
   constructor(protected service: MainService) { }
 
@@ -25,10 +26,12 @@ export class HumanListComponent implements OnInit {
 
     if (this.service.authService.me) {
       this.IsAdmin = this.service.authService.me.is_admin;
+      this.IsPaid = this.service.authService.me.is_payed;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
        this.IsAdmin = this.service.authService.me.is_admin;
+       this.IsPaid = this.service.authService.me.is_payed;
        this.GetEmployees();
       }
     );
