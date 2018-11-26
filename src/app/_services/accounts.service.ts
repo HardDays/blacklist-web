@@ -80,11 +80,20 @@ export class AccountsService {
     }
 
 
-    GetEmployees(page: number, text?: string) {
+    GetEmployees(page: number, text?: string, experience?: number, position?: string) {
       const offset = (page - 1) * 10;
         return this.http.CommonRequest(
-            () => this.http.GetData('/employees.json', this.ParamsToUrlSearchParams({limit: 10, offset, text: text ? text : ''}))
-        );
+            () => this.http.GetData('/employees.json',
+              this.ParamsToUrlSearchParams(
+                {
+                  limit: 10,
+                  offset,
+                  text: text ? text : '',
+                  experience: experience ? experience : 0,
+                  position: position ? position : ''
+                }
+              )
+        ));
     }
 
     AddVacance(company_id: number, vacance: Vacancie) {

@@ -91,6 +91,11 @@ export class AuthMainService {
           this.me = res;
            console.log(`ME = `, this.me);
           this.onMeChange$.next(true);
+        }, (err) => {
+          if (err['status'] === 403) {
+            this.ClearSession();
+            this.router.navigate(['/auth']);
+          }
         }
       );
     }

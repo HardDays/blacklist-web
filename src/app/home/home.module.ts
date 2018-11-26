@@ -31,6 +31,8 @@ import { PayComponent } from './pay/pay.component';
 import { BlacklistService } from '../_services/blacklist.service';
 import { UiPaginationComponent } from './ui-pagination/ui-pagination.component';
 import { AdminService } from '../_services/admin.service';
+import { PaySuccessComponent } from './pay/pay-success/pay-success.component';
+import { PayErrorComponent } from './pay/pay-error/pay-error.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { AdminService } from '../_services/admin.service';
     CreateBlackComponent,
     BlackListItemComponent,
     PayComponent,
-    UiPaginationComponent
+    UiPaginationComponent,
+    PaySuccessComponent,
+    PayErrorComponent
   ],
   providers: [
     MainService,

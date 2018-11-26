@@ -10,7 +10,7 @@
       <li *ngIf="!isPayed" routerLinkActive="active">
         <a routerLink="/pay">Оплатить</a>
       </li>
-      <li *ngIf="isCompany" routerLinkActive="active">
+      <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
         <a routerLink="/human-list">Люди</a>
       </li>
       <li routerLinkActive="active">
@@ -22,7 +22,7 @@
       <li *ngIf="isCompany && isPayed" routerLinkActive="active">
         <a routerLink="/my-msg">Отклики на вакансии</a>
       </li>
-      <li *ngIf="isPayed" routerLinkActive="active">
+      <li *ngIf="isPayed||isAdmin" routerLinkActive="active">
         <a routerLink="/black-list">Черный список</a>
       </li>
     </ul>

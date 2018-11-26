@@ -39,11 +39,21 @@ export class AdminService {
     }
 
 
-    GetEmployeesList() {
+    GetEmployeesList(page: number, text?: string, experience?: number, position?: string) {
+        const offset = (page - 1) * 10;
         return this.http.CommonRequest(
-            () => this.http.GetData('/admin_employees.json', '')
+            () => this.http.GetData('/admin_employees.json', this.ParamsToUrlSearchParams(
+                {
+                  limit: 10,
+                  offset,
+                  text: text ? text : '',
+                  experience: experience ? experience : 0,
+                  position: position ? position : ''
+                }
+              ))
         );
     }
+
     GetEmployeeById(id: number) {
         return this.http.CommonRequest(
             () => this.http.GetData('/admin_employees/' + id + '.json', '')

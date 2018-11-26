@@ -16,6 +16,8 @@ export class HumanListComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   Page: number = 1;
   TextSearch = '';
+  Position = '';
+  Experience = 0;
 
   IsAdmin = false;
   IsPaid = false;
@@ -44,7 +46,7 @@ export class HumanListComponent implements OnInit {
 
   GetEmployees() {
     if (this.IsAdmin) {
-      this.service.adminService.GetEmployeesList()
+      this.service.adminService.GetEmployeesList(this.Page, this.TextSearch, this.Experience, this.Position)
         .subscribe(
           (res) => {
             this.Employees = [];
@@ -57,7 +59,7 @@ export class HumanListComponent implements OnInit {
           }
         );
     } else {
-      this.service.accService.GetEmployees(this.Page, this.TextSearch)
+      this.service.accService.GetEmployees(this.Page, this.TextSearch, this.Experience, this.Position)
       .subscribe(
         (res) => {
           this.Employees = [];

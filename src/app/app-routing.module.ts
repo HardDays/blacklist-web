@@ -1,3 +1,5 @@
+import { PayErrorComponent } from './home/pay/pay-error/pay-error.component';
+import { PaySuccessComponent } from './home/pay/pay-success/pay-success.component';
 import { PayComponent } from './home/pay/pay.component';
 import { PayGuard } from './_guards/pay.guard';
 import { BlackListItemComponent } from './home/black-list-item/black-list-item.component';
@@ -109,7 +111,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'profile', pathMatch: 'full'},
-      { path: 'pay', component: PayComponent},
+      { path: 'pay',
+        component: PayComponent,
+        children: [
+          { path: 'success', component: PaySuccessComponent},
+          { path: 'error', component: PayErrorComponent}
+        ]
+      },
       {
         path: 'profile',
         component: ProfileComponent,

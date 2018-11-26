@@ -1,5 +1,6 @@
 import { MainService } from './../../_services/main.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pay',
@@ -8,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PayComponent implements OnInit {
 
-  constructor(protected service: MainService) { }
+  Pages = {
+    'pay': 1,
+    'success': 2,
+    'error': 3,
+  };
+
+  Page = this.Pages.pay;
+
+  constructor(protected service: MainService, protected router: Router) {
+    if (router.url === '/pay/error') {
+      this.Page = this.Pages.error;
+    } else if (router.url === '/pay/success') {
+      this.Page = this.Pages.success;
+    }
+  }
 
   ngOnInit() {
     // this.getForm();

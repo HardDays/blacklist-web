@@ -10,12 +10,12 @@
     <div class="col-md-4">
             <label style="text-align: right; padding-top: 5px;" for="inputEmail4" class="control-label">поиск по должности</label>
 
-            <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail4" placeholder="Должность">
+            <input type="text" (input)="Position=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail4" placeholder="Должность">
         </div>
     <div class="col-md-4">
         <label style="text-align: right; padding-top: 5px;" for="inputEmail4" class=" control-label">поиск по стажу работы</label>
 
-        <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail4" placeholder="Стаж">
+        <input type="text" (input)="Experience=+($event.target.value); Page = 1; search()" class="form-control" id="inputEmail4" placeholder="Стаж">
     </div>
   </div>
  <br><br><br>

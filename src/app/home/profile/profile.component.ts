@@ -22,6 +22,12 @@ export class ProfileComponent implements OnInit {
         if (res) {
           this.InitUser();
         }
+      }, (err) => {
+        console.log(`err = `, err);
+
+        // if (err.json().) {
+        //   this.service.authService.Logout();
+        // }
       }
     );
   }
