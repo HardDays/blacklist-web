@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // нет токена? - перенаправляем на страницу логина с возвращенным url
-    this.router.navigateByUrl('/auth/login', { queryParams: { returnUrl: state.url } });
+    this.router.navigateByUrl('/auth/home', { queryParams: { returnUrl: state.url } });
     return false;
   }
 }

@@ -1,0 +1,75 @@
+    <div class="baner" style="background-image: url(../../../assets/images/baner.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="baner__left">
+                        <h1>BLACKLIST</h1>
+                        <a [routerLink]="['/auth','register']" class="main-button">купить подписку</a>
+                    </div>
+                </div>
+                <div class="col-md-push-2 col-md-4">
+                    <div class="baner__right">
+                        <form class="form__login">
+                            <div class="form__login__head">
+                                <span class="form__login__head__login">Вход</span>
+                                <a [routerLink]="['/auth','register']" class="form__login__head__registr">Регистрация</a>
+                            </div>
+                            <input [(ngModel)]="user.email" id="user.email" name="user.email" placeholder="Введите email" class="form__login__inp" type="text">
+                            <input class="form__login__inp" [(ngModel)]="user.password" name="user.password" id="pwd" placeholder="Введите пароль"  type="password">
+                            <div class="form__login__forgot-pass">
+                                <a [routerLink]="['/auth','password-reset']">Забыли пароль?</a>
+                            </div>
+                            <button (click)="Login()" class="form__login__submit main-button" type="submit">Войти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-cont">
+        <div class="container">
+            <div class="row my-flex">
+                <div class="col-md-4 col-sm-6">
+                    <div class="main-cont__top-vac bordered">
+                        <h3>Вакансии дня</h3>
+                        <div *ngFor="let item of Vacancies" class="main-cont__top-vac__item">
+                            <a class="vacc-name">{{item.position}}</a>
+                            <p class="vacc-company">{{item.company_name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                     <div class="main-cont__top-vac">
+                        <h3>Сотрудники дня</h3>
+                        <div *ngFor="let item of Employees" class="main-cont__top-vac__item">
+                            <a class="vacc-name">{{item.position?item.position:'-'}}</a>
+                            <p class="grey-text">Опыт работы</p>
+                            <p class="vac-item-info">{{item.experience?item.experience:'-'}} года</p>
+                            <!-- <p class="grey-text">Последнее место работы</p> -->
+                            <!-- <p class="vac-item-info">Дизайнер, ООО ласточка, ноябрь 2017</p> -->
+                            <!-- <p class="grey-text">обновлено 23 ноября</p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="adv-wrapp">
+                        <a href="#" class="adv-wrapp__img">
+                            <img class="img-responsive" src="../../../assets/images/image.jpg">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>По всем вопросам обращатся на почту: <span>snolly.gv@gmail.com</span></p>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>

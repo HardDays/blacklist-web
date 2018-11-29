@@ -144,4 +144,16 @@ export class AccountsService {
     }
 
 
+    GetHomeVacanvies() {
+      return this.http.CommonRequest(
+            () => this.http.GetData('/vacancies/dashboard.json', '')
+        );
+    }
+    GetHomeEmployees() {
+      return this.http.CommonRequest(
+            () => this.http.GetData('/employees/dashboard.json', '')
+        );
+    }
+
+
 }

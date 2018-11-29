@@ -1,3 +1,4 @@
+import { PageHomeComponent } from './auth/page-home/page-home.component';
 import { PayErrorComponent } from './home/pay/pay-error/pay-error.component';
 import { PaySuccessComponent } from './home/pay/pay-success/pay-success.component';
 import { PayComponent } from './home/pay/pay.component';
@@ -99,7 +100,8 @@ const routes: Routes = [
     component: AuthComponent,
     canActivate: [AuthPageGuard],
     children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: PageHomeComponent },
       { path: 'login', component: PageLoginComponent },
       { path: 'register', component: PageRegisterComponent },
       { path: 'password-reset', component: PagePasswordResetComponent }

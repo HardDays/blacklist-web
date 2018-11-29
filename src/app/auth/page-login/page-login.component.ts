@@ -17,11 +17,6 @@ export class PageLoginComponent implements OnInit {
       // localStorage.setItem('currentUser', JSON.stringify({'token:': '12345'}));
   }
 
-  setToken() {
-    localStorage.setItem('token', '12345');
-    this.router.navigate(['/profile']);
-  }
-
   Login() {
     this.service.authService.UserLogin(this.user)
       .subscribe(

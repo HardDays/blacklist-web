@@ -19,6 +19,7 @@ export interface LoginModel {
   email: string;
   password: string;
 }
+// tslint:disable-next-line:class-name
 export interface resetPass {
   email: string;
 }
