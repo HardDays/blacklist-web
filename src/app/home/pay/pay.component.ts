@@ -17,6 +17,8 @@ export class PayComponent implements OnInit {
 
   Page = this.Pages.pay;
 
+  Pay: any;
+
   constructor(protected service: MainService, protected router: Router) {
     if (router.url === '/pay/error') {
       this.Page = this.Pages.error;
@@ -26,12 +28,42 @@ export class PayComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.service.authService.me) {
+      this.getPayment();
+    }
+    this.service.authService.onMeChange$.subscribe(
+      res => {
+       this.getPayment();
+      }
+    );
     // this.getForm();
+  }
+
+  getPayment() {
+    this.service.accService.GetPaymentData(this.service.authService.me.id)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.Pay = res;
+        }
+      );
   }
 
   pay() {
     this.service.authService.me.is_payed = true;
     this.service.authService.onMeChange$.next(true);
+  }
+
+  onSubmit(data) {
+    this.service.http.PostDataToOtherUrl(this.Pay['mrh_url'], data)
+      .subscribe(
+        (res) => {
+          console.log(`ok`, res);
+        },
+        (err) => {
+          console.log(`err`, err);
+        }
+      );
   }
 
   getForm() {

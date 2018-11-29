@@ -102,4 +102,8 @@ export class HttpService {
         return this.http.get(url, {headers: this.headers});
     }
 
+    PostDataToOtherUrl(url: string, data) {
+        return this.http.post(url, data, {headers: this.headers});
+    }
+
 }

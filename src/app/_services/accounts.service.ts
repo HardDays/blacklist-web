@@ -155,5 +155,10 @@ export class AccountsService {
         );
     }
 
+    GetPaymentData(user_id: number) {
+      return this.http.CommonRequest(
+            () => this.http.PostData('/payments.json', JSON.stringify({user_id}))
+        );
+    }
 
 }

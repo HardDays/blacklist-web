@@ -5,8 +5,21 @@
             <h1 (click)="pay()">ОПЛАТИТЬ</h1>
             <p>Для открытия полного функционала требуется оплатить!</p>
             <br>
-            <!-- <script type="text/javascript" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormV.js?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=100&SignatureValue=26c8359221244aa536a4741029c577bb"></script> -->
-            <iframe width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=0&SignatureValue=26c8359221244aa536a4741029c577bb"></iframe>
+
+            <!-- <iframe width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=0&SignatureValue=26c8359221244aa536a4741029c577bb"></iframe> -->
+
+
+            <form *ngIf="Pay&&Pay['mrh_url']" #f="ngForm" [action]="Pay['mrh_url']" method="post">
+              <input type=hidden name=MrchLogin [value]="Pay['mrh_login']">
+              <input type=hidden name=OutSum [value]="Pay['out_summ']">
+              <input type=hidden name=InvId [value]="Pay['inv_id']">
+              <input type=hidden name=Desc [value]="Pay['inv_desc']">
+              <input type=hidden name=SignatureValue [value]="Pay['crc']">
+              <input type=hidden name=Shp_item [value]="Pay['shp_item']">
+              <input type=hidden name=IncCurrLabel [value]="Pay['in_curr']">
+              <input type=hidden name=Culture [value]="Pay['culture']">
+              <input type=submit (click)="onSubmit(f)" value='Оплатить'>
+            </form>
         </div>
       </div>
     </div>
