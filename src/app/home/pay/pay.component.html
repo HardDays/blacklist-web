@@ -8,8 +8,12 @@
 
             <!-- <iframe width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=0&SignatureValue=26c8359221244aa536a4741029c577bb"></iframe> -->
 
+             <!-- <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&MrchLogin='+Pay['mrh_login']+'&InvoiceID='+Pay['inv_id']+'&InvId='+Pay['inv_id']+'&Culture='+Pay['culture']+'&Encoding=utf-8&OutSum='+Pay['out_summ']+'&SignatureValue='+Pay['crc']+'isTest=1')"></iframe> -->
 
-            <form *ngIf="Pay&&Pay['mrh_url']" #f="ngForm" [action]="Pay['mrh_url']" method="post">
+             <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin='+Pay['mrh_login']+'&OutSum='+Pay['out_summ']+'&InvoiceID='+Pay['inv_id']+'&SignatureValue='+Pay['crc']+'&IsTest=1')"></iframe>
+
+
+            <!-- <form *ngIf="Pay&&Pay['mrh_url']" #f="ngForm" [action]="Pay['mrh_url']" method="post">
               <input type=hidden name=MrchLogin [value]="Pay['mrh_login']">
               <input type=hidden name=OutSum [value]="Pay['out_summ']">
               <input type=hidden name=InvId [value]="Pay['inv_id']">
@@ -19,7 +23,7 @@
               <input type=hidden name=IncCurrLabel [value]="Pay['in_curr']">
               <input type=hidden name=Culture [value]="Pay['culture']">
               <input type=submit (click)="onSubmit(f)" value='Оплатить'>
-            </form>
+            </form> -->
         </div>
       </div>
     </div>

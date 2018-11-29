@@ -1,6 +1,7 @@
 import { MainService } from './../../_services/main.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pay',
@@ -19,13 +20,37 @@ export class PayComponent implements OnInit {
 
   Pay: any;
 
-  constructor(protected service: MainService, protected router: Router) {
+  constructor(protected service: MainService, protected router: Router, protected sanitizer: DomSanitizer) {
     if (router.url === '/pay/error') {
       this.Page = this.Pages.error;
     } else if (router.url === '/pay/success') {
       this.Page = this.Pages.success;
     }
   }
+
+  photoURL(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  // getUrl() {
+  //   return this.photoURL(
+  //   // tslint:disable-next-line:max-line-length
+
+  //   );
+  // }
+
+//   <?
+//   $mrh_login = "Test1999";
+//   $mrh_pass1 = "password_1";
+//   $inv_id = 678678;
+//   $inv_desc = "Товары для животных";
+//   $out_summ = "100.00";
+//   $IsTest = 1;
+//   $crc = md5("$mrh_login:$out_summ:$inv_id:$mrh_pass1");
+//   print "<html><script language=JavaScript ".
+//       "src='https://auth.robokassa.ru/Merchant/PaymentForm/FormMS.js?".
+//       "MerchantLogin=$mrh_login&OutSum=$out_summ&InvoiceID=$inv_id".
+//       "&Description=$inv_desc&SignatureValue=$crc&IsTest=$IsTest'></script></html>";
+// ?>
 
   ngOnInit() {
     if (this.service.authService.me) {
@@ -55,6 +80,7 @@ export class PayComponent implements OnInit {
   }
 
   onSubmit(data) {
+    console.log(data);
     this.service.http.PostDataToOtherUrl(this.Pay['mrh_url'], data)
       .subscribe(
         (res) => {
