@@ -21,15 +21,19 @@ export class PayComponent implements OnInit {
   Pay: any;
 
   constructor(protected service: MainService, protected router: Router, protected sanitizer: DomSanitizer) {
-    if (router.url === '/pay/error') {
+    if (router.url === '/pay/fail') {
       this.Page = this.Pages.error;
     } else if (router.url === '/pay/success') {
       this.Page = this.Pages.success;
+      this.pay();
     }
   }
 
   photoURL(url) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    if (this.Pay) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url + '&Shp_item=' + this.Pay['shp_item']);
+    }
+    return '';
   }
   // getUrl() {
   //   return this.photoURL(
@@ -75,8 +79,14 @@ export class PayComponent implements OnInit {
   }
 
   pay() {
-    this.service.authService.me.is_payed = true;
-    this.service.authService.onMeChange$.next(true);
+    // this.service.authService.me.is_payed = true;
+
+    this.service.authService.GetMe()
+      .subscribe(
+        (res) => {
+          this.service.authService.onMeChange$.next(true);
+        }
+      );
   }
 
   onSubmit(data) {

@@ -6,11 +6,9 @@
             <p>Для открытия полного функционала требуется оплатить!</p>
             <br>
 
-            <!-- <iframe width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" src="https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=0&SignatureValue=26c8359221244aa536a4741029c577bb"></iframe> -->
+             <!-- <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin='+Pay['mrh_login']+'&OutSum='+Pay['out_summ']+'&InvoiceID='+Pay['inv_id']+'&SignatureValue='+Pay['crc']+'&IsTest=1')"></iframe> -->
 
-             <!-- <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&MrchLogin='+Pay['mrh_login']+'&InvoiceID='+Pay['inv_id']+'&InvId='+Pay['inv_id']+'&Culture='+Pay['culture']+'&Encoding=utf-8&OutSum='+Pay['out_summ']+'&SignatureValue='+Pay['crc']+'isTest=1')"></iframe> -->
-
-             <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin='+Pay['mrh_login']+'&OutSum='+Pay['out_summ']+'&InvoiceID='+Pay['inv_id']+'&SignatureValue='+Pay['crc']+'&IsTest=1')"></iframe>
+             <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&IsTest=1&Culture=ru&Encoding=utf-8&OutSum=10&SignatureValue=b8aedf7be83cebea521adbda47800216b06208dd9e40deeeec6ddb23324d9895')"></iframe>
 
 
             <!-- <form *ngIf="Pay&&Pay['mrh_url']" #f="ngForm" [action]="Pay['mrh_url']" method="post">
@@ -30,9 +28,17 @@
   </div>
 
   <div *ngIf="Page===Pages.success" class="container">
+      <div class="row">
+    <div class="col-md-12">
+        <div class="row">
     <p>Успешная оплата!</p>
+    </div></div></div>
   </div>
 
   <div *ngIf="Page===Pages.error" class="container">
+          <div class="row">
+    <div class="col-md-12">
+        <div class="row">
     <p>Ошибка оплаты!</p>
+    </div></div></div>
   </div>
