@@ -21,6 +21,7 @@ export class PayComponent implements OnInit {
   Pay: any;
 
   constructor(protected service: MainService, protected router: Router, protected sanitizer: DomSanitizer) {
+    console.log(`route`, router, router.url);
     if (router.url === '/pay/fail') {
       this.Page = this.Pages.error;
     } else if (router.url === '/pay/success') {
@@ -57,7 +58,7 @@ export class PayComponent implements OnInit {
 // ?>
 
   ngOnInit() {
-    if (this.service.authService.me) {
+    if (this.service.authService.me&&this.service.authService.me.id) {
       this.getPayment();
     }
     this.service.authService.onMeChange$.subscribe(
