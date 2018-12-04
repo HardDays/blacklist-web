@@ -22,9 +22,9 @@ export class PayComponent implements OnInit {
 
   constructor(protected service: MainService, protected router: Router, protected sanitizer: DomSanitizer) {
     console.log(`route`, router, router.url);
-    if (router.url === '/pay/fail') {
+    if (router.url.startsWith('/pay/fail')) {
       this.Page = this.Pages.error;
-    } else if (router.url === '/pay/success') {
+    } else if (router.url.startsWith('/pay/success')) {
       this.Page = this.Pages.success;
       this.pay();
     }
