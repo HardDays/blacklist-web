@@ -117,7 +117,7 @@ const routes: Routes = [
         component: PayComponent,
         children: [
           { path: 'success', component: PaySuccessComponent},
-          { path: 'error', component: PayErrorComponent}
+          { path: 'fail', component: PayErrorComponent}
         ]
       },
       {

@@ -58,7 +58,7 @@ export class PayComponent implements OnInit {
 // ?>
 
   ngOnInit() {
-    if (this.service.authService.me&&this.service.authService.me.id) {
+    if (this.service.authService.me && this.service.authService.me.id) {
       this.getPayment();
     }
     this.service.authService.onMeChange$.subscribe(
