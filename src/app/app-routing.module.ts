@@ -100,12 +100,17 @@ const routes: Routes = [
     component: AuthComponent,
     canActivate: [AuthPageGuard],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: PageHomeComponent },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: PageLoginComponent },
       { path: 'register', component: PageRegisterComponent },
-      { path: 'password-reset', component: PagePasswordResetComponent }
+      { path: 'password-reset', component: PagePasswordResetComponent },
+      { path: '**', redirectTo: 'login' }
     ]
+  },
+  {
+    path: 'home',
+    component: PageHomeComponent,
+    runGuardsAndResolvers: 'always'
   },
   {
     path: '',
@@ -245,7 +250,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   exports: [RouterModule],
   providers: [

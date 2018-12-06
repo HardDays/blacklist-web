@@ -129,4 +129,11 @@ button {
 footer span {
   color: #FFB800; }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
+.form__login.text p {
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

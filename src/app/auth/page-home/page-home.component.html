@@ -1,15 +1,51 @@
+<nav *ngIf="isMe" class="navbar navbar-inverse">
+  <div class="container">
+    <div route class="navbar-header">
+      <span routerLink="/home" class="navbar-brand" >BL</span>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a routerLink="/profile">Профиль</a>
+      </li>
+      <li *ngIf="!isPayed" routerLinkActive="active">
+        <a routerLink="/pay">Оплатить</a>
+      </li>
+      <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
+        <a routerLink="/human-list">Люди</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/vacances">Вакансии</a>
+      </li>
+      <li *ngIf="isCompany && isPayed" routerLinkActive="active">
+        <a routerLink="/my-vacances">Мои вакансии</a>
+      </li>
+      <li *ngIf="isCompany && isPayed" routerLinkActive="active">
+        <a routerLink="/my-msg">Отклики на вакансии</a>
+      </li>
+      <li *ngIf="isPayed||isAdmin" routerLinkActive="active">
+        <a routerLink="/black-list">Черный список</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="cursor-pointer" (click)="Logout()"><a ><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
     <div class="baner" style="background-image: url(../../../assets/images/baner.jpg)">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="baner__left">
                         <h1>BLACKLIST</h1>
-                        <a [routerLink]="['/auth','register']" class="main-button">купить подписку</a>
+                        <a *ngIf="!isMe" [routerLink]="['/auth','register']" class="main-button">купить подписку</a>
+                        <a *ngIf="isMe&&!isPayed" [routerLink]="['/pay']" class="main-button">купить подписку</a>
                     </div>
                 </div>
                 <div class="col-md-push-2 col-md-4">
                     <div class="baner__right">
-                        <form class="form__login">
+                        <form *ngIf="!isMe" class="form__login">
                             <div class="form__login__head">
                                 <span class="form__login__head__login">Вход</span>
                                 <a [routerLink]="['/auth','register']" class="form__login__head__registr">Регистрация</a>
@@ -21,6 +57,10 @@
                             </div>
                             <button (click)="Login()" class="form__login__submit main-button" type="submit">Войти</button>
                         </form>
+                        <div *ngIf="isMe" class="form__login text">
+                          <p>Имя: {{Me.name}}</p>
+                          <p>Почта: {{Me.email}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
