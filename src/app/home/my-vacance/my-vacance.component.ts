@@ -20,6 +20,8 @@ export class MyVacanceComponent implements OnInit {
       description: '',
       min_experience: 0
     };
+
+    errorText = '';
     constructor(private activateRoute: ActivatedRoute, private router: Router, protected service: MainService) {
         if (activateRoute.snapshot.params['id'] === 'new') {
           this.isNew = true;
@@ -49,6 +51,12 @@ export class MyVacanceComponent implements OnInit {
           (res) => {
             console.log(res);
             this.router.navigate(['/my-vacances']);
+          },
+          (err)=>{
+            let error = JSON.parse(err._body);
+            let errText;
+            errText = (error.position ? 'Незаполнена должность.':'') + ' ' + (error.description ? 'Незаполнено описание.':'');
+            this.errorText = errText;
           }
         );
     } else {
