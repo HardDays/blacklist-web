@@ -16,6 +16,7 @@
       <input class="input100" type="email" [(ngModel)]="Email" id="email" placeholder="Введите email" name="email" autocomplete="off">
       <span class="focus-input100" data-placeholder="&#xf207;"></span>
     </div>
+    <p *ngIf="error" class="my-error">{{errorText}}</p>
     <div class="container-login100-form-btn">
         <button (click)="CreateUserByEmail()" type="button" class="login100-form-btn">
             Отправить код
@@ -33,6 +34,7 @@
         <input class="input100" type="text" [(ngModel)]="Code" id="code" placeholder="Введите код" name="code" autocomplete="off">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
       </div>
+      <p *ngIf="error" class="my-error">{{errorText}}</p>
       <div class="container-login100-form-btn">
           <button (click)="VerifyCode()" type="submit" class="login100-form-btn">
               Продолжить
@@ -49,6 +51,7 @@
           <input class="input100" [(ngModel)]="Password.password_confirmation" type="password" id="pwd-confirm" placeholder="Введите пароль ещё раз" name="pwd-confirm" autocomplete="off">
           <span class="focus-input100" data-placeholder="&#xf191;"></span>
       </div>
+      <p *ngIf="error" class="my-error">{{errorText}}</p>
       <div class="radio-wrapp">
         <div class="radio-my">
           <label><input type="radio" [(ngModel)]="Type" value="employee" name="optradio">Регистрируюсь как сотрудник</label>

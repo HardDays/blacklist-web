@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-login.component.css']
 })
 export class PageLoginComponent implements OnInit {
-
+  error = false;
   user: LoginModel = {email: '', password: ''};
   constructor(protected service: MainService, protected router: Router) { }
 
@@ -22,9 +22,13 @@ export class PageLoginComponent implements OnInit {
       .subscribe(
         (res) => {
            console.log(res);
+           this.error = false;
            this.service.authService.BaseInitAfterLogin(res);
            this.service.authService.TryToLoginWithToken();
            this.router.navigate(['']);
+        },
+        (err)=>{
+          this.error = true;
         }
       );
   }

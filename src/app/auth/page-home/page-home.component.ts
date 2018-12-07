@@ -24,7 +24,7 @@ export class PageHomeComponent implements OnInit {
   isPayed = false;
   isAdmin = false;
   Me: UserModel;
-
+   errorLogin = false;
 
   Logout() {
     this.service.authService.Logout();
@@ -74,9 +74,13 @@ export class PageHomeComponent implements OnInit {
       .subscribe(
         (res) => {
            console.log(res);
+           this.errorLogin = false;
            this.service.authService.BaseInitAfterLogin(res);
            this.service.authService.TryToLoginWithToken();
            this.router.navigate(['']);
+        },
+        (err) =>{
+          this.errorLogin = true;
         }
       );
   }

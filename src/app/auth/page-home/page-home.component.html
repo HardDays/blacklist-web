@@ -52,6 +52,7 @@
                             </div>
                             <input [(ngModel)]="user.email" id="user.email" name="user.email" placeholder="Введите email" class="form__login__inp" type="text">
                             <input class="form__login__inp" [(ngModel)]="user.password" name="user.password" id="pwd" placeholder="Введите пароль"  type="password">
+                            <p *ngIf="errorLogin" class="my-error">Неверный логин или пароль</p>
                             <div class="form__login__forgot-pass">
                                 <a [routerLink]="['/auth','password-reset']">Забыли пароль?</a>
                             </div>

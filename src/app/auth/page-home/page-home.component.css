@@ -43,6 +43,10 @@ button {
     @media (max-width: 767px) {
       .baner__left h1 {
         font-size: 24px; } }
+.my-error{
+  color: #fff;
+  
+}
 
 .form__login {
   background: rgba(0, 0, 0, 0.4);

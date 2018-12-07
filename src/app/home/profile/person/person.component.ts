@@ -22,9 +22,9 @@ export class PersonComponent implements OnInit, OnChanges {
     gender: 'm'
   };
   Image = '';
-
+  errorText = '';
   Jobs: Job[] = [];
-
+  succesText = "";
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -78,15 +78,30 @@ export class PersonComponent implements OnInit, OnChanges {
                 this.service.authService.onMeChange$.next(true);
               }
             );
+            this.errorText = "";
             this.SendJobs();
+          },
+          (err)=>{
+            let error = JSON.parse(err._body);
+            let errText = (error.first_name ? 'Незаполнено имя.':'') + ' ' + (error.second_name ? 'Незаполнено отчество.':'') + ' ' +(error.last_name ? 'Незаполнена фамилия.':'');
+            this.errorText = errText;
+            this.succesText = ""
+            
           }
         );
     } else {
       this.service.accService.PatchEmployee(this.Employee)
         .subscribe(
           (res) => {
-            console.log(`res`, res);
+            this.errorText = "";
+            
             this.SendJobs();
+          },
+          (err)=>{
+            let error = JSON.parse(err._body);
+            let errText = (error.first_name ? 'Незаполнено имя.':'') + ' ' + (error.second_name ? 'Незаполнено отчество.':'') + ' ' +(error.last_name ? 'Незаполнена фамилия.':'');
+            this.errorText = errText;
+            this.succesText = "";
           }
         );
     }
@@ -98,14 +113,31 @@ export class PersonComponent implements OnInit, OnChanges {
         this.service.accService.AddJob(this.Employee.id, item)
           .subscribe(
             (res) => {
+              this.errorText = "";
+              this.succesText = "Cохранено"
               console.log(`ok`);
+            },
+            (err)=>{
+              console.log(err);
+              let error = JSON.parse(err._body);
+              let errText = (error.name ? 'Незаполнено название прошлого места работы.':'') + ' ' + (error.period ? 'Незаполнен период прошлого места работы.':'')
+              this.errorText = errText;
+              this.succesText = ""
             }
           );
       } else {
         this.service.accService.PatchJob(this.Employee.id, item)
           .subscribe(
             (res) => {
+              this.errorText = "";
               console.log(`ok`);
+              this.succesText = "Cохранено"
+            },
+            (err)=>{
+              let error = JSON.parse(err._body);
+              let errText = (error.name ? 'Незаполнено название прошлого места работы.':'') + ' ' + (error.period ? 'Незаполнен период прошлого места работы.':'')
+              this.errorText = errText;
+              this.succesText = ""
             }
           );
       }

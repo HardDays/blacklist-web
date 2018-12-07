@@ -24,7 +24,7 @@ export class CreateBlackComponent implements OnInit {
     text: '',
     item_type: 'employee'
   };
-
+  errorText = '';
   constructor(protected service: MainService, private router: Router) { }
 
   ngOnInit() {
@@ -32,6 +32,9 @@ export class CreateBlackComponent implements OnInit {
 
   AddJob() {
 
+  }
+  changeERR($event){
+    this.errorText = "";
   }
 
   Save () {
@@ -45,6 +48,20 @@ export class CreateBlackComponent implements OnInit {
         (res) => {
           console.log(`ok`);
           this.router.navigate(['/black-list']);
+        },
+        (err)=>{
+          
+          let error = JSON.parse(err._body);
+          let errText;
+          if(this.CurrentType === this.Types.employee){
+            
+            errText = (error.name ? 'Незаполнено ФИО.':'') + ' ' + (error.description ? 'Незаполнена должность.':'');
+          }
+          else{
+            errText = (error.name ? 'Незаполнено название.':'') + ' ' + (error.description ? 'Незаполнено описание.':'');
+          }
+          
+          this.errorText = errText;
         }
       );
   }
