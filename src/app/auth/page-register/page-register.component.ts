@@ -23,6 +23,8 @@ export class PageRegisterComponent implements OnInit {
     password_confirmation: ''
   };
 
+  error = false;
+  errorText = '';
   Token = '';
   UserId = 0;
 
@@ -38,8 +40,20 @@ export class PageRegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(`add email ok`, res);
+          this.error = false;
+          this.errorText = '';
           this.CurrentStep = this.Steps.code;
+        },
+        (err)=>{
+          this.error = true;
+          if(err.status == 500){
+            this.errorText = 'Введите корректный email'
+          }
+          if(err.status == 422){
+            this.errorText = 'Пользователь с данным email уже существует'
+          }
         }
+        
       );
   }
 
@@ -48,10 +62,16 @@ export class PageRegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(`add email ok`, res);
+          this.errorText = '';
+          this.error = false;
           // this.service.authService.BaseInitAfterLogin(res);
           this.Token = res.token;
           this.UserId = res.id;
           this.CurrentStep = this.Steps.password;
+        },
+        (err)=>{
+          this.error = true;
+          this.errorText = 'Код неверный'
         }
       );
   }
@@ -62,11 +82,20 @@ export class PageRegisterComponent implements OnInit {
       this.service.authService.PatchUserToAddPassword(this.UserId, this.Password.password, this.Password.password_confirmation)
         .subscribe(
           (res) => {
-            console.log(`add password ok`, res);
+            this.error = false;
+            this.errorText = '';
             localStorage.setItem('registerType', this.Type);
             this.Login();
           }
         );
+    }
+    if(this.Password.password.length < 4){
+        this.error = true;
+        this.errorText = 'Пароль должен включать минимум 4 символа'
+    }
+    if(this.Password.password != this.Password.password_confirmation){
+        this.error = true;
+        this.errorText = 'Пароли не совпадают'
     }
   }
 

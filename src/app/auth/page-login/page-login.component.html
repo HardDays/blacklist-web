@@ -21,7 +21,7 @@
     <input class="input100"  type="password" [(ngModel)]="user.password" id="pwd" placeholder="Введите пароль" name="pwd" autocomplete="off">
     <span class="focus-input100" data-placeholder="&#xf191;"></span>
   </div>
-
+  <p *ngIf="error" class="my-error">Неверный логин или пароль</p>
   <div style="margin-bottom: 10px;" class="container-login100-form-btn">
     <button (click)="Login()" type="button" class="login100-form-btn">
       Войти

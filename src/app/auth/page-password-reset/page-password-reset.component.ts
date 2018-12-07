@@ -13,7 +13,7 @@ export class PagePasswordResetComponent implements OnInit {
   user: resetPass = {email: ''};
   ifSended = false;
   constructor(protected service: MainService, protected router: Router) { }
-
+  error = false;
   ngOnInit() {
       // localStorage.setItem('currentUser', JSON.stringify({'token:': '12345'}));
   }
@@ -24,9 +24,13 @@ export class PagePasswordResetComponent implements OnInit {
     this.service.authService.ResetPass(this.user)
       .subscribe(
         (res) => {
-           console.log(res);
           this.ifSended = true;
+          this.error = false;
+        },
+        (error)=>{
+          this.error = true;
         }
+
       );
   }
 

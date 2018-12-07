@@ -19,7 +19,8 @@ export class CompanyComponent implements OnInit, OnChanges {
     name: ''
   };
   Image = '';
-
+  errorText = '';
+  succesText = "";
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -52,12 +53,20 @@ export class CompanyComponent implements OnInit, OnChanges {
       this.service.accService.CreateCompanies(this.Company)
         .subscribe(
           (res) => {
+            this.errorText = "";
+            this.succesText = "Cохранено"
             this.service.authService.GetMe().subscribe(
               (acc) => {
                 this.service.authService.me = acc;
                 this.service.authService.onMeChange$.next(true);
               }
             );
+          },
+          (err)=>{
+            this.succesText = ""
+            let error = JSON.parse(err._body);
+            let errText = (error.name ? 'Незаполнено Нахвание компании.':'');
+            this.errorText = errText;
           }
         );
     } else {
@@ -65,6 +74,13 @@ export class CompanyComponent implements OnInit, OnChanges {
         .subscribe(
           (res) => {
             console.log(`res`, res);
+            this.succesText = "Cохранено";
+          },
+          (err)=>{
+            this.succesText = ""
+            let error = JSON.parse(err._body);
+            let errText = (error.name ? 'Незаполнено Нахвание компании.':'');
+            this.errorText = errText;
           }
         );
     }
