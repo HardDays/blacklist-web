@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
 
-        <app-person [id]="Id" [imageId]="ImageId"></app-person>
+        <app-person [id]="Id" [imageId]="ImageId" [isChangeType]="isChangeType" (onChangeType)="changeType()"></app-person>
 
     </div>
 
@@ -16,7 +16,10 @@
 <div *ngIf="Type==='company'" class="container">
     <div class="row">
         <div class="col-md-12">
-            <app-company [id]="Id" [imageId]="ImageId"></app-company>
+            <app-company [id]="Id" [imageId]="ImageId" [isChangeType]="isChangeType" (onChangeType)="changeType()"></app-company>
+
         </div>
     </div>
 </div>
+
+

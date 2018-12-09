@@ -74,7 +74,7 @@
         <div class="row">
             <h1>{{Item.name?Item.name:'-'}}</h1>
             <h2>Предприятие</h2>
-            <div class="flex-b-admin">
+            <div *ngIf="IsAdmin" class="flex-b-admin">
               <button *ngIf="Item.status != 'approved'" (click)="approve()" type="button" class="btn btn-success">Опубликовать</button>
               <button (click)="delete()" type="button" class="btn btn-danger">Удалить</button>
             </div>

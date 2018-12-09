@@ -1,6 +1,6 @@
 <form >
           <app-avatar-image [ImageId]="imageId" (onImageChanged)="setImage($event)"></app-avatar-image>
-
+            <p *ngIf="isChangeType" (click)="changeType()">Сменить тип аккаунта</p><br>
           <div class="form-group">
             <label for="f1">*Фамилия:</label>
             <input [(ngModel)]="Employee.last_name" name="last_name" type="text" class="form-control" id="f1">

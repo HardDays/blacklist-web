@@ -1,5 +1,5 @@
 import { Company } from './../../../_models/auth.interface';
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MainService } from 'src/app/_services/main.service';
 
 @Component({
@@ -12,6 +12,10 @@ export class CompanyComponent implements OnInit, OnChanges {
   @Input() id;
   @Input() imageId;
 
+  @Input() isChangeType = false;
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onChangeType = new EventEmitter<boolean>();
+
   isEdit = false;
 
   Company: Company = {
@@ -20,13 +24,17 @@ export class CompanyComponent implements OnInit, OnChanges {
   };
   Image = '';
   errorText = '';
-  succesText = "";
+  succesText = '';
   constructor(protected service: MainService) { }
 
   ngOnInit() {
     if (this.service.authService.me) {
       this.Company.id = this.service.authService.me.id;
     }
+  }
+
+  changeType() {
+    this.onChangeType.emit(true);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -53,8 +61,8 @@ export class CompanyComponent implements OnInit, OnChanges {
       this.service.accService.CreateCompanies(this.Company)
         .subscribe(
           (res) => {
-            this.errorText = "";
-            this.succesText = "Cохранено"
+            this.errorText = '';
+            this.succesText = 'Cохранено';
             this.service.authService.GetMe().subscribe(
               (acc) => {
                 this.service.authService.me = acc;
@@ -62,10 +70,10 @@ export class CompanyComponent implements OnInit, OnChanges {
               }
             );
           },
-          (err)=>{
-            this.succesText = ""
-            let error = JSON.parse(err._body);
-            let errText = (error.name ? 'Незаполнено Нахвание компании.':'');
+          (err) => {
+            this.succesText = '';
+            const error = JSON.parse(err._body);
+            const errText = (error.name ? 'Незаполнено Нахвание компании.' : '');
             this.errorText = errText;
           }
         );
@@ -74,12 +82,12 @@ export class CompanyComponent implements OnInit, OnChanges {
         .subscribe(
           (res) => {
             console.log(`res`, res);
-            this.succesText = "Cохранено";
+            this.succesText = 'Cохранено';
           },
-          (err)=>{
-            this.succesText = ""
-            let error = JSON.parse(err._body);
-            let errText = (error.name ? 'Незаполнено Нахвание компании.':'');
+          (err) => {
+            this.succesText = '';
+            const error = JSON.parse(err._body);
+            const errText = (error.name ? 'Незаполнено Нахвание компании.' : '');
             this.errorText = errText;
           }
         );

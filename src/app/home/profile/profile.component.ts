@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   Id = 0;
   ImageId = 0;
   Type = '';
+  isChangeType = false;
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -34,6 +35,7 @@ export class ProfileComponent implements OnInit {
 
   InitUser() {
     console.log(`profile`, this.service.authService.me);
+            this.isChangeType = false;
             if (this.service.authService.me) {
               this.Id = this.service.authService.me.id;
               this.ImageId = this.service.authService.me.image_id;
@@ -42,7 +44,16 @@ export class ProfileComponent implements OnInit {
               this.Type = this.service.authService.me.user_type;
             } else {
               this.Type = localStorage.getItem('registerType') ? localStorage.getItem('registerType') : 'employee';
+              this.isChangeType = true;
             }
+  }
+
+  changeType() {
+    if (this.Type === 'employee') {
+      this.Type = 'company';
+    } else {
+      this.Type = 'employee';
+    }
   }
 
 }

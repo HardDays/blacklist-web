@@ -98,12 +98,21 @@ export class HumanComponent implements OnInit {
       );
   }
   DeleteComment(id: number) {
-    this.service.adminService.DeleteEmployeeComment(id)
-      .subscribe(
-        res => {
-          this.getComments();
-        }
-      );
+    if (this.IsAdmin) {
+      this.service.adminService.DeleteEmployeeCommentByAdmin(id)
+        .subscribe(
+          res => {
+            this.getComments();
+          }
+        );
+    } else {
+      this.service.adminService.DeleteEmployeeComment(id)
+        .subscribe(
+          res => {
+            this.getComments();
+          }
+        );
+    }
   }
 
   approve() {

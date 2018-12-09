@@ -100,6 +100,11 @@ export class AdminService {
 
     DeleteEmployeeComment(id: number) {
        return this.http.CommonRequest(
+            () => this.http.DeleteData('/employee_comments/' + id + '.json')
+        );
+    }
+    DeleteEmployeeCommentByAdmin(id: number) {
+       return this.http.CommonRequest(
             () => this.http.DeleteData('/admin_employee_comments/' + id + '.json')
         );
     }
