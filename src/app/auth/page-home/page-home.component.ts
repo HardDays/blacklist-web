@@ -77,9 +77,9 @@ export class PageHomeComponent implements OnInit {
            this.errorLogin = false;
            this.service.authService.BaseInitAfterLogin(res);
            this.service.authService.TryToLoginWithToken();
-           this.router.navigate(['']);
+           this.router.navigate(['/home']);
         },
-        (err) =>{
+        (err) => {
           this.errorLogin = true;
         }
       );

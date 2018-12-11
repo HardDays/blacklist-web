@@ -25,9 +25,9 @@ export class PageLoginComponent implements OnInit {
            this.error = false;
            this.service.authService.BaseInitAfterLogin(res);
            this.service.authService.TryToLoginWithToken();
-           this.router.navigate(['']);
+           this.router.navigate(['/home']);
         },
-        (err)=>{
+        (err) => {
           this.error = true;
         }
       );

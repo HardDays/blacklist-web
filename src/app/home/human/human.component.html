@@ -170,7 +170,7 @@
 
               </div>
             </div>
-            <button (click)="DeleteComment(item.id)" type="button" class="btn btn-danger">Удалить комментарий</button>
+            <button *ngIf="IsAdmin" (click)="DeleteComment(item.id)" type="button" class="btn btn-danger">Удалить комментарий</button>
           </div>
         </article>
 
