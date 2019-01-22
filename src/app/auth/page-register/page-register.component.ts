@@ -36,31 +36,31 @@ export class PageRegisterComponent implements OnInit {
   }
 
   CreateUserByEmail() {
-    this.service.authService.CreateUserEmail(this.Email)
-      .subscribe(
+    this.service.WaitBeforeLoading(
+    () => this.service.authService.CreateUserEmail(this.Email),
         (res) => {
           console.log(`add email ok`, res);
           this.error = false;
           this.errorText = '';
           this.CurrentStep = this.Steps.code;
         },
-        (err)=>{
+        (err) => {
           this.error = true;
-          if(err.status == 500){
-            this.errorText = 'Введите корректный email'
+          if (err.status === 500) {
+            this.errorText = 'Введите корректный email';
           }
-          if(err.status == 422){
-            this.errorText = 'Пользователь с данным email уже существует'
+          if (err.status === 422) {
+            this.errorText = 'Пользователь с данным email уже существует';
           }
         }
-        
+
       );
   }
 
   VerifyCode() {
-    this.service.authService.CreateUserVerifyEmail(this.Email, this.Code)
-      .subscribe(
-        (res) => {
+    this.service.WaitBeforeLoading(
+      () => this.service.authService.CreateUserVerifyEmail(this.Email, this.Code),
+      (res) => {
           console.log(`add email ok`, res);
           this.errorText = '';
           this.error = false;
@@ -69,9 +69,9 @@ export class PageRegisterComponent implements OnInit {
           this.UserId = res.id;
           this.CurrentStep = this.Steps.password;
         },
-        (err)=>{
+        (err) => {
           this.error = true;
-          this.errorText = 'Код неверный'
+          this.errorText = 'Код неверный';
         }
       );
   }
@@ -89,20 +89,21 @@ export class PageRegisterComponent implements OnInit {
           }
         );
     }
-    if(this.Password.password.length < 4){
+    if (this.Password.password.length < 4) {
         this.error = true;
-        this.errorText = 'Пароль должен включать минимум 4 символа'
+        this.errorText = 'Пароль должен включать минимум 4 символа';
     }
-    if(this.Password.password != this.Password.password_confirmation){
+    if (this.Password.password !== this.Password.password_confirmation) {
         this.error = true;
-        this.errorText = 'Пароли не совпадают'
+        this.errorText = 'Пароли не совпадают';
     }
   }
 
   Login() {
-    this.service.authService.UserLogin({email: this.Email, password: this.Password.password})
-      .subscribe(
-        (res) => {
+    this.service.WaitBeforeLoading(
+    () =>
+    this.service.authService.UserLogin({email: this.Email, password: this.Password.password}),
+    (res) => {
            this.service.authService.BaseInitAfterLogin(res);
            this.service.authService.TryToLoginWithToken();
            this.router.navigate(['']);

@@ -14,12 +14,14 @@ import {HttpModule} from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AccountsService } from './_services/accounts.service';
 import { AdminService } from './_services/admin.service';
+import { PreloaderComponent } from './preloader/preloader.component';
 
 // imports:[HttpClientModule, HttpModule
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PreloaderComponent
   ],
   imports: [
     FormsModule,

@@ -1,2 +1,4 @@
-<router-outlet></router-outlet>
+
+<app-preloader *ngIf="IsHaveProcess"></app-preloader>
+<router-outlet [style.display]="!IsHaveProcess?'block':'none'"></router-outlet>
 

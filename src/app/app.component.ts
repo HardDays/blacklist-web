@@ -7,7 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  IsHaveProcess = false;
+
   constructor(protected service: MainService) {
     this.service.authService.TryToLoginWithToken();
+
+    this.service.ActiveProcessesChanges.subscribe(
+      () => {
+        if (this.service.ActiveProcesses.length > 0) {
+            this.IsHaveProcess = true;
+        } else {
+          this.IsHaveProcess = false;
+        }
+      }
+    );
   }
 }
