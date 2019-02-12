@@ -1,7 +1,27 @@
 <div class="container">
-  <div class="form-group">
-    <div class="col-md-12">
-        <p>Text</p>
+
+    <div *ngIf="IsAdmin" class="form-group">
+        <div class="col-md-12">
+            <div class="flex-left">
+            <a routerLink="/news-add" class="add btn btn-block btn-primary btn-lg">Добавить новость</a>
+        </div>
+        </div>
     </div>
+   <br><br><br>
+      <div class="row" style="display: flex; flex-wrap: wrap;">
+          <div *ngFor="let item of News.items; let i = index" class="col-md-5 news-item">
+            <div class="flex-left">
+              <div class="followed-user-entry">
+                  <div class="followed-user-bottom">
+                    <p class="followed-user-screenname">
+                        {{item.created_at| date: 'HH:mm dd.MM.yyyy'}}
+                      </p>
+                      <a [routerLink]="['/news',item.id]" [innerHTML]="getTitle(item.text)"  class="followed-user-name"></a>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+      <br>
+      <app-pagination [allElements]="AllCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; getNews();"></app-pagination>
   </div>
-</div>

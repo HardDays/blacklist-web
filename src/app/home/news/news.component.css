@@ -1,0 +1,12 @@
+.news-item {
+  border: 1px solid black;
+    margin: 15px auto;
+}
+
+.followed-user-name {
+  font-weight: 600;
+}
+
+.followed-user-name:hover {
+  color: grey;
+}

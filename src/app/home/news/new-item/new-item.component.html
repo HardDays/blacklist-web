@@ -1,3 +1,16 @@
-<p>
-  new-item works!
-</p>
+<div *ngIf="Item" class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            <div *ngIf="IsAdmin" class="flex-b-admin">
+              <button (click)="Delete()" type="button" class="btn btn-danger">Удалить</button>
+            </div>
+            <h2 [innerHTML]="Item.text"></h2>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>

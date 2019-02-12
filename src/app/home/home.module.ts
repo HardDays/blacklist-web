@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 // import { NgxSmartModalModule } from '../_ui-components/ui-ngx-smart-modal/ngx-smart-modal.module';
 
@@ -35,13 +35,16 @@ import { PaySuccessComponent } from './pay/pay-success/pay-success.component';
 import { PayErrorComponent } from './pay/pay-error/pay-error.component';
 import { NewsComponent } from './news/news.component';
 import { NewItemComponent } from './news/new-item/new-item.component';
+import { NewAddComponent } from './news/new-add/new-add.component';
+import { SbComponent } from './sb/sb.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    EditorModule
   ],
   declarations: [
     HomeComponent,
@@ -65,7 +68,9 @@ import { NewItemComponent } from './news/new-item/new-item.component';
     PaySuccessComponent,
     PayErrorComponent,
     NewsComponent,
-    NewItemComponent
+    NewItemComponent,
+    NewAddComponent,
+    SbComponent
   ],
   providers: [
     MainService,

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            <h2>Служба безопасности</h2>
+            <br> <br>
+            <input type="button" (click)="DownloadTemplate()" class="btn btn-success" value="Скачать шаблон">
+            <br> <br>
+            <input (change)="loadFile($event)"  type="file">
+            <br> <br>
+            <input *ngIf="File" type="button" (click)="sendFile()" class="btn btn-success" value="Загрузить файл на проверку">
+            <!-- <label class="file_upload">
+              <div class="bg-image"></div>
+              <input  (change)="loadFile($event)"  type="file">
+            </label> -->
+        </div>
+
+        <div *ngIf="IsAdmin" class="row">
+            <br> <br>
+            <h2>Админ</h2>
+            <br> <br>
+            <input type="button" (click)="getAdminRequests()" class="btn btn-success" value="Получить список файлов">
+            <!-- <label class="file_upload">
+              <div class="bg-image"></div>
+              <input  (change)="loadFile($event)"  type="file">
+            </label> -->
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>

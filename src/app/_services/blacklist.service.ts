@@ -70,4 +70,53 @@ export class BlacklistService {
     }
 
 
+
+
+
+    GetNews(page = 1) {
+      const offset = (page - 1) * 10;
+      return this.http.CommonRequest(
+          () => this.http.GetData('/news.json', this.ParamsToUrlSearchParams({limit: 10, offset}))
+      );
+    }
+
+    GetNewsById(id: number) {
+      return this.http.CommonRequest(
+          () => this.http.GetData('/news/' + id + '.json', '')
+      );
+    }
+
+    AddNews(text: string) {
+        return this.http.CommonRequest(
+            () => this.http.PostData('/news.json', JSON.stringify({text}))
+        );
+    }
+
+    DeleteNews(id: number) {
+        return this.http.CommonRequest(
+            () => this.http.DeleteData('/news/' + id + '.json')
+        );
+    }
+
+
+
+    AddSecurityFile(base64: string) {
+      return this.http.CommonRequest(
+            () => this.http.PostData('/security_files.json', JSON.stringify({base64}))
+        );
+    }
+
+    GetSecurityFile() {
+      return this.http.CommonRequest(
+            () => this.http.GetData('/security_files/1.json', '')
+        );
+    }
+
+    GetSecurityRequests() {
+      return this.http.CommonRequest(
+            () => this.http.GetData('/security_requests.json', '')
+        );
+    }
+
+
 }

@@ -1,3 +1,4 @@
+import { NewAddComponent } from './home/news/new-add/new-add.component';
 import { NewItemComponent } from './home/news/new-item/new-item.component';
 import { PageHomeComponent } from './auth/page-home/page-home.component';
 import { PayErrorComponent } from './home/pay/pay-error/pay-error.component';
@@ -27,6 +28,7 @@ import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
 import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
 import { MyMsgComponent } from './home/my-msg/my-msg.component';
 import { NewsComponent } from './home/news/news.component';
+import { SbComponent } from './home/sb/sb.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
@@ -202,6 +204,14 @@ const routes: Routes = [
       {
         path: 'news/:id',
         component: NewItemComponent
+      },
+      {
+        path: 'news-add',
+        component: NewAddComponent
+      },
+      {
+        path: 'sb',
+        component: SbComponent
       },
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},

@@ -1,0 +1,18 @@
+<div *ngIf="IsAdmin" class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            <editor [(ngModel)]="NewNews" apiKey="kjvhox1ghhcns7bj6ui02pufze4y86vr0epeuadgwf9s31si"></editor>
+            <br><br>
+            <p *ngIf="IsSuccess">Новость добавлена!</p>
+            <div class="flex-b-admin">
+              <button (click)="addNews()" type="button" class="btn btn-success">Опубликовать</button>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
