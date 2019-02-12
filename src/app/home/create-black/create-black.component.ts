@@ -33,8 +33,8 @@ export class CreateBlackComponent implements OnInit {
   AddJob() {
 
   }
-  changeERR($event){
-    this.errorText = "";
+  changeERR($event) {
+    this.errorText = '';
   }
 
   Save () {
@@ -49,18 +49,17 @@ export class CreateBlackComponent implements OnInit {
           console.log(`ok`);
           this.router.navigate(['/black-list']);
         },
-        (err)=>{
-          
-          let error = JSON.parse(err._body);
+        (err) => {
+
+          const error = JSON.parse(err._body);
           let errText;
-          if(this.CurrentType === this.Types.employee){
-            
-            errText = (error.name ? 'Незаполнено ФИО.':'') + ' ' + (error.description ? 'Незаполнена должность.':'');
+          if (this.CurrentType === this.Types.employee) {
+
+            errText = (error.name ? 'Незаполнено ФИО.' : '') + ' ' + (error.description ? 'Незаполнена должность.' : '');
+          } else {
+            errText = (error.name ? 'Незаполнено название.' : '') + ' ' + (error.description ? 'Незаполнено описание.' : '');
           }
-          else{
-            errText = (error.name ? 'Незаполнено название.':'') + ' ' + (error.description ? 'Незаполнено описание.':'');
-          }
-          
+
           this.errorText = errText;
         }
       );

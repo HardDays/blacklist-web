@@ -33,6 +33,8 @@ import { UiPaginationComponent } from './ui-pagination/ui-pagination.component';
 import { AdminService } from '../_services/admin.service';
 import { PaySuccessComponent } from './pay/pay-success/pay-success.component';
 import { PayErrorComponent } from './pay/pay-error/pay-error.component';
+import { NewsComponent } from './news/news.component';
+import { NewItemComponent } from './news/new-item/new-item.component';
 
 @NgModule({
   imports: [
@@ -61,7 +63,9 @@ import { PayErrorComponent } from './pay/pay-error/pay-error.component';
     PayComponent,
     UiPaginationComponent,
     PaySuccessComponent,
-    PayErrorComponent
+    PayErrorComponent,
+    NewsComponent,
+    NewItemComponent
   ],
   providers: [
     MainService,

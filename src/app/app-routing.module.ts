@@ -1,3 +1,4 @@
+import { NewItemComponent } from './home/news/new-item/new-item.component';
 import { PageHomeComponent } from './auth/page-home/page-home.component';
 import { PayErrorComponent } from './home/pay/pay-error/pay-error.component';
 import { PaySuccessComponent } from './home/pay/pay-success/pay-success.component';
@@ -25,6 +26,7 @@ import { VacanceComponent } from './home/vacance/vacance.component';
 import { MyVacancesComponent } from './home/my-vacances/my-vacances.component';
 import { MyVacanceComponent } from './home/my-vacance/my-vacance.component';
 import { MyMsgComponent } from './home/my-msg/my-msg.component';
+import { NewsComponent } from './home/news/news.component';
 
 // resolvers
 // import { UserResolver } from './_resolvers/user.resolver';
@@ -161,7 +163,7 @@ const routes: Routes = [
       },
       {
         path: 'vacance/:id',
-        canActivate: [PayGuard],
+        // canActivate: [PayGuard],
         component: VacanceComponent
       },
       {
@@ -191,8 +193,15 @@ const routes: Routes = [
       },
       {
         path: 'create-list-item',
-        canActivate: [PayGuard],
         component: CreateBlackComponent
+      },
+      {
+        path: 'news',
+        component: NewsComponent
+      },
+      {
+        path: 'news/:id',
+        component: NewItemComponent
       },
 
   //     { path: '', redirectTo: 'shows', pathMatch:'full'},
