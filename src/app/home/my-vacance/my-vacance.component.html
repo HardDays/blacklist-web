@@ -26,8 +26,8 @@
 
               </div>
               <p style="margin-bottom: 20px;">{{errorText}}</p>
-              <button (click)="Save()" type="submit" style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-success btn-lg btn-block">Сохранить</button>
-              <button  style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-danger btn-lg btn-block">Удалить</button>
+              <button [disabled]="!is_payed_everything&&!service.authService.me.is_payed_vacancies" (click)="Save()" type="submit" style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-success btn-lg btn-block">Сохранить</button>
+              <button [disabled]="!is_payed_everything&&!service.authService.me.is_payed_vacancies" style="margin: 0 auto 30px auto; max-width: 150px;" class="btn btn-danger btn-lg btn-block">Удалить</button>
             </form>
         </div>
     </div>

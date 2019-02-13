@@ -1,7 +1,7 @@
 <div class="container">
 
   <div *ngIf="IsPaid" class="form-group">
-    <div class="col-md-4">
+    <div *ngIf="service.authService.me.is_payed_everything||service.authService.me.is_payed_employee_search " class="col-md-4">
         <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="control-label">поиск по имени и фамилии</label>
 
         <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail3" placeholder="Фамилия Имя">

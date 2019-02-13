@@ -7,7 +7,7 @@
             <br> <br>
             <input type="button" (click)="DownloadTemplate()" class="btn btn-success" value="Скачать шаблон">
             <br> <br>
-            <input (change)="loadFile($event)"  type="file">
+            <input *ngIf="service.authService.me.is_payed_everything||service.authService.me.is_payed_security" (change)="loadFile($event)"  type="file">
             <br> <br>
             <input *ngIf="File" type="button" (click)="sendFile()" class="btn btn-success" value="Загрузить файл на проверку">
             <!-- <label class="file_upload">

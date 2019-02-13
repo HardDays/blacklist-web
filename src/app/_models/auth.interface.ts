@@ -13,6 +13,12 @@ export interface UserModel {
   is_admin: boolean;
   image?: string;
   name?: string;
+  is_payed_everything?: boolean;
+  is_payed_vacancies?: boolean;
+  is_payed_employee_list?: boolean;
+  is_payed_security?: boolean;
+  is_payed_employee_search?: boolean;
+
 }
 
 export interface LoginModel {

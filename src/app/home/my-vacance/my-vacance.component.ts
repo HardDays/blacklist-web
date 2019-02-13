@@ -52,10 +52,10 @@ export class MyVacanceComponent implements OnInit {
             console.log(res);
             this.router.navigate(['/my-vacances']);
           },
-          (err)=>{
-            let error = JSON.parse(err._body);
+          (err) => {
+            const error = JSON.parse(err._body);
             let errText;
-            errText = (error.position ? 'Незаполнена должность.':'') + ' ' + (error.description ? 'Незаполнено описание.':'');
+            errText = (error.position ? 'Незаполнена должность.' : '') + ' ' + (error.description ? 'Незаполнено описание.' : '');
             this.errorText = errText;
           }
         );
