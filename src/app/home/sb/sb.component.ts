@@ -15,7 +15,7 @@ export class SbComponent implements OnInit {
   File = '';
   TemplateFile = '';
 
-  constructor(protected service: MainService) { }
+  constructor(public service: MainService) { }
 
   ngOnInit() {
     if (this.service.authService.me) {

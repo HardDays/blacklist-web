@@ -22,7 +22,7 @@ export class MyVacanceComponent implements OnInit {
     };
 
     errorText = '';
-    constructor(private activateRoute: ActivatedRoute, private router: Router, protected service: MainService) {
+    constructor(private activateRoute: ActivatedRoute, private router: Router, public service: MainService) {
         if (activateRoute.snapshot.params['id'] === 'new') {
           this.isNew = true;
         } else {

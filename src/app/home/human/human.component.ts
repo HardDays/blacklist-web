@@ -29,7 +29,7 @@ export class HumanComponent implements OnInit {
 
   IsAdmin = false;
 
-   constructor(private activateRoute: ActivatedRoute, protected service: MainService, private router: Router) {
+   constructor(private activateRoute: ActivatedRoute, public service: MainService, private router: Router) {
         this.Id = activateRoute.snapshot.params['id'];
    }
 
