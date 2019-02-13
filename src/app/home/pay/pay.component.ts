@@ -20,6 +20,10 @@ export class PayComponent implements OnInit {
 
   Pay: any;
 
+  ReadyToPay = false;
+
+  SelectedItem = { payment_type: '', price: 0 };
+
   constructor(protected service: MainService, protected router: Router, protected sanitizer: DomSanitizer) {
     console.log(`route`, router, router.url);
     if (router.url.startsWith('/pay/fail')) {
@@ -59,18 +63,24 @@ export class PayComponent implements OnInit {
 
   ngOnInit() {
     if (this.service.authService.me && this.service.authService.me.id) {
-      this.getPayment();
+      // this.getPayment();
+      this.ReadyToPay = true;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
-       this.getPayment();
+      //  this.getPayment();
+       this.ReadyToPay = true;
       }
     );
     // this.getForm();
   }
 
   getPayment() {
-    this.service.accService.GetPaymentData(this.service.authService.me.id)
+    this.service.accService.GetPaymentData(
+        this.service.authService.me.id,
+        this.SelectedItem.payment_type,
+        this.SelectedItem.price
+      )
       .subscribe(
         (res) => {
           console.log(res);

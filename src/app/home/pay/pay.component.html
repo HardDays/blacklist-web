@@ -6,6 +6,24 @@
             <p>Для открытия полного функционала требуется оплатить!</p>
             <br>
 
+            <div *ngIf="ReadyToPay">
+
+              <select class="form-control" [(ngModel)]="SelectedItem">
+                <option [ngValue]="{ payment_type: 'employee_list_week', price: 1000 }">Доступ к базе резюме на 1 неделю - 1000р</option>
+                <option [ngValue]="{ payment_type: 'employee_list_month', price: 3000 }">Доступ к базе резюме на 1 месяц - 3000р</option>
+                <option [ngValue]="{ payment_type: 'vacancies_4', price: 300 }">Публикация вакансий от 1 - 300р</option>
+                <option [ngValue]="{ payment_type: 'vacancies_5', price: 250 }">Публикация вакансий от 5 - 250р</option>
+                <option [ngValue]="{ payment_type: 'employee_search', price: 500 }">Выборка резюме на 1 день (при покупке от 1 вакансии) - 500р</option>
+                <option [ngValue]="{ payment_type: 'standard', price: 4500 }">Пакет "Стандартный" на 30 дней - 4500р</option>
+                <option [ngValue]="{ payment_type: 'economy', price: 1000 }">Пакет "Эконом" на 10 дней - 1000р</option>
+                <option [ngValue]="{ payment_type: 'banner', price: 2500 }">Баннер - 2500р</option>
+                <option [ngValue]="{ payment_type: 'security_file', price: 500 }">Загрузка файла в СБ - 500р</option>
+              </select>
+              <br>
+              <input *ngIf="SelectedItem.price" type="button" (click)="getPayment()" class="btn btn-primary" value="Получить данные оплаты">
+
+            </div>
+
              <!-- <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin='+Pay['mrh_login']+'&OutSum='+Pay['out_summ']+'&InvoiceID='+Pay['inv_id']+'&SignatureValue='+Pay['crc']+'&IsTest=1')"></iframe> -->
 
              <iframe *ngIf="Pay&&Pay['mrh_url']" width="168" height="80" style="border:0;width:168px;height:80px;overflow:hidden;background-color:transparent;" allowTransparency="true" [src]="photoURL('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.if?MerchantLogin=black_list&InvoiceID=0&IsTest=1&Culture=ru&Encoding=utf-8&OutSum=10&SignatureValue=b8aedf7be83cebea521adbda47800216b06208dd9e40deeeec6ddb23324d9895')"></iframe>
