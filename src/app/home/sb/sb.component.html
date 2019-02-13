@@ -20,6 +20,10 @@
             <br> <br>
             <h2>Админ</h2>
             <br> <br>
+             <input (change)="loadTemplateFile($event)"  type="file">
+            <br> <br>
+            <input *ngIf="TemplateFile" type="button" (click)="sendTemplateFile()" class="btn btn-success" value="Загрузить новый шаблон">
+             <br> <br>
             <input type="button" (click)="getAdminRequests()" class="btn btn-success" value="Получить список файлов">
             <!-- <label class="file_upload">
               <div class="bg-image"></div>

@@ -13,6 +13,7 @@ export class SbComponent implements OnInit {
 
   IsAdmin = false;
   File = '';
+  TemplateFile = '';
 
   constructor(protected service: MainService) { }
 
@@ -28,7 +29,7 @@ export class SbComponent implements OnInit {
   }
 
   DownloadTemplate() {
-    this.service.blacklistService.GetSecurityFile()
+    this.service.blacklistService.GetSecurityFileTemplate()
       .subscribe(
         (res) => {
           console.log(res);
@@ -45,9 +46,9 @@ export class SbComponent implements OnInit {
   }
 
   downloadFile(data) {
-    if (data.base64) {
-        let type = data.base64.split(';base64,')[0].split('/')[1];
-        const file = data.base64.split(';base64,')[1];
+    if (data._body) {
+        let type = data._body.split(';base64,')[0].split('/')[1];
+        const file = data._body.split(';base64,')[1];
 
         const decoded = new Buffer(file, 'base64');
         const blob = new Blob([decoded], { type: type });
@@ -83,8 +84,41 @@ export class SbComponent implements OnInit {
     };
   }
 
+  getBase64Template(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      this.TemplateFile = reader.result + '';
+    };
+    reader.onerror = function (error) {
+      console.log(`ERROR`);
+    };
+  }
+
   sendFile() {
-    this.service.blacklistService.AddSecurityFile(this.File)
+    this.service.blacklistService.AddSecurityRequest(this.service.authService.me.id, this.File)
+      .subscribe(
+        (res) => {
+          console.log(`success`);
+        }
+      );
+  }
+
+
+  loadTemplateFile($event: any) {
+    const target = $event.target;
+    const file: File = target.files[0];
+
+    if (file.size <= 2e7) {
+      this.getBase64Template(file);
+    } else {
+      this.TemplateFile = '';
+    }
+  }
+
+
+  sendTemplateFile() {
+    this.service.blacklistService.AddSecurityFileTemplate(this.TemplateFile)
       .subscribe(
         (res) => {
           console.log(`success`);
@@ -93,7 +127,7 @@ export class SbComponent implements OnInit {
   }
 
   getAdminRequests() {
-    this.service.blacklistService.GetSecurityRequests()
+    this.service.blacklistService.GetSecurityRequestsByAdmin()
       .subscribe(
         (res) => {
           console.log(`res = `, res);

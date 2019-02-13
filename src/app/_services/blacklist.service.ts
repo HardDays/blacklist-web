@@ -100,19 +100,25 @@ export class BlacklistService {
 
 
 
-    AddSecurityFile(base64: string) {
+    AddSecurityFileTemplate(base64: string) {
       return this.http.CommonRequest(
             () => this.http.PostData('/security_files.json', JSON.stringify({base64}))
         );
     }
 
-    GetSecurityFile() {
+    GetSecurityFileTemplate() {
+
+     return this.http.GetData('/security_files/1.json', '');
+
+    }
+
+    AddSecurityRequest(user_id: number, base64: string) {
       return this.http.CommonRequest(
-            () => this.http.GetData('/security_files/1.json', '')
+            () => this.http.PostData('/security_requests.json', JSON.stringify({user_id, base64}))
         );
     }
 
-    GetSecurityRequests() {
+    GetSecurityRequestsByAdmin() {
       return this.http.CommonRequest(
             () => this.http.GetData('/security_requests.json', '')
         );

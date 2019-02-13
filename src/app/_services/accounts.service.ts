@@ -155,9 +155,9 @@ export class AccountsService {
         );
     }
 
-    GetPaymentData(user_id: number) {
+    GetPaymentData(user_id: number, payment_type = 'employee_list_week', price = 1000) {
       return this.http.CommonRequest(
-            () => this.http.PostData('/payments.json', JSON.stringify({user_id}))
+            () => this.http.PostData('/payments.json', JSON.stringify({user_id, payment_type, price}))
         );
     }
 
