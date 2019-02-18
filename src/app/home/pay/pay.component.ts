@@ -36,7 +36,7 @@ export class PayComponent implements OnInit {
 
   photoURL(url) {
     if (this.Pay) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(url + '&Shp_item=' + this.Pay['shp_item']);
+     return this.sanitizer.bypassSecurityTrustResourceUrl(url + '&OutSum=' + this.Pay['out_summ'] + '&Shp_item=' + this.Pay['shp_item']);
     }
     return '';
   }
@@ -115,7 +115,7 @@ export class PayComponent implements OnInit {
 
   getForm() {
     // tslint:disable-next-line:max-line-length
-    this.service.http.GetDataFromOtherUrl('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.js?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=100&SignatureValue=26c8359221244aa536a4741029c577bb')
+    this.service.http.GetDataFromOtherUrl('https://auth.robokassa.ru/Merchant/PaymentForm/FormV.js?MerchantLogin=black_list&InvoiceID=0&Culture=ru&Encoding=utf-8&OutSum=' + this.Pay['out_summ'] + '&SignatureValue=26c8359221244aa536a4741029c577bb')
       .subscribe(
         (res) => {
           console.log(res);
