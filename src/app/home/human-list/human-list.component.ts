@@ -58,7 +58,7 @@ export class HumanListComponent implements OnInit {
             console.log(`Employees`, this.Employees);
           }
         );
-    } else {
+    } else if(this.IsPaid) {
       this.service.accService.GetEmployees(this.Page, this.TextSearch, this.Experience, this.Position)
       .subscribe(
         (res) => {

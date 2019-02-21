@@ -1,6 +1,6 @@
-<div class="container">
+<div *ngIf="IsPaid" class="container">
 
-  <div *ngIf="IsPaid" class="form-group">
+  <div class="form-group">
     <div *ngIf="service.authService.me.is_payed_everything||service.authService.me.is_payed_employee_search " class="col-md-4">
         <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="control-label">поиск по имени и фамилии</label>
 
@@ -96,4 +96,16 @@
 
     <br>
     <app-pagination [allElements]="AllCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; search();"></app-pagination>
+</div>
+
+
+
+<div *ngIf="!IsPaid" class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <p>Требуется оплатить для просмотра данного раздела!</p>
+        </div>
+    </div>
+  </div>
 </div>
