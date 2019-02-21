@@ -36,12 +36,14 @@ export class PageHomeComponent implements OnInit {
         .subscribe(
           res => {
             this.Vacancies = res;
+            console.log(this.Vacancies);
           }
         );
       this.service.accService.GetHomeEmployees()
         .subscribe(
           res => {
             this.Employees = res;
+            console.log(this.Employees);
           }
         );
 

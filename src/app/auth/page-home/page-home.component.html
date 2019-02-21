@@ -7,7 +7,7 @@
       <li routerLinkActive="active">
         <a routerLink="/profile">Профиль</a>
       </li>
-      <li *ngIf="!isPayed" routerLinkActive="active">
+      <li *ngIf="isCompany&&!isPayed" routerLinkActive="active">
         <a routerLink="/pay">Оплатить</a>
       </li>
       <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
@@ -22,16 +22,16 @@
       <li *ngIf="isCompany && isPayed" routerLinkActive="active">
         <a routerLink="/my-msg">Отклики на вакансии</a>
       </li>
-      <li *ngIf="isPayed||isAdmin" routerLinkActive="active">
+      <li *ngIf="isCompany&&isPayed||isAdmin" routerLinkActive="active">
         <a routerLink="/black-list">Черный список</a>
       </li>
-      <li *ngIf="!isPayed&&!isAdmin" routerLinkActive="active">
+      <li *ngIf="isCompany&&!isPayed&&!isAdmin" routerLinkActive="active">
         <a routerLink="/create-list-item">Добавить в ЧС</a>
       </li>
       <li routerLinkActive="active">
         <a routerLink="/news">Новости</a>
       </li>
-      <li routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/sb">СБ</a>
       </li>
     </ul>
@@ -82,7 +82,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="main-cont__top-vac bordered">
                         <h3>Вакансии дня</h3>
-                        <div *ngFor="let item of Vacancies" class="main-cont__top-vac__item">
+                        <div *ngFor="let item of Vacancies" [routerLink]="['/vacance', item.id]" style="cursor: pointer;" class="main-cont__top-vac__item">
                             <a class="vacc-name">{{item.position}}</a>
                             <p class="vacc-company">{{item.company_name}}</p>
                         </div>
@@ -91,7 +91,7 @@
                 <div class="col-md-4 col-sm-6">
                      <div class="main-cont__top-vac">
                         <h3>Сотрудники дня</h3>
-                        <div *ngFor="let item of Employees" class="main-cont__top-vac__item">
+                        <div *ngFor="let item of Employees" [routerLink]="['/human',item.id]" style="cursor: pointer;"  class="main-cont__top-vac__item">
                             <a class="vacc-name">{{item.position?item.position:'-'}}</a>
                             <p class="grey-text">Опыт работы</p>
                             <p class="vac-item-info">{{item.experience?item.experience:'-'}} года</p>

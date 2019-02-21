@@ -1,6 +1,7 @@
 import { Company } from './../../../_models/auth.interface';
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
 import { MainService } from 'src/app/_services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company',
@@ -25,7 +26,7 @@ export class CompanyComponent implements OnInit, OnChanges {
   Image = '';
   errorText = '';
   succesText = '';
-  constructor(protected service: MainService) { }
+  constructor(protected service: MainService, protected router: Router) { }
 
   ngOnInit() {
     if (this.service.authService.me) {
@@ -75,6 +76,9 @@ export class CompanyComponent implements OnInit, OnChanges {
             const error = JSON.parse(err._body);
             const errText = (error.name ? 'Незаполнено Нахвание компании.' : '');
             this.errorText = errText;
+          },
+          () => {
+            this.router.navigate(['/home']);
           }
         );
     } else {
@@ -89,6 +93,9 @@ export class CompanyComponent implements OnInit, OnChanges {
             const error = JSON.parse(err._body);
             const errText = (error.name ? 'Незаполнено Нахвание компании.' : '');
             this.errorText = errText;
+          },
+          () => {
+            this.router.navigate(['/home']);
           }
         );
     }

@@ -8,7 +8,7 @@
         <a routerLink="/profile">Профиль</a>
       </li>
       <!-- *ngIf="!isPayed" -->
-      <li routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/pay">Оплатить</a>
       </li>
       <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
@@ -23,16 +23,16 @@
       <li *ngIf="isCompany && isPayed" routerLinkActive="active">
         <a routerLink="/my-msg">Отклики на вакансии</a>
       </li>
-      <li *ngIf="isPayed||isAdmin" routerLinkActive="active">
+      <li *ngIf="isCompany&&isPayed||isAdmin" routerLinkActive="active">
         <a routerLink="/black-list">Черный список</a>
       </li>
-      <li *ngIf="!isPayed&&!isAdmin" routerLinkActive="active">
+      <li *ngIf="isCompany&&!isPayed&&!isAdmin" routerLinkActive="active">
         <a routerLink="/create-list-item">Добавить в ЧС</a>
       </li>
       <li routerLinkActive="active">
         <a routerLink="/news">Новости</a>
       </li>
-      <li routerLinkActive="active">
+      <li *ngIf="isCompany" routerLinkActive="active">
         <a routerLink="/sb">СБ</a>
       </li>
     </ul>

@@ -4,7 +4,9 @@
     <div class="col-md-12">
         <div class="row">
             <h2>Служба безопасности</h2>
-            <br> <br>
+            <br>
+            <p>Скачайте шаблон заяки в СБ, после чего заполненный шаблон загрузите на проверку.<br> ВНИМАНИЕ! Чтобы иметь возможность загрузить Вашу заяку - требуется оплатить единаразовую загрузку в разеделе "Оплатить"</p>
+            <br>
             <input type="button" (click)="DownloadTemplate()" class="btn btn-success" value="Скачать шаблон">
             <br> <br>
             <input *ngIf="service.authService.me.is_payed_everything||service.authService.me.is_payed_security" (change)="loadFile($event)"  type="file">

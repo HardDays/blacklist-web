@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Employee, Job } from './../../../_models/auth.interface';
 import { Component, OnInit, OnChanges, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MainService } from 'src/app/_services/main.service';
@@ -29,7 +30,7 @@ export class PersonComponent implements OnInit, OnChanges {
   errorText = '';
   Jobs: Job[] = [];
   succesText = '';
-  constructor(protected service: MainService) { }
+  constructor(protected service: MainService, protected router: Router) { }
 
   ngOnInit() {
     if (this.service.authService.me) {
@@ -96,6 +97,9 @@ export class PersonComponent implements OnInit, OnChanges {
             this.errorText = errText;
             this.succesText = '';
 
+          },
+          () => {
+            this.router.navigate(['/home']);
           }
         );
     } else {
@@ -112,6 +116,9 @@ export class PersonComponent implements OnInit, OnChanges {
             const errText = (error.first_name ? 'Незаполнено имя.' : '') + ' ' + (error.second_name ? 'Незаполнено отчество.' : '') + ' ' + (error.last_name ? 'Незаполнена фамилия.' : '');
             this.errorText = errText;
             this.succesText = '';
+          },
+          () => {
+            this.router.navigate(['/home']);
           }
         );
     }

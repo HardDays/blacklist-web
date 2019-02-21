@@ -25,6 +25,7 @@ export class CreateBlackComponent implements OnInit {
     item_type: 'employee'
   };
   errorText = '';
+  succesText = '';
   constructor(protected service: MainService, private router: Router) { }
 
   ngOnInit() {
@@ -47,7 +48,8 @@ export class CreateBlackComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(`ok`);
-          this.router.navigate(['/black-list']);
+          // this.router.navigate(['/black-list']);
+          this.succesText = 'Сохранено';
         },
         (err) => {
 
