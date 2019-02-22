@@ -54,6 +54,8 @@ export interface Company {
   description?: string;
   contacts?: string;
   address?: string;
+  kitchen?: string;
+  work_time?: string;
 }
 
 export interface Job {
