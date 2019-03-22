@@ -72,6 +72,7 @@ export interface Vacancie {
   company_name: string;
   position: string;
   salary: string;
+  address: string;
   description: string;
   min_experience: number;
   status?: string;

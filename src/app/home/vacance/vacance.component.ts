@@ -17,6 +17,7 @@ export class VacanceComponent implements OnInit {
     company_name: '',
     position: '',
     salary: '',
+    address: '',
     description: '',
     min_experience: 0
   };
