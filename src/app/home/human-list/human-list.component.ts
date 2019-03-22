@@ -1,4 +1,4 @@
-import { Employee } from './../../_models/auth.interface';
+import { Employee, UserModel } from './../../_models/auth.interface';
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/_services/main.service';
 
@@ -22,6 +22,8 @@ export class HumanListComponent implements OnInit {
   IsAdmin = false;
   IsPaid = false;
 
+  Me: UserModel;
+
   constructor(protected service: MainService) { }
 
   ngOnInit() {
@@ -29,11 +31,13 @@ export class HumanListComponent implements OnInit {
     if (this.service.authService.me) {
       this.IsAdmin = this.service.authService.me.is_admin;
       this.IsPaid = this.service.authService.me.is_payed;
+      this.Me = this.service.authService.me;
     }
     this.service.authService.onMeChange$.subscribe(
       res => {
        this.IsAdmin = this.service.authService.me.is_admin;
        this.IsPaid = this.service.authService.me.is_payed;
+       this.Me = this.service.authService.me;
        this.GetEmployees();
       }
     );

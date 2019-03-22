@@ -1,7 +1,7 @@
 <div *ngIf="IsPaid" class="container">
 
   <div class="form-group">
-    <div *ngIf="service.authService.me.is_payed_employee_search " class="col-md-4">
+    <div *ngIf="Me&&Me.is_payed_employee_search " class="col-md-4">
         <label style="text-align: right; padding-top: 5px;" for="inputEmail3" class="control-label">поиск по имени и фамилии</label>
 
         <input type="text" (input)="TextSearch=$event.target.value; Page = 1; search()" class="form-control" id="inputEmail3" placeholder="Фамилия Имя">
@@ -20,7 +20,9 @@
   </div>
  <br><br><br>
     <div class="row myflex">
-        <div ngIf="service.authService.me.is_payed_employee_list" *ngFor="let item of Employees; let i = index" class="col-md-3">
+      <ng-container *ngIf="service.authService.me.is_payed_employee_list">
+
+        <div  *ngFor="let item of Employees; let i = index" class="col-md-3">
             <br>
             <div class="followed-user-entry">
                 <div class="followed-user-bottom">
@@ -91,6 +93,7 @@
             </div>
             <br>
         </div> -->
+        </ng-container>
     </div>
 
 
@@ -98,7 +101,7 @@
     <app-pagination [allElements]="AllCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; search();"></app-pagination>
 </div>
 
-<div *ngIf="!service.authService.me.is_payed_employee_list" class="container">
+<div *ngIf="Me&&!(Me.is_payed_employee_list)" class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="row">
