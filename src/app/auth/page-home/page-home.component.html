@@ -31,7 +31,7 @@
       <li routerLinkActive="active">
         <a routerLink="/news">Новости</a>
       </li>
-      <li *ngIf="isCompany" routerLinkActive="active">
+      <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
         <a routerLink="/sb">СБ</a>
       </li>
     </ul>
@@ -46,11 +46,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="baner__left">
+                    <!-- <div class="baner__left">
                         <h1>&nbsp;</h1>
                         <a *ngIf="!isMe" [routerLink]="['/auth','register']" class="main-button">купить подписку</a>
                         <a *ngIf="isMe&&!isPayed" [routerLink]="['/pay']" class="main-button">купить подписку</a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-push-2 col-md-4">
                     <div class="baner__right">
@@ -79,7 +79,7 @@
     <div class="main-cont">
         <div class="container">
             <div class="row my-flex">
-                <div class="col-md-4 col-sm-6" *ngIf="!isMe || isCompany || isAdmin">
+                <div class="col-md-4 col-sm-6" *ngIf="!isMe || isAdmin">
                     <div class="main-cont__top-vac bordered">
                         <h3>Вакансии дня</h3>
                         <div *ngFor="let item of Vacancies" [routerLink]="['/vacance', item.id]" style="cursor: pointer;" class="main-cont__top-vac__item">
@@ -102,16 +102,6 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-8 col-sm-12" *ngIf="isMe && !isCompany">
-                  <div class="main-cont__top-vac bordered">
-                    <h3>Вакансии дня</h3>
-                    <div *ngFor="let item of Vacancies" [routerLink]="['/vacance', item.id]" style="cursor: pointer;" class="main-cont__top-vac__item">
-                      <a class="vacc-name">{{item.position}}</a>
-                      <p class="vacc-company">{{item.company_name}}</p>
-                    </div>
-                  </div>
-                </div>
                 <div class="col-md-4">
                     <div class="adv-wrapp">
                         <a href="#" class="adv-wrapp__img">

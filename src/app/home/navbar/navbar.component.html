@@ -32,7 +32,7 @@
       <li routerLinkActive="active">
         <a routerLink="/news">Новости</a>
       </li>
-      <li *ngIf="isCompany" routerLinkActive="active">
+      <li *ngIf="isCompany||isAdmin" routerLinkActive="active">
         <a routerLink="/sb">СБ</a>
       </li>
     </ul>

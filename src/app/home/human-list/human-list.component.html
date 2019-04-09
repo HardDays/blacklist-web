@@ -20,7 +20,7 @@
   </div>
  <br><br><br>
     <div class="row myflex">
-      <ng-container *ngIf="service.authService.me.is_payed_employee_list">
+      <ng-container *ngIf="service.authService.me.is_payed_employee_list || IsAdmin">
 
         <div  *ngFor="let item of Employees; let i = index" class="col-md-3">
             <br>
@@ -101,7 +101,7 @@
     <app-pagination [allElements]="AllCount" [selectedNumber]="Page" (onChangeSelected)="Page = $event; search();"></app-pagination>
 </div>
 
-<div *ngIf="Me&&!(Me.is_payed_employee_list)" class="container">
+<div *ngIf="Me&&!(Me.is_payed_employee_list)&& !IsAdmin" class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="row">
